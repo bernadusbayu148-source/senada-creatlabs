@@ -111,3 +111,15 @@
   -webkit-filter:none!important;
   will-change:auto;
 }
+
+/* Definitive Safari iOS safeguard: keep the hero PNG in normal image rendering.
+   Rotation is baked into hero-illustration-fixed.png itself. */
+.art img.art-squiggle{
+  transform:none!important;
+  -webkit-transform:none!important;
+  filter:none!important;
+  -webkit-filter:none!important;
+  will-change:auto!important;
+  backface-visibility:visible;
+  image-rendering:auto;
+}
