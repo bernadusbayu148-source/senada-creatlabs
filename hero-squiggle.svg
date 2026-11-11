@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 500" fill="none" aria-hidden="true">
+  <!-- Render all layers as ordinary SVG strokes, without any compositing filter. -->
+  <path d="M99 148C151 51 332 63 407 123s-19 95-106 89C156 200 110 265 199 337s226 61 297-39" transform="translate(7 11)" stroke="#000000" stroke-opacity=".16" stroke-width="87" stroke-linecap="round"/>
+  <path d="M99 148C151 51 332 63 407 123s-19 95-106 89C156 200 110 265 199 337s226 61 297-39" stroke="#171725" stroke-width="87" stroke-linecap="round"/>
+  <path d="M99 148C151 51 332 63 407 123s-19 95-106 89C156 200 110 265 199 337s226 61 297-39" stroke="#d9f66e" stroke-width="78" stroke-linecap="round"/>
+  <path d="M99 148C151 51 332 63 407 123s-19 95-106 89C156 200 110 265 199 337s226 61 297-39" stroke="#fffefb" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 16"/>
+</svg>
