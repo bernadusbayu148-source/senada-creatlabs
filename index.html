@@ -31,6 +31,7 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
   <link rel="stylesheet" href="compact.css">
+  <link rel="stylesheet" href="mobile-experience.css">
 </head>
 <body>
   <header class="site-header">
@@ -43,7 +44,7 @@
         <a class="nav-link" href="#about">Tentang</a><a class="nav-link" href="#services">Layanan</a><a class="nav-link" href="#work">Konsep</a><a class="nav-link" href="#process">Proses</a><a class="nav-link" href="#packages">Paket</a><a class="nav-link" href="#contact">Kontak</a>
       </nav>
       <a class="btn btn--lime header-cta" href="#contact">Mulai proyek <span aria-hidden="true">↗</span></a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Buka navigasi" aria-controls="main-menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="mobile-header-cta" href="#contact" aria-label="Mulai proyek dengan Senada Creatlabs">Konsultasi ↗</a>
     </div>
   </header>
   <main>
@@ -76,18 +77,18 @@
       <article class="service-card"><div class="service-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="5" y="7" width="54" height="49" rx="8" fill="#fff" stroke="#171725" stroke-width="3"/><path d="M5 20h54M24 20v36" stroke="#171725" stroke-width="3"/><rect x="11" y="27" width="8" height="8" rx="2" fill="#5c43ed"/><rect x="30" y="28" width="22" height="5" rx="2" fill="#d9f66e"/><rect x="30" y="39" width="14" height="5" rx="2" fill="#ff776c"/></svg></div><h3>Custom Web App</h3><p>Dashboard, membership, reservasi, dan fitur khusus untuk operasional bisnis.</p><div class="number">03 / SYSTEM & WEB APP</div></article>
       <article class="service-card"><div class="service-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M33 7 38 16l10-1 2 10 9 5-6 9 2 10-10 2-5 9-9-5-10 2-2-10-9-5 5-9-2-10 10-2z" fill="#d9f66e" stroke="#171725" stroke-width="3" stroke-linejoin="round"/><circle cx="33" cy="33" r="10" fill="#fff" stroke="#171725" stroke-width="3"/></svg></div><h3>Web Maintenance</h3><p>Update konten, perawatan berkala, dan bantuan teknis supaya web tetap nyaman dipakai.</p><div class="number">04 / CARE & SUPPORT</div></article>
     </div></div></section>
-    <section id="work"><div class="container"><div class="eyebrow">Moodboard proyek</div><div class="section-heading"><h2>Beda bisnis, beda ceritanya.</h2><p>Dua eksplorasi visual berikut adalah konsep demo, bukan proyek klien sungguhan.</p></div><div class="work-grid">
-      <article class="work-card"><div class="work-art work-art--coffee" aria-hidden="true"><span class="work-overlay">kopi!☕</span></div><div class="work-caption"><div><h3>F&B yang Hangat</h3><p>Eksplorasi website untuk kedai kopi yang mengutamakan cerita, menu, dan suasana.</p></div><span class="demo-tag">DEMO</span></div></article>
-      <article class="work-card"><div class="work-art work-art--beauty" aria-hidden="true"><span class="work-overlay">bloom.</span></div><div class="work-caption"><div><h3>Brand yang Berani</h3><p>Eksplorasi website untuk brand lifestyle dengan warna yang ekspresif.</p></div><span class="demo-tag">DEMO</span></div></article>
-    </div></div></section>
+    <section id="work"><div class="container"><div class="eyebrow">Moodboard proyek</div><div class="section-heading"><h2>Beda bisnis, beda ceritanya.</h2><p>Dua eksplorasi visual berikut adalah konsep demo, bukan proyek klien sungguhan.</p></div><div class="work-grid" id="work-slider" role="region" aria-roledescription="carousel" aria-label="Geser untuk melihat dua konsep website" tabindex="0">
+      <a class="work-card work-card-link" href="demos/kopi-hangat.html" aria-label="Buka preview website konsep F&B yang Hangat"><div class="work-art work-art--coffee" aria-hidden="true"><span class="work-overlay">kopi!☕</span></div><div class="work-caption"><div><h3>F&B yang Hangat</h3><p>Eksplorasi website untuk kedai kopi yang mengutamakan cerita, menu, dan suasana.</p><span class="work-cta">Lihat website contoh <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M8 6h10v10"/></svg></span></div><span class="demo-tag">DEMO</span></div></a>
+      <a class="work-card work-card-link" href="demos/bloom.html" aria-label="Buka preview website konsep Brand yang Berani"><div class="work-art work-art--beauty" aria-hidden="true"><span class="work-overlay">bloom.</span></div><div class="work-caption"><div><h3>Brand yang Berani</h3><p>Eksplorasi website untuk brand lifestyle dengan warna yang ekspresif.</p><span class="work-cta">Lihat website contoh <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M8 6h10v10"/></svg></span></div><span class="demo-tag">DEMO</span></div></a>
+    </div><div class="slider-controls" data-slider-target="work-slider"><span class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>Geser untuk lihat konsep lain</span><div class="slider-actions"><button class="slide-arrow" type="button" data-direction="-1" aria-label="konsep sebelumnya"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button><span class="slide-count" aria-live="polite">1 / 2</span><button class="slide-arrow" type="button" data-direction="1" aria-label="konsep berikutnya"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button></div></div></div></section>
     <section class="process" id="process"><div class="container"><div class="eyebrow">Cara kerja kami</div><div class="section-heading"><h2>Seru prosesnya.<br>Jelas langkahnya.</h2><p>Kreatif boleh spontan. Eksekusi tetap terarah, transparan, dan kolaboratif.</p></div><div class="steps">
       <div class="step"><div class="step-num">01</div><h3>Kenalan</h3><p>Diskusi ide, target audiens, referensi, dan tujuan website.</p></div><div class="step"><div class="step-num">02</div><h3>Rancang</h3><p>Tentukan struktur halaman, arah visual, dan ruang lingkup pekerjaan.</p></div><div class="step"><div class="step-num">03</div><h3>Bangun</h3><p>Desain dan development, lalu review bersama sebelum dirilis.</p></div><div class="step"><div class="step-num">04</div><h3>Meluncur!</h3><p>Pengujian akhir, penyerahan akses, serta opsi bantuan lanjutan.</p></div>
     </div></div></section>
-    <section id="packages"><div class="container"><div class="packages-head"><div class="eyebrow">Pilihan kolaborasi</div><h2>Mulai dari yang pas, tumbuh sesuai kebutuhan.</h2><p class="muted">Paket contoh untuk memulai diskusi. Cakupan dan penawaran akhir disepakati setelah brief.</p></div><div class="packages">
+    <section id="packages"><div class="container"><div class="packages-head"><div class="eyebrow">Pilihan kolaborasi</div><h2>Mulai dari yang pas, tumbuh sesuai kebutuhan.</h2><p class="muted">Paket contoh untuk memulai diskusi. Cakupan dan penawaran akhir disepakati setelah brief.</p></div><div class="packages" id="package-slider" role="region" aria-roledescription="carousel" aria-label="Geser untuk melihat tiga paket jasa" tabindex="0">
       <article class="package"><div class="package-type">Untuk ide yang mau meluncur</div><h3>Kickstart ✦</h3><p class="desc">Satu halaman utama untuk memperkenalkan produk, promo, atau layanan.</p><ul><li>Landing page responsif</li><li>Struktur konten dan CTA</li><li>Form/tautan kontak</li><li>Dasar SEO teknis</li></ul><a class="btn btn--white" href="#contact" data-package="Kickstart">Diskusi paket ini ↗</a></article>
       <article class="package featured"><div class="package-type">Untuk brand yang siap tumbuh</div><h3>Grow Together ✳</h3><p class="desc">Website bisnis dengan beberapa halaman untuk cerita dan kebutuhan brand.</p><ul><li>Beberapa halaman inti</li><li>Tampilan mobile-friendly</li><li>Galeri atau katalog konten</li><li>Panduan pengelolaan dasar</li></ul><a class="btn" href="#contact" data-package="Grow Together">Diskusi paket ini ↗</a></article>
       <article class="package"><div class="package-type">Untuk ide dengan kebutuhan unik</div><h3>Build Beyond ↗</h3><p class="desc">Website atau aplikasi dengan alur, integrasi, dan kebutuhan khusus.</p><ul><li>Scope sesuai kebutuhan</li><li>Dashboard/fitur khusus</li><li>Integrasi API bila diperlukan</li><li>Perencanaan dan uji fitur</li></ul><a class="btn btn--white" href="#contact" data-package="Build Beyond">Diskusi paket ini ↗</a></article>
-    </div><p class="package-note">Harga, masa pengerjaan, biaya domain/hosting, serta revisi dibahas dan dicatat dalam proposal proyek.</p></div></section>
+    </div><div class="slider-controls" data-slider-target="package-slider"><span class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>Geser untuk lihat paket lain</span><div class="slider-actions"><button class="slide-arrow" type="button" data-direction="-1" aria-label="paket sebelumnya"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button><span class="slide-count" aria-live="polite">1 / 3</span><button class="slide-arrow" type="button" data-direction="1" aria-label="paket berikutnya"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button></div></div><p class="package-note">Harga, masa pengerjaan, biaya domain/hosting, serta revisi dibahas dan dicatat dalam proposal proyek.</p></div></section>
     <section class="faq" id="faq"><div class="container faq-grid"><div><div class="eyebrow">Pertanyaan umum</div><h2>Yang sering ditanyain.</h2><p class="muted">Kalau ada hal lain, ceritakan saja saat mengisi brief.</p></div><div>
       <details class="faq-item"><summary class="faq-question">Apakah bisa dibuat sesuai desain brand saya? <span class="icon">+</span></summary><p class="faq-answer">Bisa. Warna, tipografi, tampilan, dan fitur akan disesuaikan dengan identitas brand dan kebutuhan yang disepakati.</p></details>
       <details class="faq-item"><summary class="faq-question">Apakah website bisa dibuka di HP? <span class="icon">+</span></summary><p class="faq-answer">Ya, desain responsif menjadi bagian dari pendekatan kami. Setiap proyek tetap melewati pengecekan tampilan di berbagai ukuran layar.</p></details>
@@ -99,11 +100,69 @@
     </div></div></section>
   </main>
   <footer><div class="container"><div class="footer-top"><h2>Let's make<br>it <span>senada.</span></h2><div><p>Creative web studio untuk ide-ide berani yang ingin punya tempat sendiri di internet.</p><a class="btn btn--lime" href="#contact">Yuk ngobrol ↗</a></div></div><div class="footer-bottom"><p>© <span id="year">2026</span> Senada Creatlabs. Built with personality.</p><p>Creative Web Studio · Indonesia · <a class="footer-link" href="#home">Kembali ke atas ↑</a></p></div></div></footer>
+  <nav class="mobile-dock" aria-label="Navigasi cepat Senada pada layar mobile">
+    <a class="dock-link active" href="#home" aria-label="Beranda" aria-current="location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a>
+    <a class="dock-link" href="#services" aria-label="Layanan"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 15h4"/></svg><span>Layanan</span></a>
+    <a class="dock-link" href="#work" aria-label="Konsep"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="9" r="1.5"/><path d="m3 17 6-5 4 3 4-6 4 5"/></svg><span>Konsep</span></a>
+    <a class="dock-link" href="#packages" aria-label="Paket"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5 12 3l9 5.5v9L12 23l-9-5.5z"/><path d="M3 8.5 12 14l9-5.5M12 14v9"/></svg><span>Paket</span></a>
+    <a class="dock-link" href="#contact" aria-label="Kontak"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-8.5 8.5 9.5 9.5 0 0 1-4-.9L3 21l1.9-4.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 4 8.5 8.5 0 0 1 20 11.5z"/><path d="M8 12h9"/></svg><span>Kontak</span></a>
+  </nav>
   <script>
     (() => {
-      const toggle=document.getElementById('nav-toggle'); const menu=document.getElementById('main-menu');
-      toggle.addEventListener('click',()=>{const open=menu.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Tutup navigasi':'Buka navigasi')});
-      menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Buka navigasi')}));
+      // Scroll-aware floating navigation, as on the PA.YU mobile website.
+      const dockLinks=[...document.querySelectorAll('.mobile-dock .dock-link')];
+      const syncDock=()=>{
+        const position=window.scrollY+Math.min(230,window.innerHeight*.38);
+        let active='home';
+        for(const link of dockLinks){
+          const target=document.querySelector(link.getAttribute('href'));
+          if(target && target.offsetTop<=position)active=target.id;
+        }
+        if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-75)active='contact';
+        for(const link of dockLinks){
+          const on=link.getAttribute('href')==='#'+active;
+          link.classList.toggle('active',on);
+          if(on)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+        }
+      };
+      window.addEventListener('scroll',syncDock,{passive:true});
+      window.addEventListener('resize',syncDock);
+      syncDock();
+
+      // Both carousels support touch swipes, button controls and keyboard arrows.
+      document.querySelectorAll('[data-slider-target]').forEach(controls=>{
+        const track=document.getElementById(controls.dataset.sliderTarget);
+        if(!track)return;
+        const cards=[...track.children];
+        const previous=controls.querySelector('[data-direction="-1"]');
+        const next=controls.querySelector('[data-direction="1"]');
+        const counter=controls.querySelector('.slide-count');
+        const getIndex=()=>{
+          if(!cards.length)return 0;
+          const origin=cards[0].offsetLeft;
+          let winner=0,dist=Infinity;
+          cards.forEach((card,i)=>{const d=Math.abs(track.scrollLeft-(card.offsetLeft-origin));if(d<dist){dist=d;winner=i;}});
+          return winner;
+        };
+        const update=()=>{
+          const index=getIndex();
+          counter.textContent=(index+1)+' / '+cards.length;
+          previous.disabled=index===0;
+          next.disabled=index===cards.length-1;
+        };
+        const move=direction=>{
+          const index=Math.max(0,Math.min(cards.length-1,getIndex()+direction));
+          track.scrollTo({left:cards[index].offsetLeft-cards[0].offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+        };
+        previous.addEventListener('click',()=>move(-1));
+        next.addEventListener('click',()=>move(1));
+        track.addEventListener('scroll',update,{passive:true});
+        track.addEventListener('keydown',event=>{
+          if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();move(event.key==='ArrowRight'?1:-1);}
+        });
+        window.addEventListener('resize',update);
+        update();
+      });
       document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',()=>{document.getElementById('type').value='Belum yakin, mau konsultasi';const details=document.getElementById('detail');if(!details.value.trim())details.value='Saya tertarik dengan paket '+link.dataset.package+'. Saya ingin mendiskusikan kebutuhan website saya.';}));
       document.getElementById('year').textContent=new Date().getFullYear();
       document.getElementById('brief-form').addEventListener('submit',async e=>{
