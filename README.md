@@ -72,3 +72,13 @@ Ketiganya adalah **brand dan konten demo fiktif**, bukan klien asli atau testimo
 - Kode terpisah: `demos/senada-coffee.html`, `demos/senada-coffee.css`, `demos/senada-coffee.js`
 
 **Penting:** Semua nama, harga, menu, dan identitas bisnis dalam demo adalah fiktif. Jangan menggunakan QR sebagai instruksi pembayaran.
+
+## Portofolio proyek nyata
+Halaman `index.html#work` membagi portofolio menjadi **Proyek Nyata** dan **Eksplorasi & Demo**, agar karya yang sudah dipublikasikan tidak disamakan dengan konsep fiktif.
+
+### Proyek nyata (tautan eksternal)
+- [Kopi Feeling](https://www.kopifeeling.com/) — website brand kopi gerobak, pilihan layanan dan informasi lokasi
+- [Rumah Kopi Manupi](https://kopimanupi.com/) — website kedai kopi, menu, lokasi, galeri dan papan poin pelanggan
+- [PA.YU Coffee](https://payucoffee.com/) — website coffee shop, membership dan poin loyalitas
+
+Kartu proyek memakai ilustrasi visual CSS, bukan tangkapan layar situs. Setiap tautan membuka domain aslinya dalam tab baru. Bagian ini menggunakan `real-projects.css` dan mendukung scroll horizontal di mobile, mode gelap, serta bahasa ID/EN.
