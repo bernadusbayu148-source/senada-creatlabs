@@ -13,6 +13,27 @@
   let theme=safeGet(KEYS.theme)==="dark"?"dark":"light";
   // Original Indonesian text -> natural English copy; brand names stay unchanged.
   const EN={
+    "Karya": "Work",
+    "Proyek Nyata": "Real Projects",
+    "Karya yang sudah online.": "Work that's already live.",
+    "Tiga website yang sudah dibuat dan dapat dikunjungi langsung. Bukan sekadar rancangan konsep.": "Three published websites you can explore directly — not just design mockups.",
+    "Proyek Nyata · Brand & Layanan": "Live Project · Brand & Services",
+    "Kopi Feeling": "Kopi Feeling",
+    "Website brand kopi gerobak dengan informasi lokasi, pilihan layanan, dan alur pemesanan.": "A mobile coffee brand website featuring station locations, service options, and ordering information.",
+    "Proyek Nyata · Coffee & Komunitas": "Live Project · Coffee & Community",
+    "Rumah Kopi Manupi": "Rumah Kopi Manupi",
+    "Website kedai kopi dengan informasi suasana, lokasi, menu, dan papan poin pelanggan.": "A coffee shop website featuring the venue, location, menu, and customer points leaderboard.",
+    "Proyek Nyata · Website & Member": "Live Project · Website & Membership",
+    "PA.YU Coffee": "PA.YU Coffee",
+    "Website coffee shop dengan fitur membership, poin loyalitas, benefit, dan informasi usaha.": "A coffee shop website with membership, loyalty points, rewards, and business information.",
+    "Kunjungi website": "Visit live website",
+    "Geser untuk melihat proyek lainnya": "Swipe to see more projects",
+    "Eksplorasi & Demo": "Explorations & Demos",
+    "Selain proyek nyata, jelajahi tiga website konsep interaktif untuk melihat kemungkinan desain dan fitur.": "Alongside our live work, explore three interactive demos showcasing different design approaches and features.",
+    "Kumpulan tiga website proyek nyata": "Three real website projects",
+    "Kunjungi Kopi Feeling, buka situs eksternal di tab baru": "Visit Kopi Feeling, opens an external website in a new tab",
+    "Kunjungi Rumah Kopi Manupi, buka situs eksternal di tab baru": "Visit Rumah Kopi Manupi, opens an external website in a new tab",
+    "Kunjungi PA.YU Coffee, buka situs eksternal di tab baru": "Visit PA.YU Coffee, opens an external website in a new tab",
     "Contoh website pemesanan coffee shop dengan katalog, keranjang, checkout, dan QR pembayaran fiktif.": "An interactive coffee ordering demo with menu browsing, cart, checkout, and a fictional payment QR.",
 
     "● SENADA COFFEE — DEMO BISNIS FIKTIF": "● SENADA COFFEE — FICTIONAL BUSINESS DEMO",
