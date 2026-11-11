@@ -39,3 +39,10 @@ Situs ini statis (HTML, CSS, JavaScript), sehingga bisa diterbitkan di GitHub Pa
   - [Brand lifestyle bloom.](demos/bloom.html)
 - Kedua website demo bersifat fiktif, bukan portofolio proyek klien. Keduanya memiliki navigasi dan filter konten untuk menunjukkan interaksi contoh.
 - Tampilan tambahan diatur pada `mobile-experience.css`. Perubahan halaman tetap bersumber dari `index.html`.
+
+## Mode terang / gelap dan pilihan bahasa ID / EN
+- Header website utama dan kedua demo menyediakan tombol bulan/matahari untuk mengganti tema serta pilihan **ID / EN** untuk bahasa.
+- Pilihan tersimpan pada `localStorage` browser (`senada-theme`, `senada-language`) dan konsisten saat membuka demo konsep; pengguna tetap dapat menggantinya kapan saja.
+- `preferences.css` mengelola warna tema dan tata letak kontrol. `preferences.js` mengelola interaksi dan teks bilingual di seluruh halaman.
+- Pesan brief yang disalin mengikuti bahasa saat tombol ditekan. Data tidak dikirim ke server.
+- Jika JavaScript atau penyimpanan browser tidak tersedia, konten awal tetap berbahasa Indonesia dan tema bawaan terang.
