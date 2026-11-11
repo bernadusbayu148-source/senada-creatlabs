@@ -101,3 +101,13 @@
 #work .work-art--coffee::before { background:#77bfaa;top:35px;width:260px;height:260px;left:calc(50% - 130px);border:1px solid #fff8;box-shadow:0 0 0 32px #fff3; }
 #work .work-art--coffee::after { content:"";position:absolute;top:103px;left:calc(50% - 45px);width:90px;height:107px;border:8px solid #f9fdf8;background:linear-gradient(180deg,#b48c69,#85684e);border-radius:8px 8px 26px 26px;box-shadow:8px 10px 0 #265f5124;transform:rotate(-8deg); }
 #work .work-art--coffee .work-overlay { color:#113d35;text-shadow:none;font-size:clamp(26px,2.7vw,39px); }
+
+/* iOS Safari: transformed inline SVG + CSS drop-shadow can show vertical
+   hairline tile seams. Use isolated SVG image with its own vector shadow. */
+.art .art-squiggle {
+  display:block;
+  height:auto;
+  filter:none!important;
+  -webkit-filter:none!important;
+  will-change:auto;
+}
