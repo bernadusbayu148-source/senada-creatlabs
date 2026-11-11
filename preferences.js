@@ -13,6 +13,8 @@
   let theme=safeGet(KEYS.theme)==="dark"?"dark":"light";
   // Original Indonesian text -> natural English copy; brand names stay unchanged.
   const EN={
+    "Contoh website pemesanan coffee shop dengan katalog, keranjang, checkout, dan QR pembayaran fiktif.": "An interactive coffee ordering demo with menu browsing, cart, checkout, and a fictional payment QR.",
+
     "● SENADA COFFEE — DEMO BISNIS FIKTIF": "● SENADA COFFEE — FICTIONAL BUSINESS DEMO",
     "● SENADA BLOOM — DEMO BRAND FIKTIF": "● SENADA BLOOM — FICTIONAL BRAND DEMO",
     "Tiga eksplorasi visual berikut adalah konsep demo yang lebih proper agar calon klien bisa membayangkan kualitas hasil akhirnya.": "These three fully built demos help potential clients imagine what their own website could look like.",
