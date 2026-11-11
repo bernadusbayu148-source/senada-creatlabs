@@ -13,6 +13,8 @@
   let theme=safeGet(KEYS.theme)==="dark"?"dark":"light";
   // Original Indonesian text -> natural English copy; brand names stay unchanged.
   const EN={
+    "● SENADA COFFEE — DEMO BISNIS FIKTIF": "● SENADA COFFEE — FICTIONAL BUSINESS DEMO",
+    "● SENADA BLOOM — DEMO BRAND FIKTIF": "● SENADA BLOOM — FICTIONAL BRAND DEMO",
     "Tiga eksplorasi visual berikut adalah konsep demo yang lebih proper agar calon klien bisa membayangkan kualitas hasil akhirnya.": "These three fully built demos help potential clients imagine what their own website could look like.",
     "Contoh website F&B untuk coffee shop yang menonjolkan cerita brand, menu, dan suasana tempat.": "A coffee shop website concept focused on atmosphere, menu highlights, and brand storytelling.",
     "Contoh website lifestyle & beauty dengan warna ekspresif, katalog produk, dan storytelling visual.": "A colorful lifestyle and beauty website showcasing products and a distinctive brand story.",
