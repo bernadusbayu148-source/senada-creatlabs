@@ -1,0 +1,92 @@
+/* Refined icon system, editorial portfolio, and truly seamless running text.
+   Loaded last to extend rather than replace the existing theme/mobile styles. */
+
+/* One consistent eight-ray mark instead of font-dependent star glyphs. */
+.spark-icon,.ticker .sep.spark-icon {
+  display:inline-block;flex:none;width:19px;height:19px;vertical-align:middle;
+  background-color:var(--violet,#5c43ed);
+  -webkit-mask:url("senada-spark.svg") center/contain no-repeat;
+  mask:url("senada-spark.svg") center/contain no-repeat;
+}
+.spark-icon--sm{width:16px;height:16px}
+.eyebrow::before {
+  content:"";display:inline-block;flex:none;width:19px;height:19px;
+  border:0;border-radius:0;background:var(--violet,#5c43ed);
+  -webkit-mask:url("senada-spark.svg") center/contain no-repeat;
+  mask:url("senada-spark.svg") center/contain no-repeat;
+}
+.process .eyebrow::before { background:var(--lime,#d9f66e);border:0; }
+.ticker .sep.spark-icon {background-color:#5c43ed;width:18px;height:18px}
+.hero-note .spark-icon{width:23px;height:23px}
+.contact-info .circle.spark-circle{display:grid;place-items:center}
+.contact-info .circle .spark-icon{background-color:#171725;width:17px;height:17px}
+.package h3 .spark-icon{vertical-align:-2px;margin-left:3px}
+:root[data-theme="dark"] .eyebrow::before{background-color:#b9aaff}
+:root[data-theme="dark"] .process .eyebrow::before{background-color:#d9f66e}
+:root[data-theme="dark"] .contact-panel .eyebrow::before{background-color:#5c43ed}
+
+/* The first and second ticker runs contain identical items. Both are
+   at least a viewport wide, avoiding blank areas at large screen widths.
+   The track has zero gap, so -50% aligns the second run exactly at the seam. */
+.ticker {overflow:hidden;}
+.ticker-track{
+  display:flex;align-items:center;gap:0!important;width:max-content;white-space:nowrap;
+  animation:senada-ticker-loop 27s linear infinite;
+  will-change:transform;
+}
+.ticker-run{
+  display:flex;align-items:center;gap:24px;justify-content:space-around;
+  flex:0 0 auto;min-width:100vw;padding-right:24px;
+}
+.ticker-run > span:not(.sep){flex:none}
+@keyframes senada-ticker-loop{to{transform:translate3d(-50%,0,0)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none!important}}
+
+/* Three visual directions: warm F&B, colorful lifestyle, corporate B2B. */
+#work .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#work .work-grid>.work-card{min-width:0}
+#work .work-art{height:240px}
+#work .work-card .work-overlay{z-index:2;position:absolute;font:700 clamp(26px,2.6vw,38px)/1.03 "Space Grotesk",system-ui,sans-serif;letter-spacing:-.07em}
+#work .work-art--coffee .work-overlay{left:20px;right:15px;top:22px;bottom:auto;color:#fff4e5;text-align:left;transform:none;text-shadow:2px 3px 0 #713d2c}
+#work .work-art--lifestyle{background:linear-gradient(140deg,#ffbdce,#ff879f)}
+#work .work-art--lifestyle::before{
+  content:"";position:absolute;inset:auto auto -55px -10px;width:260px;height:260px;
+  background:#fff4ef;border:2px solid #171725;border-radius:32%;transform:rotate(-20deg);
+}
+#work .work-art--lifestyle::after{
+  content:"";position:absolute;right:10px;top:23px;width:130px;height:130px;
+  background:url("senada-spark.svg") center/contain no-repeat;transform:rotate(15deg);
+}
+#work .work-art--lifestyle .work-overlay{left:20px;bottom:22px;top:auto;color:#171725;transform:rotate(-7deg)}
+#work .work-art--company{background:linear-gradient(130deg,#0c2339,#31567b);isolation:isolate}
+#work .work-art--company::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(transparent 35%,rgba(12,35,57,.55) 100%);z-index:1;pointer-events:none;
+}
+#work .work-art--company .work-overlay{top:26px;left:20px;color:#f7f7f1;text-shadow:0 2px 6px #0c233980}
+#work .work-art--company .tower{
+  position:absolute;bottom:0;width:23%;background:#92b0c6;border:1px solid #dce8f3;
+  box-shadow:inset -14px 0 0 #203e5e70;
+}
+#work .work-art--company .tower::before{
+  content:"";position:absolute;inset:13px 11px 0;
+  background:repeating-linear-gradient(to bottom,#ebf5ff8a 0 8px,transparent 8px 18px);
+}
+#work .work-art--company .tower--one{left:10%;height:52%}
+#work .work-art--company .tower--two{left:41%;height:69%}
+#work .work-art--company .tower--three{left:75%;height:43%}
+#work .work-caption{padding:20px}
+#work .work-caption h3{font-size:23px}
+#work .work-cta{color:var(--violet);margin-top:11px}
+:root[data-theme="dark"] #work .work-cta{color:#bcaaff}
+#work .work-card-link:hover .work-cta svg{transform:translate(3px,-3px)}
+@media(min-width:791px) and (max-width:1080px){
+  #work .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  #work .work-grid>.work-card:last-child{grid-column:1/-1;width:min(100%,500px);justify-self:center}
+}
+@media(max-width:790px){
+  #work .work-grid{display:flex!important;grid-template-columns:none!important;gap:14px}
+  #work .work-grid>.work-card{flex:0 0 min(82vw,380px);scroll-snap-align:start;scroll-snap-stop:always}
+  #work .work-art{height:220px}
+  #work .work-card .work-overlay{font-size:clamp(27px,7vw,35px)}
+}
