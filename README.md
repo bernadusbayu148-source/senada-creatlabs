@@ -48,7 +48,7 @@ Situs ini statis (HTML, CSS, JavaScript), sehingga bisa diterbitkan di GitHub Pa
 - Jika JavaScript atau penyimpanan browser tidak tersedia, konten awal tetap berbahasa Indonesia dan tema bawaan terang.
 
 ## Koleksi demo Senada (versi terbaru)
-- **[Senada Coffee](demos/senada-coffee.html)** — website coffee shop dengan visual hangat, menu yang bisa difilter, informasi brand, dan pengalaman kunjungan
+- **[Senada Coffee](demos/senada-coffee.html)** — website coffee shop dengan katalog pesanan, keranjang, checkout, dan QR pembayaran fiktif
 - **[Senada Bloom](demos/senada-bloom.html)** — website lifestyle/beauty dengan warna ekspresif, katalog berfilter, storytelling, dan detail brand
 - **[Senada Prime](demos/senada-prime.html)** — contoh company profile formal dengan profil perusahaan, layanan B2B, studi kasus ilustratif, filter kategori, alur kerja, dan ajakan konsultasi
 
@@ -59,3 +59,16 @@ Ketiganya adalah **brand dan konten demo fiktif**, bukan klien asli atau testimo
 - `portfolio-refresh.css` mengatur tata letak tiga kartu konsep dan animasi teks berjalan
 - Running text terdiri atas **dua rangkaian identik tanpa jarak track**, dengan masing-masing rangkaian memiliki lebar minimum satu viewport untuk mencegah jeda kosong dan loncatan saat perulangan
 - File `preferences.js` dilengkapi terjemahan baru agar ID/EN tetap bekerja pada konsep tambahan
+
+### Pembaruan Senada Coffee: demo online ordering
+[Senada Coffee](demos/senada-coffee.html) kini bukan landing page coffee shop biasa, melainkan **simulasi website pemesanan menu** dengan visual clean warna putih, hijau teal, dan mint (berbeda dari desain studio Senada).
+
+- Katalog delapan contoh produk dengan kategori Coffee, Non-Coffee, Snacks dan pencarian
+- Keranjang dengan tambah/kurangi jumlah, hapus item, subtotal, dan total otomatis
+- Checkout simulasi untuk nama pemesan dan catatan barista
+- QR **ilustratif NON-SCANNABLE** dengan watermark **DEMO / NOT PAYABLE** dan tombol simulasi pembayaran
+- Status penyelesaian pesanan simulasi; tidak ada backend, pembayaran, pesanan sungguhan, atau transaksi uang
+- Dukungan mobile, tema terang/gelap, serta pilihan ID/EN dengan pengaturan tersimpan di browser
+- Kode terpisah: `demos/senada-coffee.html`, `demos/senada-coffee.css`, `demos/senada-coffee.js`
+
+**Penting:** Semua nama, harga, menu, dan identitas bisnis dalam demo adalah fiktif. Jangan menggunakan QR sebagai instruksi pembayaran.
