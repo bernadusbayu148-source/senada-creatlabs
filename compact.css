@@ -1,0 +1,132 @@
+/*
+ * Senada Creatlabs — compact layout refinement
+ * Reduce oversized spacing and card heights while preserving the playful identity.
+ * Loaded after the base styles in index.html.
+ */
+
+/* Shared rhythm and readable content width */
+.container { width: min(1080px, calc(100% - 44px)); }
+section { padding: 72px 0; }
+h2 { font-size: clamp(2.1rem, 4.4vw, 3.8rem); }
+p { line-height: 1.6; }
+.eyebrow { margin-bottom: 16px; }
+.section-heading { gap: 24px; margin-bottom: 30px; }
+.section-heading h2 { max-width: 670px; }
+.btn { padding: 12px 19px; }
+
+/* Header and first-screen impression */
+.site-header { height: 76px; }
+.menu { gap: 22px; }
+.logo-mark { width: 42px; height: 42px; }
+.brand { font-size: 22px; }
+.hero { padding: 58px 0 65px; }
+.hero-grid { min-height: 435px; gap: 28px; }
+.hero .eyebrow { margin-bottom: 18px; }
+.hero h1 { font-size: clamp(3.3rem, 6.4vw, 5.8rem); margin-bottom: 23px; }
+.hero-lead { font-size: 16px; margin-bottom: 23px; }
+.hero-note { margin-top: 20px; }
+.art { height: 425px; }
+.sticker-top { font-size: 16px; padding: 14px 16px; }
+.sticker-bottom { font-size: 18px; padding: 15px 20px; }
+.ticker { padding: 10px 0; }
+.ticker-track { font-size: 16px; }
+
+/* About, services and project concepts */
+.intro-grid { gap: 42px; }
+.intro-grid .intro-text { font-size: 19px; line-height: 1.55; }
+.cards { gap: 15px; }
+.service-card { min-height: 285px; padding: 21px 19px; border-radius: 22px; }
+.service-icon { height: 62px; }
+.service-icon svg { width: 50px; height: 50px; }
+.service-card h3 { font-size: 21px; margin-bottom: 10px; }
+.service-card p { margin-bottom: 12px; }
+.service-card .number { padding-top: 12px; }
+.work-grid { gap: 18px; }
+.work-art { height: 250px; }
+.work-caption { padding: 19px 20px; }
+.work-caption h3 { font-size: 21px; margin-bottom: 5px; }
+
+/* Process and packages */
+.steps { gap: 18px; }
+.steps:before { top: 34px; }
+.step-num { width: 68px; height: 68px; font-size: 27px; margin-bottom: 17px; }
+.step h3 { font-size: 21px; margin-bottom: 8px; }
+.packages-head { margin-bottom: 30px; }
+.packages { gap: 16px; }
+.package { padding: 24px 22px; min-height: 365px; }
+.package-type { margin-bottom: 12px; }
+.package h3 { font-size: 28px; margin-bottom: 10px; }
+.package .desc { margin-bottom: 16px; min-height: 44px; }
+.package ul { gap: 10px; margin-bottom: 22px; }
+.package-note { margin-top: 16px; }
+
+/* FAQ, consultation and footer */
+.faq-grid { gap: 48px; }
+.faq-question { font-size: 17px; padding: 17px 0; }
+.faq-answer { padding-bottom: 13px; }
+.contact { padding: 65px 0 76px; }
+.contact-panel { gap: 34px; padding: 36px; border-radius: 28px; }
+.contact-panel h2 { font-size: clamp(2.4rem, 4.5vw, 4rem); margin-bottom: 16px; }
+.contact-info { margin-top: 23px; }
+.brief-form { padding: 23px; }
+.brief-form > p { margin-bottom: 17px; }
+.field { margin-bottom: 12px; }
+.field textarea { min-height: 82px; }
+footer { padding: 40px 0 20px; }
+.footer-top { padding-bottom: 35px; gap: 32px; }
+.footer-top h2 { font-size: clamp(2.75rem, 7vw, 6rem); }
+.footer-bottom { padding-top: 18px; }
+
+@media (max-width: 1050px) {
+  .hero h1 { font-size: clamp(3.1rem, 6.4vw, 5.3rem); }
+  .art { height: 395px; }
+  .service-card { min-height: 260px; }
+}
+
+@media (max-width: 790px) {
+  section { padding: 58px 0; }
+  .site-header { height: 70px; }
+  .menu { top: 69px; }
+  .hero { padding: 47px 0 54px; }
+  .hero-grid { min-height: 0; gap: 0; }
+  .hero h1 { font-size: clamp(3rem, 8vw, 4.8rem); }
+  .art { height: 355px; margin-top: 28px; }
+  .intro-grid, .faq-grid { gap: 16px; }
+  .intro-grid .intro-text { font-size: 18px; }
+  .steps { row-gap: 26px; }
+  .packages { gap: 15px; }
+  .package { min-height: 0; }
+  .work-art { height: 230px; }
+  .contact-panel { padding: 30px; gap: 18px; }
+  .footer-top { gap: 15px; }
+}
+
+@media (max-width: 580px) {
+  .container { width: calc(100% - 36px); }
+  section { padding: 49px 0; }
+  .hero { padding: 42px 0 46px; }
+  .hero h1 { font-size: clamp(2.85rem, 11.5vw, 4.2rem); line-height: .97; }
+  .hero-lead { font-size: 15.5px; }
+  .hero-note { margin-top: 16px; }
+  .art { width: min(420px, 94%); height: 305px; margin-top: 18px; }
+  .sticker-top { font-size: 12px; padding: 10px; }
+  .sticker-bottom { font-size: 14px; padding: 11px 13px; }
+  .section-heading { margin-bottom: 24px; }
+  .section-heading p { margin-top: 11px; }
+  .cards, .work-grid { gap: 13px; }
+  .service-card { min-height: 0; padding: 20px; }
+  .service-icon { height: 55px; }
+  .work-art { height: 215px; }
+  .work-caption { padding: 17px; }
+  .steps { row-gap: 20px; }
+  .step p { max-width: none; }
+  .package { padding: 22px 20px; }
+  .faq-question { font-size: 16px; padding: 15px 0; }
+  .contact { padding: 52px 0 60px; }
+  .contact-panel { padding: 21px 17px; }
+  .contact-panel h2 { font-size: clamp(2.35rem, 11vw, 3.6rem); }
+  .brief-form { padding: 19px; }
+  footer { padding-top: 34px; }
+  .footer-top { padding-bottom: 27px; }
+  .footer-top h2 { font-size: clamp(2.85rem, 12vw, 5rem); }
+}
