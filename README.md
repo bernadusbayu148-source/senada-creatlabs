@@ -30,3 +30,12 @@ Upload `index.html` dan `favicon.svg` ke folder publik hosting (contoh umum `pub
 4. Setelah deployment selesai, buka https://bernadusbayu148-source.github.io/senada-creatlabs/.
 
 Situs ini statis (HTML, CSS, JavaScript), sehingga bisa diterbitkan di GitHub Pages tanpa server PHP atau database. Kontak dan formulir masih bersifat prototipe.
+
+## Navigasi mobile & preview konsep
+- Pada layar kecil, menu utama menjadi dock ikon transparan yang mengambang di bawah layar (Beranda, Layanan, Konsep, Paket, Kontak). Navigasi desktop tetap menggunakan menu biasa.
+- Konsep dan Paket dapat digeser ke samping menggunakan sentuhan, tombol panah, atau tombol keyboard panah saat carousel terfokus.
+- Dua konsep demo dapat dibuka langsung dengan mengetuk kartu di bagian **Konsep**:
+  - [Kedai kopi hangat](demos/kopi-hangat.html)
+  - [Brand lifestyle bloom.](demos/bloom.html)
+- Kedua website demo bersifat fiktif, bukan portofolio proyek klien. Keduanya memiliki navigasi dan filter konten untuk menunjukkan interaksi contoh.
+- Tampilan tambahan diatur pada `mobile-experience.css`. Perubahan halaman tetap bersumber dari `index.html`.
