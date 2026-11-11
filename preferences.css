@@ -132,3 +132,13 @@ body[data-page="coffee"] .preference-lang button[aria-pressed="true"]{background
   body[data-page="senada"] .header-cta{padding:11px 15px;font-size:12px}
   body[data-page="senada"] .preference-controls{gap:4px}
 }
+
+/* Prevent crowded desktop navigation immediately above the mobile breakpoint. */
+@media(min-width:791px) and (max-width:870px){
+  body[data-page="senada"] .nav-wrap{gap:8px}
+  body[data-page="senada"] .menu{gap:8px}
+  body[data-page="senada"] .nav-link{font-size:11px}
+  body[data-page="senada"] .logo-mark{width:37px;height:37px}
+  body[data-page="senada"] .brand{font-size:20px}
+  body[data-page="senada"] .header-cta{padding:10px 12px;font-size:11px}
+}
