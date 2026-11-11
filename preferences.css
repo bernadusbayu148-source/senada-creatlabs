@@ -1,0 +1,120 @@
+/* Shared Senada controls — theme + ID / EN on desktop and mobile. */
+.preference-controls{display:inline-flex;align-items:center;gap:6px;flex:none;font-family:"DM Sans",system-ui,sans-serif}
+.preference-theme,.preference-lang{height:37px;border:1.5px solid var(--ink,#171725);background:var(--white,#fffefd);color:var(--ink,#171725);border-radius:12px}
+.preference-theme{width:39px;display:grid;place-items:center;cursor:pointer;padding:0}
+.preference-theme svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.preference-theme .moon-icon{display:block}.preference-theme .sun-icon{display:none}
+:root[data-theme="dark"] .preference-theme .moon-icon{display:none}
+:root[data-theme="dark"] .preference-theme .sun-icon{display:block}
+.preference-lang{display:flex;align-items:center;gap:2px;padding:3px;border-radius:12px}
+.preference-lang button{display:grid;place-items:center;min-width:32px;min-height:28px;padding:3px 5px;border:0;border-radius:8px;color:var(--muted,#5d5b69);background:transparent;font:800 11px "DM Sans",system-ui,sans-serif;cursor:pointer}
+.preference-lang button[aria-pressed="true"]{background:var(--violet,#5c43ed);color:white}
+.preference-theme:focus-visible,.preference-lang button:focus-visible{outline:3px solid var(--violet,#5c43ed);outline-offset:3px}
+.preference-theme:hover{background:var(--lav,#eae5ff)}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#141321;--white:#222134;--ink:#efedf9;--muted:#c3bed5;--line:#e4e0f3;--border:rgba(224,221,244,.28);--lav:#302b52;--shadow:6px 7px 0 #090914}
+:root[data-theme="dark"] body[data-page="senada"]{background:#141321;color:var(--ink)}
+:root[data-theme="dark"] body[data-page="senada"] .site-header{background:rgba(22,20,36,.92);border-bottom-color:#48425c}
+:root[data-theme="dark"] body[data-page="senada"] .logo-mark rect{stroke:#171725}
+:root[data-theme="dark"] body[data-page="senada"] .services,
+:root[data-theme="dark"] body[data-page="senada"] .faq{background:#1d1a2d}
+:root[data-theme="dark"] body[data-page="senada"] .service-card{border-color:#a5a0b7;color:#171725}
+:root[data-theme="dark"] body[data-page="senada"] .service-card:nth-child(1){background:#dcd6ff}
+:root[data-theme="dark"] body[data-page="senada"] .service-card:nth-child(2){background:#d9f66e}
+:root[data-theme="dark"] body[data-page="senada"] .service-card:nth-child(3){background:#ffdbd2}
+:root[data-theme="dark"] body[data-page="senada"] .service-card:nth-child(4){background:#d2edff}
+:root[data-theme="dark"] body[data-page="senada"] .service-card p{color:#434053}
+:root[data-theme="dark"] body[data-page="senada"] .work-card{background:#27243a;border-color:#9d95ba}
+:root[data-theme="dark"] body[data-page="senada"] .work-caption p{color:#cfc9df}
+:root[data-theme="dark"] body[data-page="senada"] .demo-tag{border-color:#b8b1d2}
+:root[data-theme="dark"] body[data-page="senada"] .work-cta{color:#baaaff}
+:root[data-theme="dark"] body[data-page="senada"] .process{background:#35227d}
+:root[data-theme="dark"] body[data-page="senada"] .package{background:#262239;border-color:#aea4ca}
+:root[data-theme="dark"] body[data-page="senada"] .package.featured{background:#d9f66e;color:#171725;border-color:#171725;box-shadow:6px 6px 0 #090914}
+:root[data-theme="dark"] body[data-page="senada"] .package.featured .desc{color:#383a32}
+:root[data-theme="dark"] body[data-page="senada"] .package .desc{color:#c9c3d9}
+:root[data-theme="dark"] body[data-page="senada"] .package.featured .desc{color:#464937}
+:root[data-theme="dark"] body[data-page="senada"] .package.featured li:before{color:#5c43ed}
+:root[data-theme="dark"] body[data-page="senada"] .faq-question{color:#f1ecff}
+:root[data-theme="dark"] body[data-page="senada"] .faq-answer{color:#c4bdd5}
+:root[data-theme="dark"] body[data-page="senada"] .contact-panel{background:#d9f66e;color:#171725;border-color:#171725;box-shadow:8px 8px 0 #090914}
+:root[data-theme="dark"] body[data-page="senada"] .contact-panel p{color:#474b39}
+:root[data-theme="dark"] body[data-page="senada"] .brief-form{background:#222134;color:#f0ecff;border-color:#171725;box-shadow:5px 5px 0 #171725}
+:root[data-theme="dark"] body[data-page="senada"] .brief-form p{color:#cbc4df}
+:root[data-theme="dark"] body[data-page="senada"] .brief-form :is(input,select,textarea){background:#302d45;color:#f2eefa;border-color:#9188ac}
+:root[data-theme="dark"] body[data-page="senada"] .brief-form :is(input,select,textarea)::placeholder{color:#b7afcc;opacity:1}
+:root[data-theme="dark"] body[data-page="senada"] .form-status{color:#b1f2aa}
+:root[data-theme="dark"] body[data-page="senada"] .btn{background:#5c43ed;border-color:#b2a3fa;color:white}
+:root[data-theme="dark"] body[data-page="senada"] .btn--white{background:#272438;color:#f5f0ff}
+:root[data-theme="dark"] body[data-page="senada"] .btn--lime{background:#d9f66e;color:#171725;border-color:#171725}
+:root[data-theme="dark"] body[data-page="senada"] .package.featured .btn{background:#171725;color:#fff;border-color:#171725}
+:root[data-theme="dark"] body[data-page="senada"] .ticker{color:#171725;border-color:#171725}
+:root[data-theme="dark"] body[data-page="senada"] .mobile-dock{background:rgba(27,24,43,.9);border-color:#777088;box-shadow:0 12px 32px #0909158c}
+:root[data-theme="dark"] body[data-page="senada"] .dock-link{color:#cbc5dd}
+:root[data-theme="dark"] body[data-page="senada"] .dock-link.active{background:#5c43ed;color:white}
+:root[data-theme="dark"] body[data-page="senada"] .slide-arrow{background:#29263b;color:#fff}
+:root[data-theme="dark"] body[data-page="senada"] .mobile-header-cta{background:#d9f66e;color:#171725}
+:root[data-theme="dark"] body[data-page="senada"] footer{background:#0c0b16}
+:root[data-theme="dark"] body[data-page="senada"] .hero h1 em{color:#b7a7ff}
+:root[data-theme="dark"] body[data-page="senada"] .intro-grid .intro-text strong{color:#b7a7ff}
+:root[data-theme="dark"] body[data-page="senada"] .hero-note{color:#b9b4cb}
+
+/* Keep demo illustrations vivid while giving all written content a high-contrast dark surface. */
+:root[data-theme="dark"] body[data-page="coffee"]{background:#18130f;color:#ffefd9}
+:root[data-theme="dark"] body[data-page="coffee"] .hero p,
+:root[data-theme="dark"] body[data-page="coffee"] .section-top p,
+:root[data-theme="dark"] body[data-page="coffee"] .story-copy p{color:#e4c8ad}
+:root[data-theme="dark"] body[data-page="coffee"] .menu-card{background:#30241c;border-color:#d7b99b}
+:root[data-theme="dark"] body[data-page="coffee"] .menu-copy p{color:#ddc2a8}
+:root[data-theme="dark"] body[data-page="coffee"] .menu-copy small{color:#f2b38d}
+:root[data-theme="dark"] body[data-page="coffee"] .story{background:#2c2119}
+:root[data-theme="dark"] body[data-page="coffee"] .plain-link{color:#f5c6a0}
+:root[data-theme="dark"] body[data-page="coffee"] .filter{color:#ffe5cb;border-color:#d6b898}
+:root[data-theme="dark"] body[data-page="coffee"] .filter[aria-pressed="true"]{background:#f3c49a;color:#2f2219}
+:root[data-theme="dark"] body[data-page="coffee"] .btn,.site-nav .nav-cta{color:white}
+:root[data-theme="dark"] body[data-page="coffee"] .footer{background:#0f0c0a}
+:root[data-theme="dark"] body[data-page="coffee"] .logo span{color:#f2a272}
+:root[data-theme="dark"] body[data-page="coffee"] .preference-theme,
+:root[data-theme="dark"] body[data-page="coffee"] .preference-lang{background:#332821;color:#ffe9d5;border-color:#d6b898}
+:root[data-theme="dark"] body[data-page="coffee"] .preference-lang button{color:#d6bfae}
+:root[data-theme="dark"] body[data-page="coffee"] .preference-lang button[aria-pressed="true"]{background:#ecab80;color:#251b15}
+
+/* bloom. — richer purple in dark mode, with preserved colorful product art. */
+:root[data-theme="dark"] body[data-page="bloom"]{background:#1b142b;color:#f9eaff}
+:root[data-theme="dark"] body[data-page="bloom"] .hero p,
+:root[data-theme="dark"] body[data-page="bloom"] .section-heading p{color:#ded0f1}
+:root[data-theme="dark"] body[data-page="bloom"] .product{background:#2d2342;border-color:#a98ad1}
+:root[data-theme="dark"] body[data-page="bloom"] .product-copy p{color:#dfd0ed}
+:root[data-theme="dark"] body[data-page="bloom"] .product-copy small{color:#c5afff}
+:root[data-theme="dark"] body[data-page="bloom"] .brand-story{background:#392145}
+:root[data-theme="dark"] body[data-page="bloom"] .cta-panel{background:#34294e;border-color:#bea6e3;box-shadow:7px 7px 0 #0e0a19}
+:root[data-theme="dark"] body[data-page="bloom"] .footer{background:#100b1c}
+:root[data-theme="dark"] body[data-page="bloom"] .hero h1 em{color:#b5a0ff}
+:root[data-theme="dark"] body[data-page="bloom"] .kicker:before{color:#c7afff}
+:root[data-theme="dark"] body[data-page="bloom"] .filter{border-color:#c6b4e1;color:#f8e9ff}
+:root[data-theme="dark"] body[data-page="bloom"] .filter[aria-pressed="true"]{background:#c4acf6;color:#201c38}
+:root[data-theme="dark"] body[data-page="bloom"] .preference-theme,
+:root[data-theme="dark"] body[data-page="bloom"] .preference-lang{background:#322747;color:#f5eaff;border-color:#ad97c6}
+:root[data-theme="dark"] body[data-page="bloom"] .preference-lang button{color:#d1bde5}
+:root[data-theme="dark"] body[data-page="bloom"] .preference-lang button[aria-pressed="true"]{background:#6946eb;color:white}
+
+/* Original palette in demo light mode. */
+body[data-page="coffee"]{--white:#fffaf2;--muted:#765445;--violet:#a75b3d;--lav:#f6d3b4}
+body[data-page="bloom"]{--white:#fff9f3;--muted:#625b75;--lav:#f1ddfc}
+body[data-page="coffee"] .preference-controls,
+body[data-page="bloom"] .preference-controls{margin-left:auto}
+body[data-page="coffee"] .preference-lang button[aria-pressed="true"]{background:#6b3d29}
+@media (max-width:790px){
+  body[data-page="senada"] .mobile-header-cta{display:none!important}
+  body[data-page="senada"] .nav-wrap{gap:8px}
+  body[data-page="senada"] .preference-controls{margin-left:auto}
+  body[data-page="coffee"] .nav-cta,body[data-page="bloom"] .nav>.btn{display:none}
+  body[data-page="coffee"] .site-nav,body[data-page="bloom"] .nav{gap:10px}
+}
+@media (max-width:390px){
+  .preference-theme{width:35px;height:34px}
+  .preference-lang{height:34px;padding:2px}
+  .preference-lang button{min-width:29px;min-height:27px;padding:2px 4px;font-size:10px}
+  body[data-page="senada"] .brand{font-size:20px}
+  body[data-page="senada"] .logo-mark{width:38px;height:38px}
+  body[data-page="coffee"] .logo,body[data-page="bloom"] .logo{font-size:33px}
+}
