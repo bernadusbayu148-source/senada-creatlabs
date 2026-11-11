@@ -82,3 +82,8 @@ Halaman `index.html#work` membagi portofolio menjadi **Proyek Nyata** dan **Eksp
 - [PA.YU Coffee](https://payucoffee.com/) — website coffee shop, membership dan poin loyalitas
 
 Kartu proyek memakai ilustrasi visual CSS, bukan tangkapan layar situs. Setiap tautan membuka domain aslinya dalam tab baru. Bagian ini menggunakan `real-projects.css` dan mendukung scroll horizontal di mobile, mode gelap, serta bahasa ID/EN.
+
+### Thumbnail homepage otomatis untuk proyek nyata
+Pada kartu **Proyek Nyata**, `real-project-screenshots.js` sekarang mencoba memuat tangkapan layar homepage dari URL domain asli melalui layanan screenshot publik (WordPress mShots, lalu thum.io sebagai cadangan). Gambar dipotong pada bagian atas agar sesuai dengan kartu desktop dan mobile. Bila kedua layanan gagal atau mengembalikan gambar terlalu kecil, ilustrasi sebelumnya tetap ditampilkan.
+
+Thumbnail ini **bergantung pada layanan eksternal** dan tidak disimpan sebagai screenshot statis di repositori. Isi yang ditampilkan dapat berubah mengikuti kondisi situs dan cache layanan screenshot. Untuk hasil final yang benar-benar tetap dan terverifikasi, tambahkan berkas gambar hasil capture ke repositori dan ganti thumbnail dinamis dengan gambar lokal.
