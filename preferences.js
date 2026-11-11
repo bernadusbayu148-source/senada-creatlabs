@@ -228,6 +228,10 @@
       button.setAttribute("aria-pressed",String(active));
       button.setAttribute("aria-label",(button.dataset.language==="id"?"Bahasa Indonesia":"English")+(active?" ✓":""));
     });
+    const controls=document.querySelector(".preference-controls");
+    if(controls)controls.setAttribute("aria-label",lang==="en"?"Appearance and language":"Tampilan dan bahasa");
+    const languageGroup=document.querySelector(".preference-lang");
+    if(languageGroup)languageGroup.setAttribute("aria-label",lang==="en"?"Language":"Bahasa");
     setTheme(theme);
   }
   function init(){
