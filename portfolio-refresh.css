@@ -5,18 +5,18 @@
 .spark-icon,.ticker .sep.spark-icon {
   display:inline-block;flex:none;width:19px;height:19px;vertical-align:middle;
   background-color:var(--violet,#5c43ed);
-  -webkit-mask:url("senada-spark.svg") center/contain no-repeat;
-  mask:url("senada-spark.svg") center/contain no-repeat;
+  -webkit-mask:url("senada-glint-v2.svg") center/contain no-repeat;
+  mask:url("senada-glint-v2.svg") center/contain no-repeat;
 }
 .spark-icon--sm{width:16px;height:16px}
 .eyebrow::before {
   content:"";display:inline-block;flex:none;width:19px;height:19px;
   border:0;border-radius:0;background:var(--violet,#5c43ed);
-  -webkit-mask:url("senada-spark.svg") center/contain no-repeat;
-  mask:url("senada-spark.svg") center/contain no-repeat;
+  -webkit-mask:url("senada-glint-v2.svg") center/contain no-repeat;
+  mask:url("senada-glint-v2.svg") center/contain no-repeat;
 }
 .process .eyebrow::before { background:var(--lime,#d9f66e);border:0; }
-.ticker .sep.spark-icon {background-color:#5c43ed;width:18px;height:18px}
+.ticker .sep.spark-icon {background:#5c43ed;width:9px;height:9px;border-radius:2px;transform:rotate(45deg);-webkit-mask:none;mask:none}
 .hero-note .spark-icon{width:23px;height:23px}
 .contact-info .circle.spark-circle{display:grid;place-items:center}
 .contact-info .circle .spark-icon{background-color:#171725;width:17px;height:17px}
@@ -55,7 +55,7 @@
 }
 #work .work-art--lifestyle::after{
   content:"";position:absolute;right:10px;top:23px;width:130px;height:130px;
-  background:url("senada-spark.svg") center/contain no-repeat;transform:rotate(15deg);
+  background:url("senada-glint-v2.svg") center/contain no-repeat;transform:rotate(15deg);
 }
 #work .work-art--lifestyle .work-overlay{left:20px;bottom:22px;top:auto;color:#171725;transform:rotate(-7deg)}
 #work .work-art--company{background:linear-gradient(130deg,#0c2339,#31567b);isolation:isolate}
@@ -90,3 +90,8 @@
   #work .work-art{height:220px}
   #work .work-card .work-overlay{font-size:clamp(27px,7vw,35px)}
 }
+
+/* Four-point filled glint: no eight-spoke asterisk icon. */
+.spark-icon,.eyebrow::before{background-color:var(--violet,#5c43ed)}
+.ticker .sep.spark-icon{width:9px;height:9px}
+@media(max-width:580px){.ticker-run{gap:20px}}
