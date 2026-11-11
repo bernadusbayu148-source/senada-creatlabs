@@ -46,3 +46,16 @@ Situs ini statis (HTML, CSS, JavaScript), sehingga bisa diterbitkan di GitHub Pa
 - `preferences.css` mengelola warna tema dan tata letak kontrol. `preferences.js` mengelola interaksi dan teks bilingual di seluruh halaman.
 - Pesan brief yang disalin mengikuti bahasa saat tombol ditekan. Data tidak dikirim ke server.
 - Jika JavaScript atau penyimpanan browser tidak tersedia, konten awal tetap berbahasa Indonesia dan tema bawaan terang.
+
+## Koleksi demo Senada (versi terbaru)
+- **[Senada Coffee](demos/senada-coffee.html)** — website coffee shop dengan visual hangat, menu yang bisa difilter, informasi brand, dan pengalaman kunjungan
+- **[Senada Bloom](demos/senada-bloom.html)** — website lifestyle/beauty dengan warna ekspresif, katalog berfilter, storytelling, dan detail brand
+- **[Senada Prime](demos/senada-prime.html)** — contoh company profile formal dengan profil perusahaan, layanan B2B, studi kasus ilustratif, filter kategori, alur kerja, dan ajakan konsultasi
+
+Ketiganya adalah **brand dan konten demo fiktif**, bukan klien asli atau testimoni. Tautan demo lama tetap diarahkan ke versi baru.
+
+### Ikon dan running text
+- `senada-spark.svg` adalah ikon dekoratif delapan arah baru, digunakan pada label, CTA, dan pemisah running text
+- `portfolio-refresh.css` mengatur tata letak tiga kartu konsep dan animasi teks berjalan
+- Running text terdiri atas **dua rangkaian identik tanpa jarak track**, dengan masing-masing rangkaian memiliki lebar minimum satu viewport untuk mencegah jeda kosong dan loncatan saat perulangan
+- File `preferences.js` dilengkapi terjemahan baru agar ID/EN tetap bekerja pada konsep tambahan
