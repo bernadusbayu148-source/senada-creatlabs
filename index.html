@@ -176,7 +176,13 @@
         window.addEventListener('resize',update);
         update();
       });
-      document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',()=>{document.getElementById('type').value='Belum yakin, mau konsultasi';const details=document.getElementById('detail');if(!details.value.trim())details.value='Saya tertarik dengan paket '+link.dataset.package+'. Saya ingin mendiskusikan kebutuhan website saya.';}));
+      document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',()=>{
+        document.getElementById('type').value='Belum yakin, mau konsultasi';
+        const details=document.getElementById('detail');
+        if(!details.value.trim())details.value=window.SenadaPrefs?.language()==='en'
+          ?'I am interested in the '+link.dataset.package+' package. I would like to discuss my website needs.'
+          :'Saya tertarik dengan paket '+link.dataset.package+'. Saya ingin mendiskusikan kebutuhan website saya.';
+      }));
       document.getElementById('year').textContent=new Date().getFullYear();
       document.getElementById('brief-form').addEventListener('submit',async e=>{
         e.preventDefault();const f=e.currentTarget; if(!f.reportValidity())return;
