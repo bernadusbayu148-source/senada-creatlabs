@@ -13,6 +13,12 @@
   let theme=safeGet(KEYS.theme)==="dark"?"dark":"light";
   // Original Indonesian text -> natural English copy; brand names stay unchanged.
   const EN={
+    "Jelajahi lima website demo interaktif—mulai dari kedai kopi dan clothing store hingga travel agent dan company profile.": "Explore five interactive demos, from a coffee shop and clothing store to a travel agency and a company profile.",
+    "Demo toko clothing dengan katalog, pilihan ukuran dan warna, wishlist, keranjang, serta checkout simulasi.": "A clothing storefront with product browsing, sizes, colors, wishlist, cart, and simulated checkout.",
+    "Demo travel agent dengan pencarian destinasi, itinerary perjalanan, estimasi biaya, dan booking simulasi.": "A travel agency demo with destination search, itineraries, cost estimates, and simulated bookings.",
+    "Geser untuk melihat lima konsep website": "Swipe to explore five website demos",
+    "Senada Supply": "Senada Supply",
+    "Senada Journey": "Senada Journey",
     "Karya": "Work",
     "Proyek Nyata": "Real Projects",
     "Karya yang sudah online.": "Work that's already live.",
