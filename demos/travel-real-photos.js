@@ -88,6 +88,8 @@
       credit.target="_blank";credit.rel="noopener noreferrer";credit.textContent="© "+p.author;credit.title=p.author+" · "+p.license;
       credit.hidden=true;
       card.append(img,shade,credit);
+      card.setAttribute("role","group");
+      card.setAttribute("aria-label",title(p));
       hydrateImage(img,()=>{card.classList.add("has-real-photo");credit.hidden=false;},()=>{shade.remove();credit.remove();card.classList.remove("has-real-photo");});
       img.src=p.url;
     });
