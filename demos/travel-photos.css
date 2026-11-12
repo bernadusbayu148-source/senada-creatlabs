@@ -52,3 +52,9 @@
 }
 @media(max-width:440px){.photo-credits ul{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.trip-art .trip-photo,.hero .hero-photo{transition:none}}
+
+/* Keep remote images in layout while loading: display:none can prevent native lazy loading. */
+.trip-art .trip-photo.photo-pending{opacity:0}
+.trip-art.has-real-photo .trip-photo.photo-pending{opacity:1}
+.detail-scene .detail-photo.photo-pending{opacity:0}
+.detail-scene.has-real-photo .detail-photo.photo-pending{opacity:1}
