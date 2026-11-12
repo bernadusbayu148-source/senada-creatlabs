@@ -75,7 +75,7 @@
     const bad=()=>{image.remove();if(onFail)onFail();};
     image.addEventListener("load",good,{once:true});
     image.addEventListener("error",bad,{once:true});
-    if(image.complete){if(image.naturalWidth>0)good();else bad();}
+    if(image.getAttribute("src")&&image.complete){if(image.naturalWidth>0)good();else bad();}
   }
   function updateCardPhotos(){
     document.querySelectorAll(".trip-art").forEach(card=>{
