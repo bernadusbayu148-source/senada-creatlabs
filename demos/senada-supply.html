@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f6f1"><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Senada Supply: demo toko online clothing dengan ukuran, warna, wishlist, keranjang, dan checkout simulasi tanpa transaksi nyata.">
+<title>Senada Supply — Clothing Store Demo</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{if(localStorage.getItem("senada-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<link rel="stylesheet" href="senada-supply.css"><script src="senada-supply.js" defer></script>
+</head>
+<body>
+<div class="demo-bar"><div class="wrap"><span data-t="demo">DEMO PORTOFOLIO · BRAND FIKTIF · TIDAK ADA TRANSAKSI NYATA</span><a href="../index.html#work" data-t="back">← Kembali ke Senada Creatlabs</a></div></div>
+<header class="header"><div class="wrap header-row">
+<a class="wordmark" href="#" aria-label="Senada Supply home">senada supply<span>EVERYDAY ESSENTIALS</span></a>
+<nav class="links" aria-label="Store navigation"><a href="#shop" data-t="navShop">Shop</a><a href="#look" data-t="navStory">Our Story</a><a href="#shop" data-t="navNew">New Arrivals</a></nav>
+<div class="actions"><button class="icon-btn" id="theme-toggle" type="button" aria-label="Ganti tema">☾</button>
+<div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="id" aria-pressed="true">ID</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+<button class="bag-btn" id="bag-open" type="button"><span aria-hidden="true">♧</span><span class="bag-text" data-t="bag">Bag</span><span class="count" id="bag-count">0</span></button></div>
+</div></header>
+<main>
+<section class="wrap hero"><div class="hero-copy"><div class="eyebrow" data-t="eyebrow">THE EVERYDAY UNIFORM · DROP 01</div><h1 data-t-html="heroTitle">Wear it<br><em>your way.</em></h1><p data-t="heroDesc">Pakaian sehari-hari dengan karakter minimal, siluet santai, dan detail yang tetap menonjol.</p><div><a class="btn" href="#shop" data-t="heroBtn">Explore Collection ↗</a></div><div class="hero-points"><span data-t="heroOne">✳ Designed for everyday</span><span data-t="heroTwo">✳ Find your fit</span></div></div>
+<div class="hero-art" aria-label="Ilustrasi editorial jaket clothing Senada Supply"><span class="hero-sticker">EST. 2026 / CONCEPT LABEL</span><div class="hero-graphic" id="hero-graphic"></div><span class="hero-vertical">SENADA SUPPLY · FIRST EDITION</span></div></section>
+<div class="mini-strip"><div class="wrap"><span data-t="strip1">QUALITY IN THE DETAILS</span><span data-t="strip2">EASY TO STYLE</span><span data-t="strip3">MADE FOR YOUR EVERYDAY</span></div></div>
+<section class="wrap section" id="shop"><div class="sec-head"><div><div class="eyebrow" data-t="collection">CURATED COLLECTION</div><h2 data-t="collectionTitle">Good staples.<br>Better stories.</h2></div><p data-t="collectionDesc">Pilih warna dan ukuran untuk setiap produk. Semua katalog, stok, dan harga di sini merupakan contoh.</p></div>
+<div class="tools"><div class="filters" role="group" aria-label="Product categories"><button class="filter" type="button" data-filter="all" aria-pressed="true" data-t="all">All</button><button class="filter" type="button" data-filter="tees" aria-pressed="false" data-t="tees">T-Shirts</button><button class="filter" type="button" data-filter="outer" aria-pressed="false" data-t="outer">Outerwear</button><button class="filter" type="button" data-filter="bottom" aria-pressed="false" data-t="bottom">Bottoms</button><button class="filter" type="button" data-filter="accessory" aria-pressed="false" data-t="accessory">Accessories</button><button class="filter" type="button" data-filter="saved" aria-pressed="false" data-t="saved">♥ Wishlist</button></div>
+<div class="right-tools"><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="product-search" placeholder="Cari produk..." maxlength="50" aria-label="Cari produk"></label><select class="sort" id="sort" aria-label="Urutkan produk"><option value="featured" data-t="sortDefault">Featured</option><option value="low" data-t="sortLow">Harga terendah</option><option value="high" data-t="sortHigh">Harga tertinggi</option></select></div></div>
+<div id="product-grid" class="product-grid" aria-live="polite"></div></section>
+<section class="lookbook" id="look"><div class="wrap look-grid"><div class="look-photo"><div id="look-graphic"></div></div><div class="look-text"><div class="eyebrow" data-t="lookEyebrow">OUR APPROACH</div><h2 data-t="lookTitle">Less noise.<br>More you.</h2><p data-t="lookText">Gaya yang terasa personal tanpa harus berlebihan. Ini adalah contoh bagaimana sebuah clothing brand dapat menyampaikan identitas dan koleksinya melalui website.</p><a href="#shop" class="btn light" data-t="lookButton">Shop the edit ↗</a></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><div><strong>senada supply</strong><span data-t="footerText">Brand clothing fiktif — hanya untuk demonstrasi.</span></div><a href="../index.html#work" data-t="footerLink">Created by Senada Creatlabs ↗</a></div></footer>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="bag-drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="bag-heading"><div class="drawer-head"><h2 id="bag-heading" data-t="bagTitle">Your Bag</h2><button type="button" class="close" id="bag-close" aria-label="Close bag">×</button></div><div class="cart-items" id="bag-items"></div><div class="cart-foot"><div class="line-total"><span data-t="subtotal">Subtotal</span><strong id="bag-subtotal">Rp0</strong></div><div class="line-total big"><span data-t="estimatedTotal">Estimated total</span><strong id="bag-total">Rp0</strong></div><button type="button" id="to-checkout" class="btn accent full" data-t="checkoutBtn">Checkout demo →</button><p class="subnote" data-t="bagDisclaimer">Pembayaran dan pengiriman tidak nyata. Ini hanya simulasi website toko online.</p></div></aside>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="dialog-title"><div class="dialog"><div class="dialog-top"><h2 id="dialog-title" data-t="productDetails">Product details</h2><button type="button" class="close" id="modal-close" aria-label="Close dialog">×</button></div>
+<section id="detail-screen" hidden><div class="details-grid"><div class="details-visual" id="detail-art"></div><div class="details-content"><div class="eyebrow" data-t="edit">THE EDIT</div><h3 id="detail-name"></h3><p id="detail-desc"></p><p class="choice-title" data-t="color">Color</p><div class="color-options" id="color-options"></div><p class="choice-title" data-t="size">Size</p><div class="size-options" id="size-options"></div><div class="detail-buy"><strong id="detail-price"></strong><button class="btn accent" type="button" id="detail-add" data-t="addBag">Add to bag ↗</button></div></div></div></section>
+<section id="checkout-screen" hidden><p style="color:var(--muted);font-size:12px;line-height:1.6;margin-bottom:16px" data-t="checkoutExplain">Isi data untuk melihat simulasi ringkasan pesanan. Tidak ada data yang dikirim.</p>
+<form id="checkout-form" class="fields"><div class="field"><label for="buyer-name" data-t="name">Nama pemesan *</label><input id="buyer-name" required maxlength="80" autocomplete="name"></div>
+<div class="field"><label for="buyer-email">Email *</label><input id="buyer-email" type="email" required maxlength="120" autocomplete="email"></div>
+<div class="field"><label for="buyer-address" data-t="address">Alamat (simulasi) *</label><textarea id="buyer-address" required maxlength="250"></textarea></div>
+<div class="field"><label for="delivery" data-t="delivery">Metode penerimaan</label><select id="delivery"><option value="shipping" data-t="shipping">Pengiriman contoh · Rp18.000</option><option value="pickup" data-t="pickup">Ambil di toko · Gratis</option></select></div>
+<div class="field"><label for="promo" data-t="promo">Kode promo (opsional)</label><input id="promo" maxlength="16" placeholder="PLAY10"><div id="promo-status" style="font-size:11px;color:var(--muted);margin-top:6px"></div></div>
+<div class="checkout-summary" id="checkout-summary"></div>
+<p class="notice" data-t="checkoutWarning">DEMO: tidak ada pembayaran, pemrosesan order, maupun pengiriman sesungguhnya.</p><button type="submit" class="btn accent full" data-t="placeOrder">Selesaikan pesanan simulasi →</button></form></section>
+<section id="success-screen" hidden><div class="done"><div class="done-icon">✓</div><h3 data-t="success">Demo order completed!</h3><p id="success-id"></p><p data-t="successDesc">Ini hanya simulasi. Tidak ada pembayaran diproses atau pesanan diteruskan ke penjual.</p><button type="button" class="btn accent" id="order-again" data-t="another">Browse again ↗</button></div></section></div></div>
+<div id="toast" class="toast" aria-live="polite" role="status"></div>
+</body></html>
