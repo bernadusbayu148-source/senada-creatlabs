@@ -124,3 +124,13 @@ Empat demo pertama menggunakan foto stok Unsplash melalui `demos/demo-real-photo
 File `layout-refinement.css` membuat lima demo dalam **satu carousel horizontal** pada desktop, tablet, maupun mobile. Kartu diberi ukuran seragam, foto lebih pendek, deskripsi maksimum tiga baris, dan tombol geser yang tetap terlihat di desktop. Kontrol carousel menggunakan batas `scrollWidth - clientWidth` agar tombol berikutnya tidak terus aktif saat ujung rel sudah tercapai.
 
 Bagian **Mulai Proyek** diperkecil dengan lebar maksimal 1060px, jarak dan form yang lebih ringkas; layout dua kolom untuk desktop menjadi satu kolom di mobile. Warna, identitas Senada, validasi form, dan fungsi salin brief tetap dipertahankan.
+
+## Senada Supply — konsistensi katalog produk (2026-11-12)
+
+Berdasarkan pengujian tampilan desktop, sebagian produk sempat menunjukkan ilustrasi saat urutan harga diubah dan sebagian foto stok sebelumnya kurang sesuai (misalnya tote ditampilkan sebagai ransel). Perbaikannya:
+- `demos/senada-supply-media.js`: controller foto **khusus clothing**, identitas berdasarkan **ID produk** yang stabil, bukan posisi di grid. Berisi delapan referensi foto sesuai kategori dan foto cadangan untuk sebagian barang, observer terpisah untuk katalog, detail, dan keranjang, serta prefetch gambar untuk mengurangi pergantian gambar ketika disortir.
+- `demos/senada-supply-catalog.css`: area foto katalog seragam, crop dan warna foto lebih menyatu, placeholder netral selama foto belum selesai dimuat, serta fallback ilustrasi hanya jika semua sumber suatu item gagal.
+- Semua produk, harga, ukuran, wishlist, filter, keranjang, dan checkout simulasi tetap dipertahankan.
+- Foto adalah **referensi stok ilustratif**, bukan inventaris sungguhan. Warna pada foto tidak selalu identik dengan swatch varian yang dipilih. Hal ini dijelaskan dalam bahasa ID/EN pada demo.
+
+Foto dipanggil dari Unsplash; ketersediaan dan crop akhir bergantung pada jaringan dan sumber eksternal. Integrasi kodenya sudah diperiksa, tetapi browser publik belum diuji secara interaktif di lingkungan ini.
