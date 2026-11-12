@@ -1,0 +1,175 @@
+/* Senada Supply: consistent ecommerce photography, card geometry & mobile media. */
+body[data-page="supply"] #product-grid.product-grid{
+  align-items:stretch;
+  gap:22px 16px;
+}
+body[data-page="supply"] #product-grid .product{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+body[data-page="supply"] #product-grid .product-art{
+  width:100%;
+  height:auto;
+  aspect-ratio:4/4.75;
+  min-height:0;
+  background:#e9eae4!important;
+  border-radius:5px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+body[data-page="supply"] .supply-photo-host{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+body[data-page="supply"] .supply-photo-host > .supply-real-photo{
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:3;
+  opacity:0;
+  filter:saturate(.85) contrast(.99) brightness(1.035);
+  transition:opacity .22s ease, transform .35s ease;
+  pointer-events:none;
+}
+body[data-page="supply"] .supply-photo-host.supply-has-photo > .supply-real-photo{opacity:1}
+body[data-page="supply"] #product-grid .product:hover .supply-has-photo > .supply-real-photo{transform:scale(1.025)}
+body[data-page="supply"] #product-grid .product-art.supply-photo-host > svg{
+  transition:opacity .2s ease;
+  opacity:0;
+  filter:none;
+}
+body[data-page="supply"] #product-grid .product-art.supply-photo-failed > svg{opacity:1}
+body[data-page="supply"] #product-grid .product-art.supply-has-photo > svg{visibility:hidden}
+body[data-page="supply"] #product-grid .product-art.supply-photo-host::before{
+  visibility:hidden;
+}
+body[data-page="supply"] #product-grid .product-art.supply-photo-host:not(.supply-has-photo):not(.supply-photo-failed)::after{
+  content:"S/S";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font:700 clamp(30px,4vw,55px) "Space Grotesk",system-ui,sans-serif;
+  color:#bdc7bd;
+  letter-spacing:-.1em;
+  background:linear-gradient(125deg,#eef0e9,#dfe6dc);
+}
+body[data-page="supply"] #product-grid .product .tag,
+body[data-page="supply"] #product-grid .product .heart{
+  position:absolute;
+  z-index:5;
+}
+body[data-page="supply"] #product-grid .product .heart{
+  border:1px solid #e4e8de;
+  color:#2f4435;
+}
+body[data-page="supply"] #product-grid .product-name{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px;
+  margin:13px 0 5px;
+  min-height:24px;
+}
+body[data-page="supply"] #product-grid .product-name strong{
+  font-size:15px;
+  line-height:1.3;
+  letter-spacing:-.05em;
+  overflow-wrap:anywhere;
+}
+body[data-page="supply"] #product-grid .product-name span{
+  font-size:12px;
+  flex:0 0 auto;
+  font-variant-numeric:tabular-nums;
+}
+body[data-page="supply"] #product-grid .product-info{
+  font-size:12px;
+  line-height:1.55;
+  min-height:0;
+  margin-bottom:10px;
+  max-width:100%;
+  color:var(--muted);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  line-clamp:2;
+  overflow:hidden;
+}
+body[data-page="supply"] #product-grid .product-link{
+  margin-top:auto;
+  font-size:11px;
+  padding:7px 0;
+  line-height:1.4;
+  text-align:left;
+}
+body[data-page="supply"] .details-visual.supply-photo-host{
+  background:#e4e8df;
+  overflow:hidden;
+  min-height:310px;
+}
+body[data-page="supply"] .details-visual.supply-photo-host.supply-has-photo > svg{visibility:hidden}
+body[data-page="supply"] .details-visual.supply-photo-host > .supply-real-photo{object-fit:cover}
+body[data-page="supply"] .cart-thumb.supply-photo-host{
+  position:relative;
+  overflow:hidden;
+  border-radius:5px;
+  min-width:62px;
+}
+body[data-page="supply"] .cart-thumb.supply-photo-host.supply-has-photo > svg{visibility:hidden}
+body[data-page="supply"] .hero-art.supply-has-photo .hero-graphic,
+body[data-page="supply"] .look-photo.supply-has-photo #look-graphic{visibility:hidden}
+body[data-page="supply"] .hero-art.supply-has-photo .hero-sticker,
+body[data-page="supply"] .hero-art.supply-has-photo .hero-vertical{z-index:5}
+body[data-page="supply"] .hero-art .supply-real-photo,
+body[data-page="supply"] .look-photo .supply-real-photo{object-fit:cover}
+body[data-page="supply"] .supply-photo-note{
+  margin:10px 0 0;
+  font-size:10px;
+  line-height:1.6;
+  color:var(--muted);
+}
+body[data-page="supply"] .supply-photo-credit{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.65;
+  margin-bottom:20px;
+}
+body[data-page="supply"] .supply-photo-credit a{
+  text-decoration:underline;
+  text-underline-offset:2px;
+  color:var(--accent);
+}
+:root[data-theme="dark"] body[data-page="supply"] #product-grid .product-art{
+  background:#333f35!important;
+}
+:root[data-theme="dark"] body[data-page="supply"] #product-grid .product-art.supply-photo-host:not(.supply-has-photo):not(.supply-photo-failed)::after{
+  color:#657568;
+  background:linear-gradient(125deg,#344138,#2b372e);
+}
+:root[data-theme="dark"] body[data-page="supply"] .details-visual.supply-photo-host{
+  background:#354237;
+}
+@media(max-width:760px){
+ body[data-page="supply"] #product-grid.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px 12px}
+ body[data-page="supply"] #product-grid .product-art{aspect-ratio:4/4.9;height:auto;min-height:0}
+ body[data-page="supply"] #product-grid .product-name{display:block;margin:10px 0 4px}
+ body[data-page="supply"] #product-grid .product-name strong{font-size:14px;display:block}
+ body[data-page="supply"] #product-grid .product-name span{display:block;margin-top:2px;font-size:12px}
+ body[data-page="supply"] #product-grid .product-info{font-size:11px;min-height:0}
+ body[data-page="supply"] #product-grid .product-link{font-size:11px}
+ body[data-page="supply"] .details-visual.supply-photo-host{min-height:240px;max-height:280px}
+}
+@media(max-width:380px){
+ body[data-page="supply"] #product-grid.product-grid{gap:16px 10px}
+ body[data-page="supply"] #product-grid .product-art{aspect-ratio:4/5}
+}
+@media(prefers-reduced-motion:reduce){
+ body[data-page="supply"] .supply-photo-host > .supply-real-photo{transition:none!important}
+}
