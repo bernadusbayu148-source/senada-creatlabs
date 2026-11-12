@@ -8,7 +8,8 @@
 "use strict";
 const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));
 const page=document.body?.dataset.page;
-if(!["coffee","bloom","prime","supply"].includes(page))return;
+// Supply uses a dedicated product-gallery controller, avoiding duplicate photo overlays.
+if(!["coffee","bloom","prime"].includes(page))return;
 const file=(id,w=900)=>"https://images.unsplash.com/"+id+"?auto=format&fit=crop&w="+w+"&q=78";
 const ASSETS={
  coffee:{
