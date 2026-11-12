@@ -82,7 +82,7 @@
       if(card.querySelector(".trip-photo"))return;
       const p=identify(card.querySelector(".location")?.textContent||"");if(!p)return;
       const img=document.createElement("img");img.className="trip-photo";img.alt=title(p);
-      img.loading="lazy";img.decoding="async";img.hidden=true;img.dataset.photoId=p.id;
+      img.loading="lazy";img.decoding="async";img.classList.add("photo-pending");img.dataset.photoId=p.id;
       const shade=document.createElement("span");shade.className="trip-photo-shade";shade.setAttribute("aria-hidden","true");
       const credit=document.createElement("a");credit.className="photo-credit";credit.href=source(p);
       credit.target="_blank";credit.rel="noopener noreferrer";credit.textContent="© "+p.author;credit.title=p.author+" · "+p.license;
@@ -100,7 +100,7 @@
     scene.classList.remove("has-real-photo");
     const img=document.createElement("img");
     img.className="detail-photo";img.alt=title(p);img.dataset.photoId=p.id;
-    img.decoding="async";img.hidden=true;scene.append(img);
+    img.decoding="async";img.classList.add("photo-pending");scene.append(img);
     hydrateImage(img,()=>scene.classList.add("has-real-photo"),()=>scene.classList.remove("has-real-photo"));
     img.src=p.url;
   }
@@ -108,7 +108,7 @@
     const hero=$(".hero");if(!hero)return;
     const p=PHOTOS.find(x=>x.id==="raja");const img=document.createElement("img");
     img.id="hero-photo";img.className="hero-photo";img.alt=title(p);img.dataset.photoId=p.id;
-    img.decoding="async";img.fetchPriority="high";img.hidden=true;
+    img.decoding="async";img.fetchPriority="high";img.classList.add("photo-pending");
     const credit=document.createElement("a");credit.className="hero-photo-credit";credit.href=source(p);
     credit.target="_blank";credit.rel="noopener noreferrer";credit.textContent="Foto: "+p.author+" · "+p.license;
     hero.append(img,credit);
