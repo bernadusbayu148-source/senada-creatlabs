@@ -88,14 +88,12 @@ function products(){
    const id=card.querySelector("[data-open]")?.dataset.open;
    decorate(card.querySelector(".product-art"),ASSETS.supply.products[id]);
   });
-  const name=$("#detail-name")?.textContent?.trim();
-  const found=name?Object.entries(ASSETS.supply.products).find(([key])=>{
-    const btn=$$('#product-grid [data-open]').find(b=>b.closest('.product')?.querySelector('.product-name strong')?.textContent?.trim()===name);
-    return btn?.dataset.open===key;
-  }):null;
-  if(found)decorate($("#detail-art"),found[1]);
-  $$("#bag-items .cart-item").forEach(card=>{
-   const id=$$("#product-grid [data-open]").find(b=>b.closest(".product")?.querySelector(".product-name strong")?.textContent?.trim()===card.querySelector("h3")?.textContent?.trim())?.dataset.open;
+  // Product lookup is stable even if a shopper filters the visible collection.
+  const names={"ARC TEE":"arc","FORM HOODIE":"form","EASE TROUSER":"ease","CANVAS TOTE":"canvas","RELAXED OXFORD":"oxford","STUDIO JACKET":"studio","RIB TANK":"rib","DAILY SHORTS":"daily"};
+  const detailKey=names[$("#detail-name")?.textContent?.trim()];
+  if(detailKey)decorate($("#detail-art"),ASSETS.supply.products[detailKey]);
+  $("#bag-items .cart-item").forEach(card=>{
+   const id=names[card.querySelector("h3")?.textContent?.trim()];
    decorate(card.querySelector(".cart-thumb"),ASSETS.supply.products[id]);
   });
  }
