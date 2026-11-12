@@ -1,0 +1,54 @@
+/* Authentic destination photography, attribution and graceful fallbacks.
+   Photo assets: Wikimedia Commons thumbnails; see travel-photo-credits.md. */
+.trip-art{isolation:isolate}
+.trip-art .trip-photo{
+ position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center 46%;
+ z-index:2;transition:transform .45s ease;
+}
+.trip-card:hover .trip-art .trip-photo{transform:scale(1.035)}
+.trip-art .trip-photo-shade{
+ pointer-events:none;position:absolute;inset:0;z-index:2;
+ background:linear-gradient(180deg,rgba(7,38,49,.23),transparent 40%,rgba(6,33,37,.2));
+}
+.trip-art .location,.trip-art .duration{z-index:4}
+.trip-art .photo-credit{position:absolute;left:12px;bottom:12px;z-index:4;max-width:58%;padding:5px 8px;
+ border-radius:7px;background:rgba(15,46,48,.7);backdrop-filter:blur(8px);color:white;text-decoration:none;
+ font-size:9px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trip-art .photo-credit:hover{text-decoration:underline}
+.trip-art .photo-credit:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.trip-art.has-real-photo:before,.trip-art.has-real-photo:after,.trip-art.has-real-photo .foreground{visibility:hidden}
+.detail-scene{position:relative;isolation:isolate}
+.detail-scene .detail-photo{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.detail-scene.has-real-photo{font-size:0}
+.photo-source{display:inline-flex;align-items:center;gap:5px;font-size:10px;line-height:1.5;color:var(--muted);margin-top:5px}
+.photo-source a{color:var(--teal-dark);text-decoration:underline;text-underline-offset:2px}
+.hero{isolation:isolate}
+.hero .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ object-position:center 52%;opacity:0;pointer-events:none;z-index:0;transition:opacity .3s ease}
+.hero.has-real-photo .hero-photo{opacity:1}
+.hero.has-real-photo .hero-landscape{opacity:0}
+.hero.has-real-photo::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(90deg,rgba(6,35,47,.9) 0%,rgba(7,40,51,.78) 45%,rgba(9,41,48,.27) 100%)}
+.hero.has-real-photo::after{z-index:1}
+.hero .hero-inner{position:relative;z-index:3}
+.hero .hero-photo-credit{position:absolute;bottom:106px;right:24px;z-index:4;
+ padding:6px 9px;background:#092d357c;color:#fff;max-width:220px;
+ border-radius:7px;font-size:10px;text-decoration:none;display:none}
+.hero.has-real-photo .hero-photo-credit{display:block}
+.hero .hero-photo-credit:hover{text-decoration:underline}
+.photo-credits{border-top:1px solid var(--line);padding:24px 0 30px}
+.photo-credits details{color:var(--muted);font-size:11px}
+.photo-credits summary{cursor:pointer;font-weight:800;color:var(--ink);padding:8px 0}
+.photo-credits ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 20px;padding:10px 0 0;margin:0}
+.photo-credits li{line-height:1.65}
+.photo-credits li a{color:var(--teal-dark);text-decoration:underline}
+.photo-credits .photo-note{margin-top:12px;line-height:1.7;max-width:760px;color:var(--muted)}
+:root[data-theme="dark"] .photo-source a,:root[data-theme="dark"] .photo-credits li a{color:#a3e7dc}
+@media(max-width:760px){
+ .hero.has-real-photo::before{background:linear-gradient(90deg,rgba(6,35,47,.91),rgba(7,40,51,.56))}
+ .hero .hero-photo-credit{bottom:102px;right:14px;font-size:9px}
+ .photo-credits ul{grid-template-columns:1fr 1fr}
+ .trip-art .photo-credit{font-size:9px}
+}
+@media(max-width:440px){.photo-credits ul{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.trip-art .trip-photo,.hero .hero-photo{transition:none}}
