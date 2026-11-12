@@ -1,0 +1,320 @@
+/* Senada Creatlabs — compact portfolio and project brief section, 12 Nov 2026.
+ * Intentionally loaded last to override earlier desktop/grid and mobile rules.
+ * Five demos use ONE navigable horizontal rail rather than a staggered 3+2 grid.
+ */
+
+/* 1. Demo showcase: airy photography cards + predictable carousel at all sizes. */
+#work .demo-head{
+  padding-top:28px;
+  margin-bottom:17px;
+}
+#work .demo-head .section-heading{
+  align-items:end;
+  gap:24px;
+}
+#work .demo-head .section-heading h2{
+  font-size:clamp(2rem,3.8vw,3.35rem);
+  line-height:1.05;
+}
+#work .demo-head .section-heading p{
+  max-width:365px;
+  font-size:14px;
+  line-height:1.65;
+}
+#work #work-slider.work-grid{
+  display:flex!important;
+  grid-template-columns:none!important;
+  flex-wrap:nowrap!important;
+  align-items:stretch;
+  gap:16px;
+  width:100%;
+  margin:0;
+  padding:4px 2px 15px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:2px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  overscroll-behavior-x:contain;
+}
+#work #work-slider.work-grid::-webkit-scrollbar{display:none}
+#work #work-slider.work-grid>.work-card{
+  display:flex!important;
+  flex:0 0 calc((100% - 50px)/3)!important;
+  flex-direction:column;
+  grid-column:auto!important;
+  width:auto!important;
+  max-width:none!important;
+  min-width:0;
+  height:auto;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  border-radius:20px;
+  box-shadow:none;
+}
+#work #work-slider .work-art{
+  width:100%;
+  height:188px;
+  flex:0 0 auto;
+}
+#work #work-slider .work-card .work-overlay{
+  top:auto!important;
+  bottom:15px!important;
+  left:17px!important;
+  right:14px!important;
+  transform:none!important;
+  text-align:left!important;
+  font-size:clamp(21px,2.3vw,30px)!important;
+  line-height:1.05;
+  letter-spacing:-.065em;
+  font-weight:700;
+}
+#work #work-slider .work-caption{
+  flex:1;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:16px 17px 17px;
+  gap:8px;
+}
+#work #work-slider .work-caption>div{display:flex;flex-direction:column;min-width:0;flex:1}
+#work #work-slider .work-caption h3{
+  font-size:19px;
+  margin:0 0 7px;
+  line-height:1.15;
+}
+#work #work-slider .work-caption p{
+  font-size:12.5px;
+  line-height:1.55;
+  margin:0 0 10px;
+  max-width:none;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  line-clamp:3;
+  overflow:hidden;
+}
+#work #work-slider .work-cta{
+  display:inline-flex;
+  gap:5px;
+  align-items:center;
+  margin-top:auto;
+  font-size:12px;
+  font-weight:800;
+}
+#work #work-slider .demo-tag{
+  flex:0 0 auto;
+  font-size:9px;
+  padding:5px 9px;
+  margin-top:0;
+}
+#work .slider-controls[data-slider-target="work-slider"]{
+  display:flex!important;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  margin:6px 0 0;
+}
+#work .slider-controls[data-slider-target="work-slider"] .swipe-hint{
+  font-size:12px;
+  line-height:1.4;
+  color:var(--muted);
+}
+#work .slider-controls[data-slider-target="work-slider"] .slider-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+#work .slider-controls[data-slider-target="work-slider"] .slide-count{
+  font:700 12px "Space Grotesk",system-ui,sans-serif;
+  color:var(--muted);
+  min-width:42px;
+  text-align:center;
+}
+#work .slider-controls[data-slider-target="work-slider"] .slide-arrow{
+  display:grid;
+  place-items:center;
+  border:1.5px solid var(--ink);
+  background:var(--white);
+  color:var(--ink);
+  border-radius:50%;
+  width:36px;
+  height:36px;
+  padding:0;
+}
+#work .slider-controls[data-slider-target="work-slider"] .slide-arrow svg{
+  width:17px;
+  height:17px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+#work .slider-controls[data-slider-target="work-slider"] .slide-arrow:disabled{opacity:.35;cursor:default}
+#work .slider-controls[data-slider-target="work-slider"] .slide-arrow:not(:disabled):hover{background:var(--lime)}
+#work .slider-controls[data-slider-target="work-slider"] .slide-arrow:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+
+/* 2. Project enquiry: keep the lime personality, reduce mass and whitespace. */
+#contact.contact{
+  padding:62px 0 82px;
+}
+#contact .contact-panel{
+  width:min(100%,1060px);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  align-items:center;
+  gap:25px;
+  padding:32px;
+  border-radius:27px;
+  box-shadow:6px 6px 0 var(--ink);
+}
+#contact .contact-panel>div:first-child{
+  min-width:0;
+  align-self:center;
+}
+#contact .contact-panel .eyebrow{
+  font-size:11px;
+  margin-bottom:14px;
+}
+#contact .contact-panel h2{
+  font-size:clamp(2.4rem,3.8vw,3.5rem);
+  line-height:1;
+  letter-spacing:-.075em;
+  max-width:350px;
+  margin:0 0 15px;
+}
+#contact .contact-panel p{
+  max-width:375px;
+  font-size:14px;
+  line-height:1.65;
+  margin-bottom:0;
+}
+#contact .contact-panel .contact-info{
+  font-size:12px;
+  line-height:1.45;
+  gap:9px;
+  margin-top:22px;
+}
+#contact .contact-panel .contact-info .circle{
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+}
+#contact .contact-panel .contact-demo-note{
+  margin-top:13px;
+  font-size:11px;
+  color:#494854;
+  line-height:1.65;
+}
+#contact .brief-form{
+  width:100%;
+  min-width:0;
+  padding:21px 22px 20px;
+  border-radius:20px;
+  box-shadow:3px 3px 0 var(--ink);
+}
+#contact .brief-form h3{
+  font-size:22px;
+  line-height:1.15;
+  margin-bottom:5px;
+}
+#contact .brief-form>p{
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+#contact .brief-form .form-row{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+#contact .brief-form .field{
+  min-width:0;
+  margin-bottom:11px;
+}
+#contact .brief-form .field label{
+  font-size:11px;
+  margin-bottom:5px;
+}
+#contact .brief-form .field input,
+#contact .brief-form .field select,
+#contact .brief-form .field textarea{
+  min-width:0;
+  min-height:44px;
+  padding:10px 11px;
+  border-radius:11px;
+  font-size:13px;
+}
+#contact .brief-form .field textarea{
+  min-height:76px;
+  resize:vertical;
+}
+#contact .brief-form .btn{
+  width:100%;
+  min-height:45px;
+  padding:10px 16px;
+  font-size:13px;
+}
+#contact .brief-form .form-status{
+  font-size:12px;
+  min-height:0;
+  margin-top:8px;
+}
+@media(max-width:1060px) and (min-width:791px){
+ #work #work-slider.work-grid>.work-card{flex-basis:calc((100% - 34px)/2.2)!important}
+ #contact .contact-panel{width:min(100%,930px);gap:22px;padding:27px}
+ #contact .contact-panel h2{font-size:clamp(2.3rem,4.4vw,3.15rem)}
+ #contact .brief-form{padding:20px}
+}
+@media(max-width:790px){
+ #work .demo-head{padding-top:20px}
+ #work .demo-head .section-heading h2{font-size:clamp(2rem,7.3vw,2.9rem)}
+ #work .demo-head .section-heading p{font-size:13px;max-width:460px}
+ #work #work-slider.work-grid{
+   gap:13px;
+   padding:3px 18px 14px;
+   margin:0 -18px;
+   width:calc(100% + 36px);
+   scroll-padding-inline:18px;
+ }
+ #work #work-slider.work-grid>.work-card{flex:0 0 min(77vw,330px)!important}
+ #work #work-slider .work-art{height:183px}
+ #work #work-slider .work-card .work-overlay{font-size:25px!important}
+ #work #work-slider .work-caption{padding:15px}
+ #work #work-slider .work-caption h3{font-size:18px}
+ #work #work-slider .work-caption p{font-size:12.5px}
+ #work .slider-controls[data-slider-target="work-slider"]{margin-top:2px}
+ #contact.contact{padding:50px 0 62px}
+ #contact .contact-panel{
+   width:100%;
+   grid-template-columns:minmax(0,1fr);
+   align-items:start;
+   gap:19px;
+   padding:23px;
+   border-radius:24px;
+   box-shadow:5px 5px 0 var(--ink);
+ }
+ #contact .contact-panel h2{font-size:clamp(2.3rem,7.5vw,3.2rem);max-width:none}
+ #contact .contact-panel p{max-width:600px}
+ #contact .contact-panel .contact-info{margin-top:16px}
+ #contact .brief-form{padding:19px}
+ #contact .brief-form .field textarea{min-height:85px}
+}
+@media(max-width:580px){
+ #work #work-slider.work-grid{gap:12px}
+ #work #work-slider.work-grid>.work-card{flex:0 0 min(83vw,325px)!important}
+ #work #work-slider .work-art{height:175px}
+ #work .slider-controls[data-slider-target="work-slider"] .swipe-hint{font-size:11px}
+ #contact.contact{padding:45px 0 58px}
+ #contact .contact-panel{padding:18px 16px;gap:15px;border-radius:21px}
+ #contact .contact-panel h2{font-size:clamp(2.2rem,10vw,3rem)}
+ #contact .contact-panel .eyebrow{margin-bottom:10px}
+ #contact .contact-panel .contact-info{font-size:11px}
+ #contact .brief-form{padding:16px 15px;border-radius:17px}
+ #contact .brief-form .form-row{grid-template-columns:minmax(0,1fr);gap:0}
+ #contact .brief-form h3{font-size:20px}
+ #contact .brief-form .field input,#contact .brief-form .field select,#contact .brief-form .field textarea{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){#work #work-slider.work-grid{scroll-behavior:auto}}
