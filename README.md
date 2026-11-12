@@ -87,3 +87,24 @@ Kartu proyek memakai ilustrasi visual CSS, bukan tangkapan layar situs. Setiap t
 Pada kartu **Proyek Nyata**, `real-project-screenshots.js` sekarang mencoba memuat tangkapan layar homepage dari URL domain asli melalui layanan screenshot publik (WordPress mShots, lalu thum.io sebagai cadangan). Gambar dipotong pada bagian atas agar sesuai dengan kartu desktop dan mobile. Bila kedua layanan gagal atau mengembalikan gambar terlalu kecil, ilustrasi sebelumnya tetap ditampilkan.
 
 Thumbnail ini **bergantung pada layanan eksternal** dan tidak disimpan sebagai screenshot statis di repositori. Isi yang ditampilkan dapat berubah mengikuti kondisi situs dan cache layanan screenshot. Untuk hasil final yang benar-benar tetap dan terverifikasi, tambahkan berkas gambar hasil capture ke repositori dan ganti thumbnail dinamis dengan gambar lokal.
+
+## Dua demo interaktif baru: clothing & travel agent
+
+### [Senada Supply — Clothing E-commerce](demos/senada-supply.html)
+- Desain editorial clothing dengan palet netral-hijau, berbeda dari identitas visual studio Senada Creatlabs
+- Delapan produk fiktif, kategori, pencarian, urutan harga, pilihan ukuran/warna, tampilan detail produk
+- Wishlist dan keranjang yang disimpan di browser `localStorage`
+- Checkout simulasi mencakup nama, email, alamat, opsi pengiriman/ambil di toko, promo contoh `PLAY10`, serta ringkasan biaya
+- Semua transaksi **fiktif**, tidak ada sistem pembayaran, API toko, stok real-time, atau pengiriman sungguhan
+- File: `demos/senada-supply.html`, `demos/senada-supply.css`, `demos/senada-supply.js`
+
+### [Senada Journey — Travel Agent](demos/senada-journey.html)
+- Desain bertema pesisir tropis dengan palet teal-biru, bukan tema utama Senada
+- Enam contoh paket perjalanan domestik, pencarian destinasi/tanggal/peserta, filter kategori dan urutan harga/durasi
+- Halaman detail paket beserta itinerary per hari dan contoh fasilitas
+- Form booking simulasi dengan tanggal, peserta dewasa/anak, nama, email, dan telepon
+- Kalkulator biaya contoh (anak dihitung 70% harga dewasa) dan ringkasan booking yang bisa disalin
+- Semua harga, destinasi paket, agenda, jadwal dan nomor booking **ilustratif**. Tidak ada inventori, reservasi, tiket, atau pembayaran yang benar-benar diproses
+- File: `demos/senada-journey.html`, `demos/senada-journey.css`, `demos/senada-journey.js`
+
+Kedua demo responsif, punya mode terang/gelap dan pilihan bahasa ID/EN yang mengikuti preferensi website utama. Halaman `index.html#work` sekarang memuat **lima** demo; kartu baru ditata lewat `demo-expansion.css`.
