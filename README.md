@@ -107,4 +107,7 @@ Thumbnail ini **bergantung pada layanan eksternal** dan tidak disimpan sebagai s
 - Semua harga, destinasi paket, agenda, jadwal dan nomor booking **ilustratif**. Tidak ada inventori, reservasi, tiket, atau pembayaran yang benar-benar diproses
 - File: `demos/senada-journey.html`, `demos/senada-journey.css`, `demos/senada-journey.js`
 
-Kedua demo responsif, punya mode terang/gelap dan pilihan bahasa ID/EN yang mengikuti preferensi website utama. Halaman `index.html#work` sekarang memuat **lima** demo; kartu baru ditata lewat `demo-expansion.css`.
+Kedua demo responsif, punya mode terang/gelap dan pilihan bahasa ID/EN yang mengikuti preferensi website utama.
+
+**Foto destinasi asli (Senada Journey):** Kartu enam paket dan halaman detail kini memuat foto Bali, Pulau Padar/Labuan Bajo, Bromo, Prambanan/Yogyakarta, Piaynemo/Raja Ampat, dan Kawah Putih/Bandung dari Wikimedia Commons. Banner utama juga menampilkan Piaynemo. Atribusi fotografer dan lisensi dapat dibuka dari halaman, dan terdokumentasi dalam [`demos/TRAVEL-PHOTO-CREDITS.md`](demos/TRAVEL-PHOTO-CREDITS.md). Foto dimuat dari Wikimedia (bukan disimpan lokal); jika gambar tidak tersedia, ilustrasi CSS lama tetap menjadi cadangan.
+ Halaman `index.html#work` sekarang memuat **lima** demo; kartu baru ditata lewat `demo-expansion.css`.
