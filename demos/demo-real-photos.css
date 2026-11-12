@@ -1,0 +1,56 @@
+/* Shared editorial stock photography for four fictional Senada demo sites.
+   All images are illustrative and loaded from Unsplash with fallback art preserved. */
+.demo-photo-host{position:relative;isolation:isolate;overflow:hidden}
+.demo-photo-host>.demo-real-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:2;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.demo-photo-host.has-real-photo>.demo-real-photo{opacity:1}
+.demo-photo-host>.demo-photo-shade{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 50%);opacity:0}
+.demo-photo-host.has-real-photo>.demo-photo-shade{opacity:1}
+.demo-photo-credit{padding:13px 0;font-size:10px;line-height:1.65;opacity:.8}
+.demo-photo-credit a{text-decoration:underline;text-underline-offset:2px}
+.demo-photo-credit strong{font-weight:800}
+body[data-page=coffee] .product-art.has-real-photo .drink,
+body[data-page=coffee] .hero-visual.has-real-photo .hero-cup,
+body[data-page=coffee] .story-photo.has-real-photo .photo-cup{visibility:hidden}
+body[data-page=coffee] .product-art.has-real-photo:before,
+body[data-page=coffee] .hero-visual.has-real-photo:before,
+body[data-page=coffee] .story-photo.has-real-photo:before{visibility:hidden}
+body[data-page=coffee] .hero-visual.has-real-photo .hero-tag,
+body[data-page=coffee] .hero-visual.has-real-photo .hero-bubble{z-index:4}
+body[data-page=coffee] .hero-visual.has-real-photo .hero-tag{color:#285248;background:#ffffffed}
+body[data-page=coffee] .product-art.has-real-photo .product-flag{z-index:5}
+body[data-page=coffee] .product-art>.demo-real-photo{object-position:center 48%}
+body[data-page=coffee] .cart-thumb>.demo-real-photo{border-radius:inherit}
+body[data-page=coffee] .cart-thumb.has-real-photo{font-size:0}
+body[data-page=coffee] .hero-visual>.demo-real-photo{object-position:center 58%}
+body[data-page=bloom] .stage.has-real-photo .bottle,
+body[data-page=bloom] .stage.has-real-photo .stage-star{visibility:hidden}
+body[data-page=bloom] .stage.has-real-photo:before,
+body[data-page=bloom] .stage.has-real-photo:after{visibility:hidden}
+body[data-page=bloom] .stage.has-real-photo .stage-label,
+body[data-page=bloom] .stage.has-real-photo .stage-spark{z-index:5}
+body[data-page=bloom] .stage.has-real-photo>.demo-photo-shade{background:linear-gradient(90deg,transparent,#201c381f)}
+body[data-page=bloom] .product-art.has-real-photo .product-symbol{visibility:hidden}
+body[data-page=bloom] .product-art.has-real-photo:before{visibility:hidden}
+body[data-page=bloom] .story-art.has-real-photo strong,
+body[data-page=bloom] .story-art.has-real-photo span{position:relative;z-index:5;text-shadow:0 2px 12px #0009}
+body[data-page=bloom] .story-art.has-real-photo strong{color:white}
+body[data-page=prime] .hero-scene.has-real-photo .building{visibility:hidden}
+body[data-page=prime] .hero-scene.has-real-photo:before{visibility:hidden}
+body[data-page=prime] .hero-scene.has-real-photo .scene-caption{z-index:5}
+body[data-page=prime] .case-art.has-real-photo>span{position:relative;z-index:5;color:#fff;text-shadow:0 2px 10px #000a}
+body[data-page=prime] .case-art.has-real-photo>.demo-photo-shade{background:linear-gradient(to top,#10283f9c,transparent 75%);opacity:1}
+body[data-page=supply] .hero-art.has-real-photo .hero-graphic,
+body[data-page=supply] .look-photo.has-real-photo #look-graphic{visibility:hidden}
+body[data-page=supply] .hero-art.has-real-photo .hero-sticker,
+body[data-page=supply] .hero-art.has-real-photo .hero-vertical{z-index:5}
+body[data-page=supply] .product-art.has-real-photo svg{visibility:hidden}
+body[data-page=supply] .product-art.has-real-photo:before{visibility:hidden}
+body[data-page=supply] .product-art.has-real-photo .tag,
+body[data-page=supply] .product-art.has-real-photo .heart{z-index:5}
+body[data-page=supply] .details-visual.has-real-photo svg{visibility:hidden}
+body[data-page=supply] .cart-thumb.has-real-photo svg{visibility:hidden}
+body[data-page=supply] .details-visual>.demo-real-photo{object-position:center 35%}
+body[data-page=supply] .hero-art>.demo-real-photo{object-position:center 35%}
+body[data-page=supply] .look-photo>.demo-real-photo{object-position:center 40%}
+body[data-page=supply] .product-art>.demo-real-photo{object-position:center 36%}
+@media(prefers-reduced-motion:reduce){.demo-photo-host>.demo-real-photo{transition:none}}
