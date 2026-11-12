@@ -118,3 +118,9 @@ Semua lima konsep website sekarang mendukung tampilan fotografi nyata yang sesua
 Empat demo pertama menggunakan foto stok Unsplash melalui `demos/demo-real-photos.js` dan `demos/demo-real-photos.css`, sedangkan Journey menggunakan aset Wikimedia Commons yang didokumentasikan terpisah. Semua foto dari jaringan eksternal memiliki ilustrasi CSS/SVG lama sebagai cadangan jika foto gagal dimuat. Fitur katalog, filter, keranjang, wishlist, checkout, dan booking tidak diubah.
 
 **Penting:** Seluruh foto dan produk pada website fiktif merupakan ilustrasi; tidak berarti produk yang dijual atau studio/perusahaan benar-benar memiliki barang, tim, atau bangunan dalam foto. Sumber dan ketentuan penggunaan ada di [demos/PHOTO-SOURCES.md](demos/PHOTO-SOURCES.md).
+
+## Refinement layout portofolio & form proyek (2026-11-12)
+
+File `layout-refinement.css` membuat lima demo dalam **satu carousel horizontal** pada desktop, tablet, maupun mobile. Kartu diberi ukuran seragam, foto lebih pendek, deskripsi maksimum tiga baris, dan tombol geser yang tetap terlihat di desktop. Kontrol carousel menggunakan batas `scrollWidth - clientWidth` agar tombol berikutnya tidak terus aktif saat ujung rel sudah tercapai.
+
+Bagian **Mulai Proyek** diperkecil dengan lebar maksimal 1060px, jarak dan form yang lebih ringkas; layout dua kolom untuk desktop menjadi satu kolom di mobile. Warna, identitas Senada, validasi form, dan fungsi salin brief tetap dipertahankan.
