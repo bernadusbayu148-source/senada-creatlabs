@@ -1,0 +1,23 @@
+/* Five demo previews. Keep carousel behavior unchanged at mobile widths. */
+@media(min-width:1081px){
+ #work .work-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+ #work .work-grid>.work-card{grid-column:span 2}
+ #work .work-grid>.work-card:nth-last-child(2){grid-column:2 / span 2}
+ #work .work-grid>.work-card:last-child{grid-column:4 / span 2}
+}
+#work .work-art--supply{background:linear-gradient(145deg,#d7ddcb,#a6b8a0)}
+#work .work-art--supply::before{content:"";position:absolute;border:1px solid #fbfff5a3;border-radius:50%;width:250px;height:250px;left:calc(50% - 125px);top:23px;box-shadow:0 0 0 27px #ffffff31}
+#work .work-art--supply .work-overlay{color:#243a2b;top:21px;left:20px;font-size:clamp(25px,2.7vw,38px);text-shadow:none}
+#work .work-art--supply .preview-garment{position:absolute;left:calc(50% - 75px);top:78px;width:150px;height:166px;transform:rotate(-11deg);filter:drop-shadow(8px 10px 4px #31452b35)}
+#work .work-art--journey{background:linear-gradient(180deg,#9ad7da,#7bc3c5 50%,#4594a6)}
+#work .work-art--journey::before{content:"";position:absolute;right:20px;top:32px;width:106px;height:106px;background:#ffe0a3;border-radius:50%;opacity:.9}
+#work .work-art--journey::after{content:"";position:absolute;left:-8%;bottom:-3%;width:118%;height:69%;background:#236a71;clip-path:polygon(0 100%,0 84%,17% 51%,31% 75%,50% 14%,67% 72%,83% 43%,100% 91%,100% 100%)}
+#work .work-art--journey .work-overlay{top:24px;left:20px;position:absolute;color:#fff;z-index:2;text-shadow:0 2px 8px #234e5790}
+#work .work-art--journey .preview-wave{position:absolute;left:0;right:0;bottom:0;height:32px;background:#124d5f;z-index:2;opacity:.8}
+:root[data-theme="dark"] #work .work-art--supply .work-overlay{color:#203b2c}
+:root[data-theme="dark"] #work .work-art--journey .work-overlay{color:#fff}
+@media(max-width:790px){
+ #work .work-grid{grid-template-columns:none!important}
+ #work .work-grid>.work-card:nth-last-child(2),#work .work-grid>.work-card:last-child{grid-column:auto}
+ #work .work-art--supply .work-overlay,#work .work-art--journey .work-overlay{font-size:clamp(27px,7vw,37px)}
+}
