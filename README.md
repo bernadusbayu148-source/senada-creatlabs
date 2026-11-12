@@ -111,3 +111,10 @@ Kedua demo responsif, punya mode terang/gelap dan pilihan bahasa ID/EN yang meng
 
 **Foto destinasi asli (Senada Journey):** Kartu enam paket dan halaman detail kini memuat foto Bali, Pulau Padar/Labuan Bajo, Bromo, Prambanan/Yogyakarta, Piaynemo/Raja Ampat, dan Kawah Putih/Bandung dari Wikimedia Commons. Banner utama juga menampilkan Piaynemo. Atribusi fotografer dan lisensi dapat dibuka dari halaman, dan terdokumentasi dalam [`demos/TRAVEL-PHOTO-CREDITS.md`](demos/TRAVEL-PHOTO-CREDITS.md). Foto dimuat dari Wikimedia (bukan disimpan lokal); jika gambar tidak tersedia, ilustrasi CSS lama tetap menjadi cadangan.
  Halaman `index.html#work` sekarang memuat **lima** demo; kartu baru ditata lewat `demo-expansion.css`.
+
+## Foto nyata untuk seluruh website demo
+Semua lima konsep website sekarang mendukung tampilan fotografi nyata yang sesuai konteks: **Coffee** (minuman dan makanan), **Bloom** (beauty dan skincare), **Prime** (arsitektur dan kantor), **Supply** (clothing dan fashion), serta **Journey** (destinasi wisata Indonesia). Kartu `Eksplorasi & Demo` pada homepage studio juga menggunakan pratinjau fotografis.
+
+Empat demo pertama menggunakan foto stok Unsplash melalui `demos/demo-real-photos.js` dan `demos/demo-real-photos.css`, sedangkan Journey menggunakan aset Wikimedia Commons yang didokumentasikan terpisah. Semua foto dari jaringan eksternal memiliki ilustrasi CSS/SVG lama sebagai cadangan jika foto gagal dimuat. Fitur katalog, filter, keranjang, wishlist, checkout, dan booking tidak diubah.
+
+**Penting:** Seluruh foto dan produk pada website fiktif merupakan ilustrasi; tidak berarti produk yang dijual atau studio/perusahaan benar-benar memiliki barang, tim, atau bangunan dalam foto. Sumber dan ketentuan penggunaan ada di [demos/PHOTO-SOURCES.md](demos/PHOTO-SOURCES.md).
