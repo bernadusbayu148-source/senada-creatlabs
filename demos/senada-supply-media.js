@@ -25,7 +25,6 @@
     "RIB TANK":"rib","DAILY SHORTS":"daily"
   };
   const photoURL=(id,size)=>"https://images.unsplash.com/"+id+"?auto=format&fit=crop&w="+size+"&h="+Math.round(size*1.25)+"&q=80";
-  const staticPhotoURL=(id,size)=>"https://images.unsplash.com/"+id+"?auto=format&fit=crop&w="+size+"&q=80";
   const loaded=new Map();
 
   function attach(host,info,identity,options={}){
@@ -43,7 +42,7 @@
     img.width=size;
     img.height=Math.round(size*1.25);
     img.decoding="async";
-    img.loading=options.important?"eager":"eager";
+    img.loading="eager";
     img.style.objectPosition=info.position||"50% 50%";
     host.prepend(img);
     let attempt=0;
@@ -105,6 +104,35 @@
       prefetch.src=src;
     });
   }
+  function installDisclosure(){
+    const description=$("#shop .sec-head p");
+    if(description){
+      const note=document.createElement("p");
+      note.className="supply-photo-note";
+      description.after(note);
+      const translate=()=>{
+        const english=document.documentElement.lang==="en";
+        note.textContent=english
+          ?"Photos are stock styling references, not actual Senada Supply inventory. Selected color swatches may differ from the photography."
+          :"Foto merupakan referensi produk stok, bukan barang asli Senada Supply. Warna pada foto bisa berbeda dari pilihan warna produk.";
+      };
+      translate();
+      new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+    }
+    const footer=$("footer");
+    if(footer){
+      const credit=document.createElement("p");
+      credit.className="supply-photo-credit wrap";
+      const link=document.createElement("a");
+      link.href="https://unsplash.com/license";
+      link.target="_blank";
+      link.rel="noopener noreferrer";
+      link.textContent="Unsplash License";
+      credit.append(document.createTextNode("Foto ilustratif / Illustrative photos · "),link);
+      footer.before(credit);
+    }
+  }
+  installDisclosure();
   staticPhotos();
   refreshProducts();
   refreshDetail();
