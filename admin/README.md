@@ -21,12 +21,12 @@ https://bernadusbayu148-source.github.io/senada-creatlabs/admin/
 - Tema gelap dan terang.
 - Halaman WhatsApp untuk melihat rancangan Coexistence, arsitektur API/BSP, checklist aktivasi, dan contoh template pesan pembuka.
 - Checklist persiapan WhatsApp dapat dicentang dan tersimpan lokal di browser preview.
-- Halaman login preview Senada Desk tersedia di `admin/login.html`.
+- Halaman login demo Senada Desk tersedia di `admin/login.html`, dengan kredensial publik `demo@senada.id` / `SenadaDemo2026!` untuk mencoba navigasi masuk ke dashboard.
 - Project Preview dengan konfigurasi repository, branch, slug, metode deployment, dan kolom password pada mode server.
 
 ## Status penyimpanan dan keamanan
 
-- URL GitHub Pages di atas tetap merupakan demo publik. Halaman itu tidak menjalankan PHP dan tidak memiliki login server-side. Halaman `admin/login.html` hanya preview desain; form-nya tidak mengirim atau menyimpan kredensial. Dashboard demo tetap dapat dibuka langsung melalui URL publik.
+- URL GitHub Pages di atas tetap merupakan demo publik. Halaman `admin/login.html` memeriksa kredensial demo yang tertanam di source publik lalu mengarahkan ke dashboard; ini hanya simulasi alur masuk, bukan autentikasi atau perlindungan akses. Dashboard demo tetap dapat dibuka langsung melalui URL publik. Jangan gunakan email/password ini untuk akun sungguhan atau data rahasia.
 - Jangan masukkan password proyek, token GitHub, credential hosting, atau data klien rahasia pada demo publik.
 - Backend PHP/MySQL telah disiapkan di folder backend/, termasuk halaman login server-side dengan session admin, tetapi belum dipasang ke hosting atau database. Setelah dipasang melalui `admin-gate.php`, autentikasi email/password akan benar-benar diperiksa oleh server.
 - Pada hosting nanti, dashboard harus dibuka melalui admin-gate.php pada subdomain admin terpisah. API memerlukan sesi admin, CSRF, dan pembatasan percobaan login.
