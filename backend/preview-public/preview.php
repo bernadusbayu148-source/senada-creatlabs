@@ -46,7 +46,8 @@ try {
     $hasAccess = is_array($access)
         && (int)($access['project_id'] ?? 0) === (int)$project['id']
         && (int)($access['expires_at'] ?? 0) > $now
-        && (int)($access['created_at'] ?? 0) + 28800 > $now;
+        && (int)($access['created_at'] ?? 0) + 28800 > $now
+        && hash_equals((string)($access['password_fingerprint'] ?? ''), hash('sha256', (string)$project['password_hash']));
 
     if (!$hasAccess && ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         $sentCsrf = (string)($_POST['_csrf'] ?? '');
@@ -73,7 +74,12 @@ try {
         session_regenerate_id(true);
         $_SESSION['_session_created'] = time();
         $_SESSION['_last_activity'] = time();
-        $_SESSION['preview_access'][$slug] = ['project_id'=>(int)$project['id'], 'created_at'=>time(), 'expires_at'=>time()+1800];
+        $_SESSION['preview_access'][$slug] = [
+            'project_id'=>(int)$project['id'],
+            'created_at'=>time(),
+            'expires_at'=>time()+1800,
+            'password_fingerprint'=>hash('sha256', (string)$project['password_hash'])
+        ];
         unset($_SESSION['_preview_csrf']);
         header('Location: /p/' . rawurlencode($slug) . '/', true, 303);
         exit;
