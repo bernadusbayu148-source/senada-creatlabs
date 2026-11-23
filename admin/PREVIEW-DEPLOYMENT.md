@@ -81,8 +81,8 @@ URL memakai prefix /p/{slug}/. Website sebaiknya menggunakan asset path relatif 
 3. Buat database MySQL baru untuk Senada dan import backend/database/schema.sql.
 4. Salin backend/config.example.php menjadi backend/config.php di luar document root. Isi DB, app_secret, storage path, dan preview_base_url. Jangan commit file config.php.
 5. Tempatkan backend/app di luar document root.
-6. Arahkan document root admin ke backend/admin-public; salin folder admin/ dashboard dan favicon.svg ke document root tersebut.
-7. Arahkan document root preview ke backend/preview-public.
+6. Jika host mengizinkan document root di luar public_html, arahkan subdomain admin langsung ke backend/admin-public. Jika tidak, salin isi folder tersebut ke document root admin dan aktifkan SetEnv SENADA_APP_BOOTSTRAP pada .htaccess dengan path absolut menuju app/bootstrap.php di luar web root. Salin folder admin/ dashboard dan favicon.svg ke document root admin.
+7. Arahkan document root preview ke backend/preview-public. Jika perlu menyalin folder publik ke public_html, aktifkan SetEnv SENADA_APP_BOOTSTRAP pada .htaccess preview dengan path absolut yang sama.
 8. Siapkan private storage di luar document root.
 9. Jalankan backend/scripts/create-admin.php melalui CLI untuk membuat owner.
 10. Konfigurasikan secrets dan variable GitHub Actions pada repository project.
