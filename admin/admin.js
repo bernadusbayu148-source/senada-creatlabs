@@ -232,7 +232,7 @@
     form.elements.type.value=conversation.type;
     form.elements.budget.value=conversation.budget;
     form.elements.deadline.value="";
-    var discussionNotes=(conversation.brief?conversation.brief+"\\n\\n":"")+"Riwayat diskusi:\\n"+conversation.messages.map(function(message){return (message.from==="admin"?"Senada":"Klien")+": "+message.text;}).join("\\n");
+    var discussionNotes=(conversation.brief?conversation.brief+"\n\n":"")+"Riwayat diskusi:\n"+conversation.messages.map(function(message){return (message.from==="admin"?"Senada":"Klien")+": "+message.text;}).join("\n");
     form.elements.notes.value=discussionNotes.slice(0,1500);
     document.getElementById("projectConvertClient").textContent="Klien: "+conversation.name+" · "+conversation.company+" · "+conversation.email;
     document.getElementById("projectConvertDialog").showModal();
