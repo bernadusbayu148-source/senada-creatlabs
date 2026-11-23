@@ -27,8 +27,8 @@ if ($password === '' && function_exists('stream_isatty') && stream_isatty(STDIN)
     }
 }
 putenv('SENADA_ADMIN_PASSWORD');
-if (strlen($password) < 14 || strlen($password) > 1024) {
-    fwrite(STDERR, "Password harus terdiri dari 14–1024 karakter. Jika terminal tidak mendukung input tersembunyi, set environment variable SENADA_ADMIN_PASSWORD sementara.\n");
+if (strlen($password) < 14 || strlen($password) > 72) {
+    fwrite(STDERR, "Password harus terdiri dari minimal 14 dan maksimal 72 byte. Jika terminal tidak mendukung input tersembunyi, set environment variable SENADA_ADMIN_PASSWORD sementara.\n");
     exit(1);
 }
 
