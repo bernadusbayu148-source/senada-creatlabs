@@ -21,12 +21,16 @@ https://bernadusbayu148-source.github.io/senada-creatlabs/admin/
 - Tema gelap dan terang.
 - Halaman WhatsApp untuk melihat rancangan Coexistence, arsitektur API/BSP, checklist aktivasi, dan contoh template pesan pembuka.
 - Checklist persiapan WhatsApp dapat dicentang dan tersimpan lokal di browser preview.
-- Halaman login demo Senada Desk tersedia di `admin/login.html`, dengan kredensial publik `demo@senada.id` / `SenadaDemo2026!` untuk mencoba navigasi masuk ke dashboard.
+- Halaman login Senada Desk tersedia di `admin/login.html`; tombol Masuk ke workspace langsung membuka dashboard demo tanpa validasi email/password.
+- Dari Detail Prospek di Inbox, diskusi dapat diubah menjadi proyek baru melalui tombol `Jadikan Proyek`.
+- Form konversi membawa nama klien, perusahaan, jenis layanan, budget, dan ringkasan diskusi ke proyek; target penyelesaian dapat ditambahkan.
+- Proyek disimpan terpisah dari daftar inquiry di localStorage dan dapat dipindahkan melalui tahap Persiapan, Pengerjaan, Review, dan Selesai.
 - Project Preview dengan konfigurasi repository, branch, slug, metode deployment, dan kolom password pada mode server.
 
 ## Status penyimpanan dan keamanan
 
-- URL GitHub Pages di atas tetap merupakan demo publik. Halaman `admin/login.html` memeriksa kredensial demo yang tertanam di source publik lalu mengarahkan ke dashboard; ini hanya simulasi alur masuk, bukan autentikasi atau perlindungan akses. Dashboard demo tetap dapat dibuka langsung melalui URL publik. Jangan gunakan email/password ini untuk akun sungguhan atau data rahasia.
+- URL GitHub Pages di atas tetap merupakan demo publik. Tombol di halaman `admin/login.html` langsung mengarahkan ke dashboard tanpa memeriksa email/password. Ini hanya pintu masuk visual, bukan autentikasi atau perlindungan akses; dashboard tetap dapat dibuka langsung melalui URL publik.
+- Inquiry, percakapan, dan proyek demo disimpan di localStorage browser. Perubahan tidak tersinkron ke server atau perangkat lain.
 - Jangan masukkan password proyek, token GitHub, credential hosting, atau data klien rahasia pada demo publik.
 - Backend PHP/MySQL telah disiapkan di folder backend/, termasuk halaman login server-side dengan session admin, tetapi belum dipasang ke hosting atau database. Setelah dipasang melalui `admin-gate.php`, autentikasi email/password akan benar-benar diperiksa oleh server.
 - Pada hosting nanti, dashboard harus dibuka melalui admin-gate.php pada subdomain admin terpisah. API memerlukan sesi admin, CSRF, dan pembatasan percobaan login.
