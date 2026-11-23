@@ -34,8 +34,24 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 - Belum ada file konfigurasi config.php berisi credential. config.example.php hanya contoh.
 - Integrasi deploy memerlukan workflow disalin ke repository proyek dan secret FTPS diatur pada repository tersebut.
 - Preview saat ini untuk website statis (HTML/CSS/JS atau hasil build frontend). Aplikasi PHP yang membutuhkan runtime/database sendiri perlu lingkungan deployment terpisah.
-- URL preview memakai prefix /p/{slug}/. Website sebaiknya menggunakan asset path relatif atau mengatur base path /p/{slug}/. Asset root-absolut seperti /assets perlu disesuaikan saat build.
+- URL preview memakai prefix /p/{slug}/. Website sebaiknya menggunakan asset path relatif atau mengatur base path /p/{slug}/. Asset root-absolut seperti /assets dan link root-absolut perlu disesuaikan saat build.
 - Dashboard Inbox, Kontak, Proyek dan balasannya masih prototype browser-local; backend ini belum mengubahnya menjadi CRM server-side.
+
+## Endpoint admin
+
+Semua endpoint berada di subdomain admin dan dilindungi sesi admin:
+
+- GET api.php?action=csrf — token CSRF untuk form login.
+- POST api.php?action=login — login email/password.
+- GET api.php?action=me — status sesi admin dan token CSRF.
+- POST api.php?action=logout — keluar.
+- GET api.php?action=projects — daftar project (tanpa mengirim hash password).
+- POST api.php?action=save-project — membuat/mengedit project dan menetapkan password.
+- POST api.php?action=disable-project — mencabut akses project.
+- POST api.php?action=deploy — memicu workflow_dispatch.
+- GET api.php?action=deployments&id=PROJECT_ID — riwayat permintaan deploy.
+
+Satu repository GitHub dipasangkan dengan satu slug preview dan satu direktori remote deployment. Jika satu repository perlu beberapa lingkungan, buat workflow dan secrets terpisah untuk masing-masing lingkungan.
 
 ## File utama
 
