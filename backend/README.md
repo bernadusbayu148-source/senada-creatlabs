@@ -64,6 +64,8 @@ Satu repository GitHub dipasangkan dengan satu slug preview dan satu direktori r
 - preview-public/preview.php — autentikasi pelanggan dan file delivery.
 - scripts/create-admin.php — pembuatan akun owner via CLI.
 - templates/senada-preview-deploy.yml — template GitHub Actions.
+- tests/smoke.php — pemeriksaan helper slug dan validasi repository.
+- CI GitHub Actions — memeriksa sintaks PHP/JavaScript dan menjalankan smoke test setiap push ke main.
 
 ## Persiapan nanti (belum dijalankan)
 
