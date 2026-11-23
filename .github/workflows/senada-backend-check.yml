@@ -34,6 +34,7 @@ jobs:
         run: |
           set -e
           node --check admin/admin.js
+          node --check admin/ai-assistant.js
           node --check admin/preview-projects.js
           node --check backend/admin-public/auth.js
           node --check preview-lab/app.js
