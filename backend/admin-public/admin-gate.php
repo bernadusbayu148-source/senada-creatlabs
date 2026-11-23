@@ -4,6 +4,20 @@ declare(strict_types=1);
 require dirname(__DIR__) . '/app/bootstrap.php';
 senada_start_session('senada_admin_session');
 
+$sessionAdmin = senada_current_admin();
+if ($sessionAdmin) {
+    try {
+        $check = senada_db()->prepare('SELECT is_active FROM admins WHERE id=:id LIMIT 1');
+        $check->execute([':id'=>(int)$sessionAdmin['id']]);
+        $active = $check->fetchColumn();
+        if ((int)$active !== 1) unset($_SESSION['admin']);
+    } catch (Throwable $error) {
+        http_response_code(503);
+        header('Content-Type: text/plain; charset=utf-8');
+        echo 'Backend admin belum siap. Periksa konfigurasi database.';
+        exit;
+    }
+}
 if (!senada_current_admin()) senada_login_page();
 
 $adminUi = __DIR__ . '/admin/index.html';
