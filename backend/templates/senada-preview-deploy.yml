@@ -6,7 +6,7 @@ on:
     inputs:
       preview_slug:
         description: Senada preview project slug
-        required: false
+        required: true
         type: string
 
 permissions:
@@ -21,6 +21,16 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.ref_name == vars.SENADA_PREVIEW_BRANCH
     runs-on: ubuntu-latest
     steps:
+      - name: Verify requested preview slug
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          REQUESTED_SLUG: ${{ inputs.preview_slug }}
+        run: |
+          if [ "$REQUESTED_SLUG" != "__SLUG__" ]; then
+            echo "This workflow is configured for a different preview slug."
+            exit 1
+          fi
+
       - name: Checkout selected branch
         uses: actions/checkout@v4
 
