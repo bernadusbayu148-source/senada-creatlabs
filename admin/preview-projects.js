@@ -57,7 +57,7 @@
     if(title)title.textContent="Backend admin terhubung";
     if(message)message.textContent="Konfigurasi project disimpan di MySQL. Password disimpan sebagai hash dan akses preview diperiksa oleh server pada subdomain preview yang terpisah.";
     if(state)state.textContent="SERVER";
-    if(warning)warning.textContent="Password minimal 12 karakter. Saat mengedit, biarkan kosong untuk mempertahankan password lama. Password tidak dapat dilihat kembali setelah disimpan.";
+    if(warning)warning.textContent="Password 12–72 byte. Saat mengedit, biarkan kosong untuk mempertahankan password lama. Password tidak dapat dilihat kembali setelah disimpan.";
     var captions=document.querySelectorAll(".preview-stat-card small");
     if(captions[0])captions[0].textContent="Tersimpan di database";
     if(captions[1])captions[1].textContent="File index.html tersedia di storage";
@@ -162,8 +162,9 @@
     if(!validRepository(repositoryUrl)){notify("Masukkan URL repository GitHub yang valid.");return;}
     if(!name||!branch||!slug){notify("Lengkapi nama, branch, dan slug preview.");return;}
     if(!autoDeploy&&!manualDeploy){notify("Pilih minimal satu metode deployment.");return;}
-    if(SERVER_MODE&&!editingId&&password.length<12){notify("Password project baru minimal 12 karakter.");return;}
-    if(SERVER_MODE&&password!==""&&password.length<12){notify("Password baru minimal 12 karakter.");return;}
+    var passwordBytes=new TextEncoder().encode(password).length;
+    if(SERVER_MODE&&!editingId&&(passwordBytes<12||passwordBytes>72)){notify("Password project baru harus 12–72 byte.");return;}
+    if(SERVER_MODE&&password!==""&&(passwordBytes<12||passwordBytes>72)){notify("Password baru harus 12–72 byte.");return;}
     var mode=autoDeploy&&manualDeploy?"both":autoDeploy?"auto":"manual";
     if(SERVER_MODE){
       try{
