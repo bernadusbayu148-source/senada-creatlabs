@@ -107,6 +107,7 @@ try {
     $candidate = $projectDir . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $segments);
     if ($relative === '') $candidate = $projectDir . DIRECTORY_SEPARATOR . 'index.html';
     $target = realpath($candidate);
+    if ($target !== false && is_dir($target)) $target = realpath($target . DIRECTORY_SEPARATOR . 'index.html');
     if ($target === false && ($relative === '' || !str_contains(basename($relative), '.'))) {
         $target = realpath($projectDir . DIRECTORY_SEPARATOR . 'index.html');
     }
