@@ -134,3 +134,12 @@ Berdasarkan pengujian tampilan desktop, sebagian produk sempat menunjukkan ilust
 - Foto adalah **referensi stok ilustratif**, bukan inventaris sungguhan. Warna pada foto tidak selalu identik dengan swatch varian yang dipilih. Hal ini dijelaskan dalam bahasa ID/EN pada demo.
 
 Foto dipanggil dari Unsplash; ketersediaan dan crop akhir bergantung pada jaringan dan sumber eksternal. Integrasi kodenya sudah diperiksa, tetapi browser publik belum diuji secara interaktif di lingkungan ini.
+
+
+## Admin Dashboard & Private Project Preview
+
+- Admin prototype: [`admin/`](admin/) — inbox, contacts, project pipeline, settings, and Project Preview.
+- Project Preview supports local prototype configuration for a GitHub repository, branch, category, slug, and manual/automatic deployment preferences.
+- Deployment controls are currently simulations; the dashboard stores prototype settings in browser `localStorage`.
+- **Private preview is not live yet.** The repository and GitHub Pages site are public, and the admin page does not yet have server-side login. Do not enter secrets or real confidential project URLs.
+- See [`admin/PREVIEW-DEPLOYMENT.md`](admin/PREVIEW-DEPLOYMENT.md) for the planned protected-hosting, authentication, and GitHub Actions architecture.
