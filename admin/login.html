@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Masuk · Senada Desk</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--violet:#5c43ed;--violet-dark:#392b9d;--ink:#27243a;--muted:#898596;--line:#e9e5ef;--paper:#f7f5f0}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
+    .login-shell{min-height:100vh;display:grid;grid-template-columns:minmax(340px,.95fr) minmax(420px,1.05fr);padding:18px}
+    .login-art{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100vh - 36px);padding:38px 42px;border-radius:25px;background:radial-gradient(circle at 78% 16%,#8d7bff 0,transparent 29%),linear-gradient(145deg,#5d47e8 0%,#4432b6 52%,#292064 100%);color:#fff}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:white}
+    .brand img{width:39px;height:39px;padding:7px;background:#fff;border-radius:13px}
+    .brand-word{font:700 19px "Space Grotesk",sans-serif;letter-spacing:-.06em}
+    .brand-word small{display:block;margin-top:1px;font:700 7px "DM Sans",sans-serif;letter-spacing:.23em;opacity:.72}
+    .art-copy{position:relative;z-index:2;max-width:480px;margin:45px 0}
+    .art-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid #ffffff3d;border-radius:99px;background:#ffffff12;color:#eeeaff;font:700 8px "Space Grotesk",sans-serif;letter-spacing:.14em}
+    .art-kicker i{width:6px;height:6px;border-radius:50%;background:#d8f48b;box-shadow:0 0 0 4px #d8f48b22}
+    .art-copy h1{margin:20px 0 13px;font:700 clamp(35px,4.2vw,57px)/1.06 "Space Grotesk",sans-serif;letter-spacing:-.065em}
+    .art-copy h1 span{color:#d8f48b}
+    .art-copy p{max-width:390px;margin:0;color:#e4e0ff;font-size:13px;line-height:1.8}
+    .art-orbit{position:absolute;width:330px;height:330px;right:-75px;bottom:13%;border:1px solid #ffffff30;border-radius:50%}
+    .art-orbit:before,.art-orbit:after{content:"";position:absolute;border:1px solid #ffffff26;border-radius:50%}
+    .art-orbit:before{inset:34px}.art-orbit:after{inset:72px}
+    .art-spark{position:absolute;right:17%;bottom:27%;font-size:62px;color:#d8f48b;transform:rotate(12deg);text-shadow:0 12px 30px #21185c70}
+    .art-foot{position:relative;z-index:2;display:flex;justify-content:space-between;gap:12px;color:#d5d0ff;font-size:9px}
+    .login-main{display:grid;place-items:center;padding:30px}
+    .login-card{width:min(420px,100%)}
+    .login-topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+    .login-topline span:first-child{font:700 9px "Space Grotesk",sans-serif;letter-spacing:.16em;color:#8d8799}
+    .preview-tag{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border:1px solid #efdfbd;border-radius:99px;background:#fff8e9;color:#9b762e;font:700 7px "Space Grotesk",sans-serif;letter-spacing:.08em}
+    .preview-tag i{width:6px;height:6px;border-radius:50%;background:#d99d39}
+    .login-mark{width:48px;height:48px;padding:9px;border-radius:15px;background:#5c43ed;box-shadow:0 10px 22px #5c43ed30}
+    .login-mark img{width:100%;height:100%;filter:brightness(0) invert(1)}
+    .login-eyebrow{margin:22px 0 8px;color:var(--violet);font:700 9px "Space Grotesk",sans-serif;letter-spacing:.16em}
+    .login-card h2{margin:0;font:700 31px "Space Grotesk",sans-serif;letter-spacing:-.055em}
+    .login-intro{margin:9px 0 26px;color:var(--muted);font-size:11px;line-height:1.7}
+    .field{display:block;margin:17px 0}
+    .field>span{display:block;margin-bottom:8px;font-size:10px;font-weight:700;color:#4d495b}
+    .field input{width:100%;height:48px;padding:0 14px;border:1px solid #e2deea;border-radius:11px;outline:none;background:#fff;color:var(--ink);font:500 12px "DM Sans",sans-serif;transition:border-color .15s,box-shadow .15s}
+    .field input:focus{border-color:#8a79f4;box-shadow:0 0 0 4px #5c43ed13}
+    .password-wrap{position:relative}
+    .password-wrap input{padding-right:76px}
+    .show-password{position:absolute;right:9px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#756e89;font:700 9px "DM Sans",sans-serif;cursor:pointer;padding:7px}
+    .login-submit{width:100%;height:48px;margin-top:9px;border:0;border-radius:11px;background:var(--violet);color:#fff;font:700 11px "DM Sans",sans-serif;cursor:pointer;box-shadow:0 9px 20px #5c43ed2a;transition:transform .15s,background .15s}
+    .login-submit:hover{background:#4b35d2;transform:translateY(-1px)}
+    .login-message{min-height:34px;margin:13px 0 0;padding:9px 10px;border:1px solid #f0e1c5;border-radius:9px;background:#fff9ed;color:#8b7549;font-size:9px;line-height:1.55}
+    .login-divider{display:flex;align-items:center;gap:12px;margin:22px 0 15px;color:#aaa5b2;font-size:8px}
+    .login-divider:before,.login-divider:after{content:"";height:1px;flex:1;background:#e9e5ef}
+    .demo-link{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;height:43px;border:1px solid #e2deea;border-radius:10px;color:#5c43ed;text-decoration:none;font-size:10px;font-weight:700;background:#fff;transition:.15s}
+    .demo-link:hover{border-color:#b8afff;background:#faf9ff}
+    .login-foot{margin-top:28px;color:#aaa5b2;text-align:center;font-size:8px;line-height:1.6}
+    @media(max-width:850px){.login-shell{grid-template-columns:1fr;padding:10px}.login-art{min-height:270px;padding:25px 27px;border-radius:20px}.art-copy{margin:35px 0 24px}.art-copy h1{font-size:35px;margin:13px 0 8px}.art-copy p{font-size:10px;max-width:430px}.art-orbit{width:210px;height:210px;right:-55px;bottom:-70px}.art-orbit:before{inset:22px}.art-orbit:after{inset:48px}.art-spark{right:17%;bottom:23%;font-size:42px}.art-foot{font-size:8px}.login-main{padding:38px 18px 28px}}
+    @media(max-width:480px){.login-art{min-height:240px;padding:21px}.brand img{width:34px;height:34px}.brand-word{font-size:17px}.art-copy{margin:26px 0 19px}.art-copy h1{font-size:31px}.art-copy p{max-width:300px}.art-spark{right:11%;bottom:22%;font-size:35px}.art-foot span:last-child{display:none}.login-main{padding:34px 12px}.login-card h2{font-size:27px}.login-topline{margin-bottom:22px}}
+  </style>
+</head>
+<body>
+  <div class="login-shell">
+    <aside class="login-art">
+      <a class="brand" href="../index.html" aria-label="Senada Creatlabs">
+        <img src="../favicon.svg" alt="">
+        <span class="brand-word">senada<span style="color:#d8f48b">.</span><small>CREATLABS</small></span>
+      </a>
+      <div class="art-copy">
+        <span class="art-kicker"><i></i> YOUR CREATIVE WORKSPACE</span>
+        <h1>Ide bagus.<br><span>Eksekusi lebih terarah.</span></h1>
+        <p>Satu ruang untuk mengelola percakapan, merapikan kebutuhan klien, dan membawa setiap ide menuju proyek yang nyata.</p>
+      </div>
+      <div class="art-orbit" aria-hidden="true"></div>
+      <div class="art-spark" aria-hidden="true">✳</div>
+      <div class="art-foot"><span>Made for ideas that move.</span><span>Senada Desk · Admin Workspace</span></div>
+    </aside>
+
+    <main class="login-main">
+      <section class="login-card">
+        <div class="login-topline"><span>ADMIN ACCESS</span><span class="preview-tag"><i></i> PREVIEW ONLY</span></div>
+        <div class="login-mark"><img src="../favicon.svg" alt=""></div>
+        <div class="login-eyebrow">SENADA CREATLABS</div>
+        <h2>Selamat datang kembali.</h2>
+        <p class="login-intro">Masuk ke Senada Desk untuk melanjutkan percakapan dan mengelola proyek klien.</p>
+
+        <form id="loginPreviewForm" autocomplete="on">
+          <label class="field"><span>Email admin</span><input name="email" type="email" placeholder="nama@senada.id" autocomplete="username" required maxlength="190"></label>
+          <label class="field"><span>Password</span><div class="password-wrap"><input id="loginPassword" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required maxlength="72"><button class="show-password" id="togglePassword" type="button">Lihat</button></div></label>
+          <button class="login-submit" type="submit">Masuk ke workspace <span aria-hidden="true">↗</span></button>
+          <p class="login-message" id="loginMessage" role="status">Ini preview tampilan login. Autentikasi server belum aktif pada GitHub Pages.</p>
+        </form>
+
+        <div class="login-divider">ATAU</div>
+        <a class="demo-link" href="./index.html">Lihat dashboard demo <span aria-hidden="true">→</span></a>
+        <p class="login-foot">Akses khusus tim Senada Creatlabs.<br>Jangan bagikan detail akun kepada siapa pun.</p>
+      </section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      var form=document.getElementById("loginPreviewForm");
+      var message=document.getElementById("loginMessage");
+      var password=document.getElementById("loginPassword");
+      var toggle=document.getElementById("togglePassword");
+      toggle.addEventListener("click",function(){
+        var visible=password.type==="text";
+        password.type=visible?"password":"text";
+        toggle.textContent=visible?"Lihat":"Sembunyikan";
+      });
+      form.addEventListener("submit",function(event){
+        event.preventDefault();
+        message.textContent="Belum ada autentikasi aktif di GitHub Pages. Form ini tidak mengirim atau menyimpan email maupun password. Login server-side akan berjalan setelah backend Senada dipasang.";
+      });
+    })();
+  </script>
+</body>
+</html>
