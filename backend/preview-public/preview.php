@@ -8,6 +8,9 @@ function preview_error_page(int $status, string $title, string $message): never 
     http_response_code($status);
     header('Content-Type: text/html; charset=utf-8');
     header('Cache-Control: no-store, private');
+    header('X-Frame-Options: DENY');
+    header('Referrer-Policy: no-referrer');
+    header('X-Content-Type-Options: nosniff');
     $t = htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $m = htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     echo '<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>' . $t . '</title><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:#f5f2ec;color:#242232;font:15px Arial,sans-serif}.card{width:min(430px,100%);padding:34px;background:#fff;border:1px solid #e8e2f0;border-radius:22px;box-shadow:0 18px 60px #26203312}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#5c43ed;color:white;font-weight:bold;font-size:22px}h1{font-size:24px;margin:20px 0 8px}p{color:#777382;line-height:1.6;font-size:13px}</style></head><body><main class="card"><div class="mark">S</div><h1>' . $t . '</h1><p>' . $m . '</p></main></body></html>';
@@ -19,6 +22,8 @@ function preview_login_form(string $slug, string $projectName, string $error = '
     header('Content-Type: text/html; charset=utf-8');
     header('Cache-Control: no-store, private');
     header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: DENY');
+    header('Referrer-Policy: no-referrer');
     $safeName = htmlspecialchars($projectName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $safeError = htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $csrf = htmlspecialchars(senada_csrf_token('_preview_csrf'), ENT_QUOTES, 'UTF-8');
