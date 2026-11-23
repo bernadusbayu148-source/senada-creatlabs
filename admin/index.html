@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="preview-projects.css">
+  <link rel="stylesheet" href="../preview-lab/agent-workbench.css">
+  <link rel="stylesheet" href="ai-workspace.css">
 </head>
 <body>
   <div class="app-shell">
@@ -43,6 +45,9 @@
         </button>
         <button class="nav-link" data-page="previews">
           <span class="nav-icon" aria-hidden="true">↗</span><span>Project Preview</span><span class="nav-count preview-nav-lock">PRIVATE</span>
+        </button>
+        <button class="nav-link" data-page="ai">
+          <span class="nav-icon" aria-hidden="true">✳</span><span>AI Workspace</span><span class="nav-count ai-owner-pill">OWNER</span>
         </button>
       </nav>
 
@@ -195,7 +200,7 @@
             <div id="chatContent" class="chat-content">
               <div class="chat-top">
                 <div class="chat-person"><div class="avatar avatar-large" id="chatAvatar">NP</div><div><strong id="chatName">Nadia Putri</strong><span id="chatMeta">Studio skincare · Business Website</span></div></div>
-                <div class="chat-actions"><button class="square-button" type="button" title="Cari dalam chat">⌕</button><button class="square-button" type="button" title="Opsi lainnya">•••</button></div>
+                <div class="chat-actions"><button class="ai-reply-trigger" id="aiReplyOpen" type="button" title="Minta bantuan AI untuk menyusun balasan"><span>✳</span><b>Bantu jawab</b></button><button class="square-button" type="button" title="Cari dalam chat">⌕</button><button class="square-button" type="button" title="Opsi lainnya">•••</button></div>
               </div>
               <div class="chat-project-strip"><span class="project-strip-icon">✦</span><div><strong id="chatProjectType">Business Website</strong><span id="chatProjectBudget">Budget: Rp5–8 juta</span></div><span class="lead-label" id="chatSource">FORM WEBSITE</span></div>
               <div class="message-thread" id="messageThread"></div>
@@ -280,6 +285,143 @@
         <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Project Preview prototype</div>
       </section>
 
+
+      <section class="page-view ai-workspace-view agent-screen" data-view="ai" id="viewAI">
+        <div class="agent-main">
+          <div class="agent-heading">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-star">✳</span> OWNER-ONLY AI WORKSPACE</div>
+              <h1 id="agent-title">Senada <em>AI Workspace.</em></h1>
+              <p>Satu ruang untuk meminta bantuan menangani pelanggan dan mengembangkan proyek website.</p>
+            </div>
+            <div class="agent-heading-status">
+              <span class="agent-mode-chip"><b>✳</b> AGENT MODE</span>
+              <span class="agent-no-api">API BELUM TERHUBUNG</span>
+            </div>
+          </div>
+
+          <div class="ai-workspace-tools">
+            <article class="ai-tool-card">
+              <span class="ai-tool-icon">✉</span>
+              <div><strong>Customer Reply Assistant</strong><p>Buka percakapan pelanggan, minta AI menjelaskan pertanyaannya, lalu pilih bagian jawaban yang ingin kamu kirim.</p></div>
+              <button class="secondary-button" type="button" data-page="inbox">Buka Inbox ↗</button>
+            </article>
+            <article class="ai-tool-card ai-tool-card-agent">
+              <span class="ai-tool-icon">⌘</span>
+              <div><strong>Agent Coding</strong><p>Berikan tugas pengembangan, tinjau rencana dan contoh perubahan kode, lalu tentukan apakah proposal dapat dilanjutkan.</p></div>
+              <span class="ai-owner-label">OWNER ONLY</span>
+            </article>
+          </div>
+
+          <div class="agent-subheading"><span>CODING AGENT</span><small>Perubahan kode tetap memerlukan review dan persetujuan pemilik.</small></div>
+          <div class="agent-layout">
+            <aside class="agent-panel agent-context-panel" aria-label="Konteks proyek">
+              <div class="agent-panel-heading"><span>PROJECT CONTEXT</span><small>DEMO DATA</small></div>
+              <label for="agent-project-select">Workspace project</label>
+              <select id="agent-project-select" class="agent-select">
+                <option value="senada">Senada Creatlabs website</option>
+                <option value="aure">Aure Studio — sample project</option>
+              </select>
+
+              <div class="agent-repo-card">
+                <div class="agent-repo-top"><span>GITHUB REPOSITORY</span><i></i></div>
+                <strong id="agent-repo-name">senada-creatlabs</strong>
+                <small id="agent-repo-owner">bernadusbayu148-source / public</small>
+                <div class="agent-repo-footer"><span>Preview context only</span><b>NOT CONNECTED</b></div>
+              </div>
+
+              <div class="agent-files-heading"><span>PROJECT FILES</span><small>SIMULATED TREE</small></div>
+              <div class="agent-file-list" role="list" aria-label="Contoh file proyek">
+                <button class="agent-file is-selected" type="button" data-agent-file="index.html"><span class="file-type file-html">H</span><span>index.html</span><small>HTML</small></button>
+                <button class="agent-file" type="button" data-agent-file="styles.css"><span class="file-type file-css">#</span><span>styles.css</span><small>CSS</small></button>
+                <button class="agent-file" type="button" data-agent-file="app.js"><span class="file-type file-js">JS</span><span>app.js</span><small>JS</small></button>
+                <button class="agent-file" type="button" data-agent-file="README.md"><span class="file-type file-md">M</span><span>README.md</span><small>MD</small></button>
+              </div>
+              <div class="agent-file-detail" id="agent-file-detail" aria-live="polite">
+                <span>SELECTED FILE</span>
+                <strong id="agent-selected-file">index.html</strong>
+                <p id="agent-file-description">Halaman utama dan struktur konten proyek. Informasi ini hanya contoh untuk memperlihatkan konteks Agent.</p>
+              </div>
+              <div class="agent-context-warning"><span>ⓘ</span><p>Daftar file di sini adalah data contoh. Agent belum membaca repository atau file sungguhan.</p></div>
+            </aside>
+
+            <section class="agent-panel agent-conversation" aria-label="Percakapan Agent">
+              <div class="agent-conversation-head">
+                <div class="agent-conversation-title"><span class="agent-avatar">✳</span><div><strong>Senada Coding Agent</strong><small>Owner assistant <i></i> Ready for a task</small></div></div>
+                <button class="agent-reset" id="agent-reset" type="button">↻ Tugas baru</button>
+              </div>
+
+              <div class="agent-messages" id="agent-messages" aria-live="polite" aria-relevant="additions">
+                <article class="agent-message agent-message-assistant">
+                  <span class="agent-message-avatar">✳</span>
+                  <div class="agent-message-body">
+                    <div class="agent-message-meta"><strong>Senada Agent</strong><time>Siap</time></div>
+                    <p>Halo! Saya Coding Agent Senada. Dalam alur yang direncanakan, saya akan memeriksa konteks proyek, menelusuri file terkait, menyusun rencana, menampilkan diff, lalu menunggu persetujuan kamu.</p>
+                    <div class="agent-message-note"><span>✳</span> Setiap perubahan harus melewati review dan persetujuan owner.</div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="agent-suggestions" id="agent-suggestions">
+                <span>COBA BERIKAN TUGAS</span>
+                <div>
+                  <button type="button" data-agent-prompt="Audit tampilan homepage pada perangkat mobile dan susun daftar perbaikannya.">Audit tampilan mobile</button>
+                  <button type="button" data-agent-prompt="Rapikan struktur CSS agar komponen website lebih konsisten.">Rapikan struktur CSS</button>
+                  <button type="button" data-agent-prompt="Periksa navigasi website dan usulkan perbaikan aksesibilitas.">Periksa navigasi</button>
+                </div>
+              </div>
+
+              <form class="agent-prompt-form" id="agent-prompt-form">
+                <label class="agent-sr-only" for="agent-prompt">Instruksi untuk Agent</label>
+                <textarea id="agent-prompt" rows="2" placeholder="Jelaskan apa yang ingin dikerjakan Agent..." maxlength="1200" required></textarea>
+                <div class="agent-composer-footer">
+                  <span><i></i> DEMO MODE · Tidak mengirim instruksi ke API</span>
+                  <button class="button button-dark" type="submit" id="agent-run-button">Jalankan Agent <span>↗</span></button>
+                </div>
+              </form>
+            </section>
+
+            <aside class="agent-panel agent-run-panel" aria-label="Proses Agent dan review perubahan">
+              <div class="agent-panel-heading"><span>AGENT RUN</span><small id="agent-run-status">READY</small></div>
+              <div class="agent-run-summary">
+                <div class="agent-run-icon">⌘</div>
+                <div><strong id="agent-run-title">Belum ada tugas aktif</strong><p id="agent-run-description">Kirim instruksi untuk melihat alur kerja Agent dalam simulasi.</p></div>
+              </div>
+              <div class="agent-progress-track"><i id="agent-progress-bar"></i></div>
+              <ol class="agent-steps" id="agent-steps">
+                <li class="is-complete"><span>1</span><div><strong>Memahami instruksi</strong><small>Tujuan dan ruang lingkup tugas</small></div></li>
+                <li class="is-pending"><span>2</span><div><strong>Memeriksa file</strong><small>Mengidentifikasi file terkait</small></div></li>
+                <li class="is-pending"><span>3</span><div><strong>Menyusun rencana</strong><small>Urutan tindakan yang aman</small></div></li>
+                <li class="is-pending"><span>4</span><div><strong>Menyiapkan diff</strong><small>Perubahan untuk ditinjau</small></div></li>
+                <li class="is-pending"><span>5</span><div><strong>Menunggu persetujuan</strong><small>Owner memutuskan langkah berikutnya</small></div></li>
+              </ol>
+              <div class="agent-review-empty" id="agent-review-empty">
+                <span class="agent-review-empty-icon">⌁</span>
+                <strong>Change review</strong>
+                <p>Usulan perubahan dan perbandingan kode akan muncul di sini setelah simulasi Agent dijalankan.</p>
+              </div>
+              <div class="agent-review-card" id="agent-review-card" hidden>
+                <div class="agent-review-top"><span>CHANGE PROPOSAL</span><b>DEMO DIFF</b></div>
+                <strong id="agent-proposal-title">Responsive refinement</strong>
+                <p class="agent-proposal-path">admin/ai-workspace.css <span>·</span> contoh perubahan</p>
+                <pre class="agent-diff"><code><span class="diff-context">.hero-copy {</span>
+<span class="diff-remove">-  max-width: 32rem;</span>
+<span class="diff-add">+  max-width: min(100%, 32rem);</span>
+<span class="diff-context">}</span></code></pre>
+                <p class="agent-diff-caption">Contoh diff visual. Bukan patch dari file repository.</p>
+                <div class="agent-approval-status" id="agent-approval-status">Menunggu keputusan owner.</div>
+                <div class="agent-review-actions">
+                  <button class="button button-dark" type="button" id="agent-approve">Setujui contoh</button>
+                  <button class="button button-outline" type="button" id="agent-revise">Minta revisi</button>
+                </div>
+              </div>
+              <div class="agent-guardrail"><span>⌑</span><p>Persetujuan di sini hanya simulasi. Tidak ada commit, pull request, merge, atau deployment.</p></div>
+            </aside>
+          </div>
+          <div class="agent-bottom-note"><span><i></i> OWNER-ONLY WORKSPACE</span><span>Senada AI Workspace <b>✳</b> Prototype / Stage 1</span></div>
+        </div>
+      </section>
+
       <div class="preview-modal" id="previewModal" hidden>
         <div class="preview-modal-backdrop" data-preview-close></div>
         <section class="preview-modal-card" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
@@ -317,11 +459,74 @@
         </div>
         <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
       </section>
+
+      <div class="ai-assist-modal" id="aiReplyModal" hidden>
+        <button class="ai-assist-backdrop" type="button" data-ai-close aria-label="Tutup bantuan AI"></button>
+        <section class="ai-assist-dialog" role="dialog" aria-modal="true" aria-labelledby="aiAssistTitle" tabindex="-1">
+          <header class="ai-assist-head">
+            <div>
+              <span class="ai-assist-kicker">SENADA AI · CUSTOMER REPLY ASSISTANT</span>
+              <h2 id="aiAssistTitle">Bantu jawab pelanggan</h2>
+              <p id="aiCustomerMeta">Pilih percakapan untuk memulai.</p>
+            </div>
+            <button class="ai-assist-close" type="button" data-ai-close aria-label="Tutup">×</button>
+          </header>
+          <div class="ai-assist-body">
+            <section class="ai-assist-inputs">
+              <div class="ai-assist-field">
+                <label for="aiCustomerQuestion">Pertanyaan / pesan pelanggan</label>
+                <textarea id="aiCustomerQuestion" rows="5" placeholder="Tempel pesan pelanggan di sini..."></textarea>
+              </div>
+              <div class="ai-assist-field">
+                <label for="aiExtraContext">Konteks tambahan dari kamu <span>opsional</span></label>
+                <textarea id="aiExtraContext" rows="3" placeholder="Contoh: website menggunakan WordPress, domain baru saja dipindahkan..."></textarea>
+              </div>
+              <div class="ai-assist-safety-note"><span>ⓘ</span><p>AI membantu kamu memahami pesan dan menyiapkan draft. Catatan internal tidak akan masuk ke balasan. Kamu tetap memeriksa dan mengirim pesan sendiri.</p></div>
+              <button class="primary-button ai-analyze-button" type="button" id="aiAnalyzeButton"><span>✳</span> Analisis & susun jawaban</button>
+              <p class="ai-demo-note">DEMO MODE · AI API belum terhubung. Hasil saat ini merupakan simulasi lokal.</p>
+            </section>
+
+            <section class="ai-assist-output">
+              <div class="ai-assist-empty" id="aiAssistEmpty">
+                <span>✳</span><strong>Ruang bantuan AI</strong>
+                <p>Masukkan pertanyaan pelanggan, lalu jalankan analisis untuk melihat penjelasan internal dan pilihan draft balasan.</p>
+              </div>
+              <div class="ai-assist-results" id="aiAssistResults" hidden aria-live="polite">
+                <div class="ai-internal-card">
+                  <div class="ai-card-kicker"><span>CATATAN INTERNAL</span><b>TIDAK DIKIRIM</b></div>
+                  <div class="ai-analysis-block"><strong>Inti pertanyaan pelanggan</strong><p id="aiIntent"></p></div>
+                  <div class="ai-analysis-block"><strong>Penjelasan teknis untuk kamu</strong><p id="aiExplanation"></p></div>
+                  <div class="ai-analysis-block"><strong>Hal yang perlu diverifikasi</strong><p id="aiVerify"></p></div>
+                </div>
+
+                <div class="ai-draft-card">
+                  <div class="ai-draft-title"><span>JAWABAN UNTUK PELANGGAN</span><strong>Pilih bagian yang ingin kamu kirim</strong></div>
+                  <div class="ai-reply-parts">
+                    <label class="ai-reply-part"><input type="checkbox" data-ai-part="greeting" checked><span><strong>Salam & konteks</strong><small id="aiPartGreeting"></small></span></label>
+                    <label class="ai-reply-part"><input type="checkbox" data-ai-part="explanation" checked><span><strong>Penjelasan singkat</strong><small id="aiPartExplanation"></small></span></label>
+                    <label class="ai-reply-part"><input type="checkbox" data-ai-part="nextStep" checked><span><strong>Langkah berikutnya</strong><small id="aiPartNextStep"></small></span></label>
+                    <label class="ai-reply-part"><input type="checkbox" data-ai-part="question" checked><span><strong>Pertanyaan klarifikasi</strong><small id="aiPartQuestion"></small></span></label>
+                  </div>
+                  <label class="ai-draft-label" for="aiReplyDraft">Draft balasan · bisa kamu edit</label>
+                  <textarea id="aiReplyDraft" rows="6" placeholder="Draft balasan akan muncul di sini..."></textarea>
+                  <div class="ai-draft-actions">
+                    <button class="secondary-button" type="button" id="aiCopyDraft">Salin draft</button>
+                    <button class="primary-button" type="button" id="aiUseDraft">Masukkan ke kolom balasan <span>↗</span></button>
+                  </div>
+                  <p class="ai-draft-footnote">Draft tidak dikirim otomatis. Setelah dimasukkan ke kolom Inbox, kamu masih bisa mengeditnya sebelum mengirim.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
     </main>
   </div>
   <div class="mobile-scrim" id="mobileScrim"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="admin.js"></script>
   <script src="preview-projects.js"></script>
+  <script src="ai-assistant.js"></script>
+  <script src="../preview-lab/agent-workbench.js"></script>
 </body>
 </html>
