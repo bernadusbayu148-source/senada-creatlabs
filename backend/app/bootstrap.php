@@ -171,7 +171,7 @@ function senada_login_page(string $message = ''): never {
     .login-shell{min-height:100vh;display:grid;grid-template-columns:minmax(340px,.95fr) minmax(420px,1.05fr);padding:18px}
     .login-art{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100vh - 36px);padding:38px 42px;border-radius:25px;background:radial-gradient(circle at 78% 16%,#8d7bff 0,transparent 29%),linear-gradient(145deg,#5d47e8 0%,#4432b6 52%,#292064 100%);color:#fff}
     .brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none}
-    .brand-mark{width:39px;height:39px;padding:7px;background:#fff;border-radius:13px}
+    .brand-mark{display:grid;place-items:center;width:39px;height:39px;padding:0;background:#fff;color:#5c43ed;border-radius:13px;font:700 18px "Space Grotesk",sans-serif}
     .brand-word{font:700 19px "Space Grotesk",sans-serif;letter-spacing:-.06em}
     .brand-word small{display:block;margin-top:1px;font:700 7px "DM Sans",sans-serif;letter-spacing:.23em;opacity:.72}
     .art-copy{position:relative;z-index:2;max-width:480px;margin:45px 0}
@@ -191,8 +191,8 @@ function senada_login_page(string $message = ''): never {
     .login-topline span{font:700 9px "Space Grotesk",sans-serif;letter-spacing:.16em;color:#8d8799}
     .secure-tag{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border:1px solid #dce9c5;border-radius:99px;background:#f4f9e9;color:#617a30;font:700 7px "Space Grotesk",sans-serif;letter-spacing:.08em}
     .secure-tag i{width:6px;height:6px;border-radius:50%;background:#8aa64d}
-    .login-mark{width:48px;height:48px;padding:9px;border-radius:15px;background:#5c43ed;box-shadow:0 10px 22px #5c43ed30}
-    .login-mark img{width:100%;height:100%;filter:brightness(0) invert(1)}
+    .login-mark{display:grid;place-items:center;width:48px;height:48px;padding:9px;border-radius:15px;background:#5c43ed;box-shadow:0 10px 22px #5c43ed30}
+    .login-mark-letter{color:#fff;font:700 22px "Space Grotesk",sans-serif}
     .login-eyebrow{margin:22px 0 8px;color:var(--violet);font:700 9px "Space Grotesk",sans-serif;letter-spacing:.16em}
     h1{margin:0;font:700 31px "Space Grotesk",sans-serif;letter-spacing:-.055em}
     .login-intro{margin:9px 0 26px;color:var(--muted);font-size:11px;line-height:1.7}
@@ -215,7 +215,7 @@ function senada_login_page(string $message = ''): never {
   <div class="login-shell">
     <aside class="login-art">
       <a class="brand" href="/" aria-label="Senada Creatlabs">
-        <img class="brand-mark" src="/favicon.svg" alt="">
+        <span class="brand-mark" aria-hidden="true">S</span>
         <span class="brand-word">senada<span style="color:#d8f48b">.</span><small>CREATLABS</small></span>
       </a>
       <div class="art-copy">
@@ -230,7 +230,7 @@ function senada_login_page(string $message = ''): never {
     <main class="login-main">
       <section class="login-card">
         <div class="login-topline"><span>ADMIN ACCESS</span><span class="secure-tag"><i></i> SECURE SESSION</span></div>
-        <div class="login-mark"><img src="/favicon.svg" alt=""></div>
+        <div class="login-mark"><span class="login-mark-letter" aria-hidden="true">S</span></div>
         <div class="login-eyebrow">SENADA CREATLABS</div>
         <h1>Selamat datang kembali.</h1>
         <p class="login-intro">Masuk ke Senada Desk untuk melanjutkan percakapan dan mengelola proyek klien.</p>
