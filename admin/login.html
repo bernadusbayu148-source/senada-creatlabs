@@ -92,20 +92,13 @@
         <h2>Selamat datang kembali.</h2>
         <p class="login-intro">Masuk ke Senada Desk untuk melanjutkan percakapan dan mengelola proyek klien.</p>
 
-        <form id="loginPreviewForm" autocomplete="on">
-          <label class="field"><span>Email admin</span><input name="email" type="email" value="demo@senada.id" placeholder="demo@senada.id" autocomplete="username" required maxlength="190"></label>
-          <label class="field"><span>Password</span><div class="password-wrap"><input id="loginPassword" name="password" type="password" value="SenadaDemo2026!" placeholder="Masukkan password" autocomplete="current-password" required maxlength="72"><button class="show-password" id="togglePassword" type="button">Lihat</button></div></label>
+        <form id="loginPreviewForm" autocomplete="on" novalidate>
+          <label class="field"><span>Email admin</span><input name="email" type="email" value="demo@senada.id" placeholder="demo@senada.id" autocomplete="username" maxlength="190"></label>
+          <label class="field"><span>Password</span><div class="password-wrap"><input id="loginPassword" name="password" type="password" value="SenadaDemo2026!" placeholder="Masukkan password" autocomplete="current-password" maxlength="72"><button class="show-password" id="togglePassword" type="button">Lihat</button></div></label>
           <button class="login-submit" type="submit">Masuk ke workspace <span aria-hidden="true">↗</span></button>
-          <p class="login-message" id="loginMessage" role="status">Akun demo sudah diisikan. Tekan “Masuk ke workspace” untuk membuka dashboard.</p>
-          <div class="demo-credentials" aria-label="Kredensial akun demo">
-            <div class="demo-credential-row"><span>Email demo</span><code>demo@senada.id</code></div>
-            <div class="demo-credential-row"><span>Password demo</span><code>SenadaDemo2026!</code></div>
-            <p>Akun ini hanya untuk preview publik. Kredensial terlihat oleh siapa pun yang membuka halaman ini dan bukan akun admin yang aman.</p>
-          </div>
+          <p class="login-message" id="loginMessage" role="status">Klik tombol di bawah untuk langsung membuka workspace Senada Desk.</p>
         </form>
 
-        <div class="login-divider">ATAU</div>
-        <a class="demo-link" href="./index.html">Lihat dashboard demo <span aria-hidden="true">→</span></a>
         <p class="login-foot">Akses khusus tim Senada Creatlabs.<br>Jangan bagikan detail akun kepada siapa pun.</p>
       </section>
     </main>
@@ -123,19 +116,9 @@
       });
       form.addEventListener("submit",function(event){
         event.preventDefault();
-        var email=form.elements.email.value.trim().toLowerCase();
-        var enteredPassword=password.value;
-        var demoEmail="demo@senada.id";
-        var demoPassword="SenadaDemo2026!";
-        if(email!==demoEmail || enteredPassword!==demoPassword){
-          message.textContent="Email atau password demo tidak sesuai. Periksa kembali kredensial yang tertera.";
-          message.classList.add("is-error");
-          return;
-        }
         message.classList.remove("is-error");
-        message.textContent="Login demo berhasil. Membuka Senada Desk...";
-        try{sessionStorage.setItem("senada_demo_login","1");}catch(storageError){}
-        window.location.assign("./index.html?demo=1");
+        message.textContent="Membuka Senada Desk...";
+        window.location.assign("./index.html");
       });
     })();
   </script>
