@@ -383,3 +383,28 @@
 @media(prefers-reduced-motion:reduce){
   #packages .packages.service-price-grid{scroll-behavior:auto}
 }
+
+/* Dark-mode contrast fix for the highlighted priority service card.
+   --ink becomes a light color in dark mode, so these controls use a fixed
+   deep ink surface to keep white labels readable on the lime card. */
+:root[data-theme="dark"] body[data-page="senada"] #packages .service-price-card.is-priority .service-priority{
+  background:#171725;
+  color:#ffffff;
+  border-color:#171725;
+}
+:root[data-theme="dark"] body[data-page="senada"] #packages .service-price-card.is-priority .btn{
+  background:#171725;
+  color:#ffffff;
+  border:2px solid #171725;
+  text-shadow:none;
+}
+:root[data-theme="dark"] body[data-page="senada"] #packages .service-price-card.is-priority .btn:hover{
+  background:#29263b;
+  color:#ffffff;
+  border-color:#171725;
+  box-shadow:4px 4px 0 #090914;
+}
+:root[data-theme="dark"] body[data-page="senada"] #packages .service-price-card.is-priority .btn:focus-visible{
+  outline:3px solid #ff776c;
+  outline-offset:3px;
+}
