@@ -190,6 +190,8 @@
       column.items.push(project);
     });
     var board=document.getElementById("projectsBoard");
+    var projectCount=document.getElementById("projectCount");
+    if(projectCount)projectCount.textContent=projects.length+" proyek";
     board.innerHTML=columns.map(function(column){
       var cards=column.items.map(function(project){
         var deadline=project.deadline?new Date(project.deadline+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"}):"Belum ditentukan";
@@ -197,7 +199,9 @@
           '<div class="project-card-top"><span class="project-type">'+esc(String(project.type||"Website").toUpperCase())+'</span><span class="project-created">'+esc(project.createdAt||"Baru dibuat")+'</span></div>'+
           '<h3>'+esc(project.title)+'</h3>'+
           '<p class="project-client">'+esc(project.clientName)+' · '+esc(project.company)+'</p>'+
+          '<p class="project-summary">'+esc(project.notes||"Belum ada ringkasan diskusi.")+'</p>'+
           '<div class="project-card-meta"><span>'+esc(project.budget||"Budget belum ditentukan")+'</span><span>Target: '+esc(deadline)+'</span></div>'+
+          '<button class="project-discussion-link" type="button" data-project-conversation="'+project.conversationId+'">Lihat diskusi asal <span>↗</span></button>'+
           '<div class="project-card-foot"><span>Asal: '+esc(project.sourceLabel||"Inbox")+'</span><span class="project-owner">'+esc(initials(project.clientName))+'</span></div>'+
           '<label class="project-stage-control"><span>Pindahkan tahap</span><select data-project-stage="'+project.id+'" aria-label="Ubah tahap proyek '+esc(project.title)+'">'+
             columns.map(function(stage){return '<option value="'+stage.status+'" '+(project.status===stage.status?"selected":"")+'>'+stage.title+'</option>';}).join("")+
@@ -242,6 +246,13 @@
     if(recentButton){selectedId=Number(recentButton.getAttribute("data-open-id"));var selected=getSelected();if(selected)selected.unread=false;saveData();switchPage("inbox");return;}
     var contactButton=event.target.closest("[data-contact-id]");
     if(contactButton){selectedId=Number(contactButton.getAttribute("data-contact-id"));var chosen=getSelected();if(chosen)chosen.unread=false;saveData();switchPage("inbox");return;}
+    var projectConversationButton=event.target.closest("[data-project-conversation]");
+    if(projectConversationButton){
+      selectedId=Number(projectConversationButton.getAttribute("data-project-conversation"));
+      var sourceConversation=getSelected();
+      if(sourceConversation){sourceConversation.unread=false;saveData();switchPage("inbox");renderInbox();}
+      return;
+    }
     var filter=event.target.closest("[data-filter]");
     if(filter){activeFilter=filter.getAttribute("data-filter");document.querySelectorAll(".filter-tab").forEach(function(x){x.classList.toggle("is-active",x===filter);});renderConversationList();}
   });
@@ -314,7 +325,7 @@
   });
   document.getElementById("resetDemo").addEventListener("click",function(){
     if(!window.confirm("Kembalikan semua percakapan ke data contoh awal?"))return;
-    conversations=JSON.parse(JSON.stringify(initial));projects=[];selectedId=conversations[0].id;saveData();saveProjects();renderOverview();renderInbox();renderContacts();renderProjects();showToast("Data preview berhasil direset.");
+    conversations=JSON.parse(JSON.stringify(initial));projects=[];selectedProjectId=null;selectedId=conversations[0].id;saveData();saveProjects();renderOverview();renderInbox();renderContacts();renderProjects();showToast("Data preview berhasil direset.");
   });
   document.getElementById("themeToggle").addEventListener("click",function(){document.body.classList.toggle("dark");try{localStorage.setItem("senada-admin-theme",document.body.classList.contains("dark")?"dark":"light");}catch(e){}});
   try{if(localStorage.getItem("senada-admin-theme")==="dark")document.body.classList.add("dark");}catch(e){}
