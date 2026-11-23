@@ -17,7 +17,6 @@ return [
     'app_secret' => 'GANTI_DENGAN_SECRET_ACAK_MINIMAL_64_HEX',
     'preview_storage_path' => '/home/CPANEL_USER/senada-previews',
     'preview_base_url' => 'https://preview.example.com',
-    'admin_ui_path' => '/home/CPANEL_USER/admin-site/admin/index.html',
     // Fine-grained GitHub token. Kosongkan sampai integrasi GitHub siap.
     'github_token' => '',
     'github_api_version' => '2022-11-28',
