@@ -143,3 +143,8 @@ Foto dipanggil dari Unsplash; ketersediaan dan crop akhir bergantung pada jaring
 - Deployment controls are currently simulations; the dashboard stores prototype settings in browser `localStorage`.
 - **Private preview is not live yet.** The repository and GitHub Pages site are public, and the admin page does not yet have server-side login. Do not enter secrets or real confidential project URLs.
 - See [`admin/PREVIEW-DEPLOYMENT.md`](admin/PREVIEW-DEPLOYMENT.md) for the planned protected-hosting, authentication, and GitHub Actions architecture.
+
+
+## Private Project Preview backend
+
+Folder backend/ sekarang berisi fondasi PHP/MySQL untuk login admin, password per project, akses preview statis, dan template GitHub Actions manual/otomatis. Implementasi masih berada di tahap persiapan repository; belum ada koneksi hosting, database, domain, atau credential. Lihat backend/README.md dan admin/PREVIEW-DEPLOYMENT.md sebelum deployment.
