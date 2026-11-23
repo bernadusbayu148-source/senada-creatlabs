@@ -51,7 +51,7 @@
 
   function getAnalysis(question,extraContext){
     var q=question.toLowerCase();
-    var firstName=((document.getElementById("chatName")||{}).textContent||"Kak").trim().split(/\\s+/)[0];
+    var firstName=((document.getElementById("chatName")||{}).textContent||"Kak").trim().split(/\s+/)[0];
     var parts={
       greeting:"Halo Kak "+firstName+", terima kasih sudah menghubungi Senada.",
       explanation:"",
@@ -111,7 +111,7 @@
 
   function buildDraft(){
     var selected=Array.prototype.slice.call(modal.querySelectorAll("[data-ai-part]:checked"));
-    draftField.value=selected.map(function(input){return generatedParts[input.getAttribute("data-ai-part")]||"";}).filter(Boolean).join("\\n\\n");
+    draftField.value=selected.map(function(input){return generatedParts[input.getAttribute("data-ai-part")]||"";}).filter(Boolean).join("\n\n");
   }
 
   function analyze(){
