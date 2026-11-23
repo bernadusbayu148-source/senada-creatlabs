@@ -1,7 +1,14 @@
 <?php
 declare(strict_types=1);
 
-require dirname(__DIR__) . '/app/bootstrap.php';
+$bootstrapPath = getenv('SENADA_APP_BOOTSTRAP') ?: dirname(__DIR__) . '/app/bootstrap.php';
+if (!is_file($bootstrapPath)) {
+    http_response_code(503);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'Private Senada bootstrap path is not configured.';
+    exit;
+}
+require $bootstrapPath;
 senada_start_session('senada_admin_session');
 
 try {
