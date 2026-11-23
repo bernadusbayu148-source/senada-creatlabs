@@ -75,6 +75,7 @@ function senada_json(array $payload, int $status = 200): never {
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: no-store, private');
+    header('X-Content-Type-Options: nosniff');
     echo json_encode($payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -146,6 +147,9 @@ function senada_login_page(string $message = ''): never {
     http_response_code(200);
     header('Content-Type: text/html; charset=utf-8');
     header('Cache-Control: no-store, private');
+    header('X-Frame-Options: DENY');
+    header('Referrer-Policy: no-referrer');
+    header('X-Content-Type-Options: nosniff');
     $safe = htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     echo '<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Login · Senada Desk</title><style>
     *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:#f5f2ec;color:#242232;font:15px Arial,sans-serif}.card{width:min(420px,100%);padding:34px;background:#fff;border:1px solid #e8e2f0;border-radius:22px;box-shadow:0 18px 60px #26203312}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#5c43ed;color:white;font-weight:bold;font-size:22px}.eyebrow{margin:20px 0 8px;color:#7665c8;font-size:10px;font-weight:bold;letter-spacing:.16em}h1{margin:0 0 8px;font-size:27px;letter-spacing:-.04em}p{color:#777382;font-size:13px;line-height:1.6}label{display:block;margin-top:16px;font-size:12px;font-weight:bold}input{display:block;width:100%;height:46px;margin-top:7px;padding:0 12px;border:1px solid #ded9e8;border-radius:10px;font:inherit}button{width:100%;height:47px;margin-top:22px;border:0;border-radius:11px;background:#5c43ed;color:white;font-weight:bold;cursor:pointer}.error{min-height:18px;margin-top:12px;color:#b44d43;font-size:12px}.foot{margin-top:20px;font-size:11px;color:#a19cab;text-align:center}
