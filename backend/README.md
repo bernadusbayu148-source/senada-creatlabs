@@ -8,7 +8,7 @@ Gunakan dua subdomain terpisah:
 
 - Admin — document root diarahkan ke backend/admin-public/.
 - Preview — document root diarahkan ke backend/preview-public/.
-- Aplikasi PHP dan konfigurasi — berada di backend/app/ dan backend/config.php, di luar document root.
+- Aplikasi PHP dan konfigurasi — berada di backend/app/ dan backend/config.php, di luar public_html dan seluruh document root.
 - Hasil website preview — berada di direktori preview_storage_path, di luar document root dan tidak dapat diakses sebagai file statis.
 
 Pemisahan host admin dan preview penting: kode JavaScript milik website pelanggan tidak boleh berjalan pada origin yang sama dengan API admin.
@@ -69,9 +69,9 @@ Satu repository GitHub dipasangkan dengan satu slug preview dan satu direktori r
 
 1. Siapkan subdomain admin dan preview, keduanya memakai HTTPS.
 2. Buat database MySQL khusus Senada, lalu import database/schema.sql.
-3. Letakkan backend/app/ dan backend/config.php di luar document root.
-4. Arahkan document root subdomain admin ke backend/admin-public/; salin folder admin/ dashboard ke dalam folder tersebut dan salin favicon.svg ke root document root admin.
-5. Arahkan document root subdomain preview ke backend/preview-public/.
+3. Letakkan backend/app/ dan backend/config.php di luar public_html serta seluruh document root.
+4. Jika hosting mengizinkan document root di luar public_html, arahkan subdomain admin langsung ke backend/admin-public/. Jika document root wajib berada di public_html, salin isi backend/admin-public/ ke folder subdomain admin dan aktifkan SetEnv SENADA_APP_BOOTSTRAP dengan path absolut ke app/bootstrap.php pada .htaccess.
+5. Arahkan document root subdomain preview ke backend/preview-public/. Jika harus menyalin ke public_html, aktifkan SetEnv SENADA_APP_BOOTSTRAP di .htaccess preview dengan path absolut yang sama.
 6. Buat folder hasil deploy di luar kedua document root, lalu isi preview_storage_path.
 7. Salin config.example.php menjadi config.php, isi credential database, app secret, storage path, dan URL preview. Batasi permission file konfigurasi.
 8. Setelah schema sudah di-import, jalankan php backend/scripts/create-admin.php email-admin@domain.com dari terminal hosting.
