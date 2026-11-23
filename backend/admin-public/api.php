@@ -19,7 +19,7 @@ try {
         $body = senada_json_body();
         $email = strtolower(trim((string)($body['email'] ?? '')));
         $password = (string)($body['password'] ?? '');
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $password === '' || strlen($password) > 4096) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $password === '' || strlen($password) > 72) {
             senada_json(['ok'=>false, 'error'=>'Email atau password tidak valid.'], 422);
         }
         $emailHash = hash_hmac('sha256', $email, (string)senada_config()['app_secret']);
@@ -116,8 +116,8 @@ try {
             if ((string)$existing['slug'] !== $slug) senada_json(['ok'=>false, 'error'=>'Slug tidak dapat diubah setelah project dibuat.'], 422);
         }
         if (!$existing && strlen($newPassword) < 12) senada_json(['ok'=>false, 'error'=>'Password project baru minimal 12 karakter.'], 422);
-        if ($newPassword !== '' && (strlen($newPassword) < 12 || strlen($newPassword) > 1024)) {
-            senada_json(['ok'=>false, 'error'=>'Password harus terdiri dari 12–1024 karakter.'], 422);
+        if ($newPassword !== '' && (strlen($newPassword) < 12 || strlen($newPassword) > 72)) {
+            senada_json(['ok'=>false, 'error'=>'Password harus terdiri dari minimal 12 dan maksimal 72 byte.'], 422);
         }
 
         $passwordHash = $newPassword !== '' ? password_hash($newPassword, PASSWORD_DEFAULT) : null;
