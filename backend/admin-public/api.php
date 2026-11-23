@@ -198,6 +198,12 @@ try {
     }
 
     senada_json(['ok'=>false, 'error'=>'Endpoint tidak ditemukan.'], 404);
+} catch (PDOException $error) {
+    if ((string)$error->getCode() === '23000') {
+        senada_json(['ok'=>false, 'error'=>'Slug preview sudah digunakan. Pilih slug lain.'], 409);
+    }
+    error_log('[Senada API] ' . $error->getMessage());
+    senada_json(['ok'=>false, 'error'=>'Terjadi kesalahan pada database. Periksa konfigurasi backend atau log hosting.'], 500);
 } catch (Throwable $error) {
     error_log('[Senada API] ' . $error->getMessage());
     senada_json(['ok'=>false, 'error'=>'Terjadi kesalahan pada server. Periksa konfigurasi backend atau log hosting.'], 500);
