@@ -37,6 +37,9 @@
         <button class="nav-link" data-page="inbox">
           <span class="nav-icon" aria-hidden="true">◌</span><span>Inbox</span><span class="nav-count" id="navUnread">3</span>
         </button>
+        <button class="nav-link" data-page="whatsapp">
+          <span class="nav-icon" aria-hidden="true">◉</span><span>WhatsApp</span><span class="nav-count wa-nav-pill">SETUP</span>
+        </button>
         <button class="nav-link" data-page="contacts">
           <span class="nav-icon" aria-hidden="true">♧</span><span>Kontak</span>
         </button>
@@ -450,12 +453,123 @@
         </section>
       </div>
 
+      <section class="page-view" data-view="whatsapp" id="viewWhatsapp">
+        <div class="page-heading whatsapp-heading">
+          <div>
+            <div class="eyebrow">OFFICIAL BUSINESS MESSAGING</div>
+            <h1>WhatsApp <span class="heading-spark">✳</span></h1>
+            <p>Kelola nomor bisnis Senada dan jalur komunikasi pelanggan dari satu tempat.</p>
+          </div>
+          <span class="wa-status-pill"><i></i> BELUM TERHUBUNG</span>
+        </div>
+
+        <div class="wa-intro-banner">
+          <div class="wa-intro-mark">◉</div>
+          <div class="wa-intro-copy">
+            <strong>WhatsApp Business App + Senada Desk</strong>
+            <p>Satu nomor khusus yang dapat digunakan dari HP dan Inbox dashboard melalui jalur resmi WhatsApp Business Platform, dengan Coexistence jika nomor memenuhi syarat Meta.</p>
+          </div>
+          <span class="wa-plan-tag">RENCANA INTEGRASI</span>
+        </div>
+
+        <div class="wa-status-grid">
+          <article class="panel wa-status-card">
+            <div class="wa-card-top"><span class="wa-card-icon">☎</span><span class="wa-mini-state">BELUM ADA</span></div>
+            <small>NOMOR BISNIS</small>
+            <strong>Belum dibeli</strong>
+            <p>Menunggu kartu SIM baru khusus Senada Creatlabs.</p>
+          </article>
+          <article class="panel wa-status-card">
+            <div class="wa-card-top"><span class="wa-card-icon wa-icon-violet">▣</span><span class="wa-mini-state">DIRENCANAKAN</span></div>
+            <small>MODE PENGGUNAAN</small>
+            <strong>Coexistence</strong>
+            <p>WhatsApp Business di HP dan Senada Desk dalam satu nomor.</p>
+          </article>
+          <article class="panel wa-status-card">
+            <div class="wa-card-top"><span class="wa-card-icon wa-icon-lime">⌁</span><span class="wa-mini-state">BELUM DIPILIH</span></div>
+            <small>PENYEDIA RESMI</small>
+            <strong>BSP / Meta API</strong>
+            <p>Penyedia harus mendukung Coexistence dan webhook.</p>
+          </article>
+          <article class="panel wa-status-card">
+            <div class="wa-card-top"><span class="wa-card-icon wa-icon-coral">⌘</span><span class="wa-mini-state">RENCANA</span></div>
+            <small>SERVER INTEGRASI</small>
+            <strong>Hostinger Node.js</strong>
+            <p>Service WhatsApp terpisah dari hosting website dan dashboard.</p>
+          </article>
+        </div>
+
+        <div class="wa-main-grid">
+          <article class="panel wa-setup-panel">
+            <div class="wa-panel-heading">
+              <div><span class="panel-kicker">PERSIAPAN</span><h2>Checklist aktivasi</h2><p>Tandai langkah yang sudah selesai. Checklist ini tersimpan di browser preview ini.</p></div>
+              <span class="wa-progress-count" id="waCheckCount">0 / 5</span>
+            </div>
+            <div class="wa-progress-track"><span id="waProgressBar"></span></div>
+            <div class="wa-checklist">
+              <label class="wa-check-item"><input type="checkbox" data-wa-step="number"><span class="wa-check-box"></span><span class="wa-check-copy"><strong>Siapkan kartu SIM baru</strong><small>Nomor khusus bisnis, aktif, dan dapat menerima SMS atau panggilan verifikasi.</small></span><em>01</em></label>
+              <label class="wa-check-item"><input type="checkbox" data-wa-step="app"><span class="wa-check-box"></span><span class="wa-check-copy"><strong>Daftarkan nomor di WhatsApp Business</strong><small>Aktifkan aplikasi di HP terlebih dahulu dan lengkapi profil bisnis Senada.</small></span><em>02</em></label>
+              <label class="wa-check-item"><input type="checkbox" data-wa-step="meta"><span class="wa-check-box"></span><span class="wa-check-copy"><strong>Siapkan Meta Business Portfolio</strong><small>Buat atau pastikan akun bisnis dan WhatsApp Business Account siap digunakan.</small></span><em>03</em></label>
+              <label class="wa-check-item"><input type="checkbox" data-wa-step="bsp"><span class="wa-check-box"></span><span class="wa-check-copy"><strong>Pilih BSP resmi yang mendukung Coexistence</strong><small>Pastikan dukungan nomor Indonesia, Embedded Signup, API, dan webhook.</small></span><em>04</em></label>
+              <label class="wa-check-item"><input type="checkbox" data-wa-step="connect"><span class="wa-check-box"></span><span class="wa-check-copy"><strong>Hubungkan API dan webhook ke Senada Desk</strong><small>Selesaikan onboarding, verifikasi, lalu uji pesan masuk dan keluar.</small></span><em>05</em></label>
+            </div>
+            <div class="wa-checklist-foot"><span>✳</span> Belum ada nomor, token, atau akun penyedia yang dikonfigurasi.</div>
+            <button class="text-button wa-reset-checklist" id="waResetChecklist" type="button">Reset checklist <span>↺</span></button>
+          </article>
+
+          <article class="panel wa-flow-panel">
+            <div class="wa-panel-heading">
+              <div><span class="panel-kicker">ARSITEKTUR PESAN</span><h2>Bagaimana alurnya?</h2><p>Gambaran alur setelah integrasi resmi diaktifkan.</p></div>
+            </div>
+            <div class="wa-flow-list">
+              <div class="wa-flow-step"><span class="wa-flow-icon">✳</span><div><strong>Senada Desk</strong><small>Admin membaca pesan dan memilih balasan.</small></div><b>01</b></div>
+              <div class="wa-flow-connector"><i></i><span>API request</span></div>
+              <div class="wa-flow-step"><span class="wa-flow-icon wa-flow-violet">⌘</span><div><strong>Server WhatsApp</strong><small>Service Node.js di Hostinger (rencana) menyimpan kredensial dengan aman.</small></div><b>02</b></div>
+              <div class="wa-flow-connector"><i></i><span>Meta API / BSP</span></div>
+              <div class="wa-flow-step"><span class="wa-flow-icon wa-flow-lime">◉</span><div><strong>WhatsApp Business Platform</strong><small>Mengirim pesan dan meneruskan pesan masuk melalui webhook.</small></div><b>03</b></div>
+              <div class="wa-flow-connector"><i></i><span>Sinkronisasi Coexistence</span></div>
+              <div class="wa-flow-step"><span class="wa-flow-icon wa-flow-coral">▣</span><div><strong>WhatsApp Business di HP</strong><small>Nomor yang sama tetap dapat dipakai dari aplikasi, jika memenuhi syarat Coexistence.</small></div><b>04</b></div>
+            </div>
+            <div class="wa-flow-note">Balasan pelanggan akan masuk kembali ke Senada Desk melalui webhook. Admin tetap menjadi pihak yang mengirim dan mengendalikan percakapan.</div>
+          </article>
+        </div>
+
+        <div class="wa-bottom-grid">
+          <article class="panel wa-template-panel">
+            <div class="wa-panel-heading">
+              <div><span class="panel-kicker">PESAN PEMBUKA</span><h2>Contoh template awal</h2><p>Draft untuk menghubungi pelanggan setelah mereka mengirim formulir proyek.</p></div>
+              <span class="wa-template-tag">DRAFT</span>
+            </div>
+            <div class="wa-template-preview">
+              <div class="wa-template-head"><span class="wa-template-avatar">S</span><div><strong>Senada Creatlabs</strong><small>Template pesan bisnis · belum dikirim</small></div></div>
+              <div class="wa-template-bubble">Halo {{1}}, kami dari Senada Creatlabs. Terima kasih sudah mengirimkan formulir proyek melalui website kami. Kami ingin melanjutkan diskusi mengenai kebutuhan website yang Anda sampaikan. Silakan balas pesan ini jika Anda siap berdiskusi.<span>Contoh isi pesan</span></div>
+            </div>
+            <div class="wa-template-note"><strong>Perlu diperhatikan</strong><p>Pesan pertama yang dimulai oleh bisnis di luar jendela layanan 24 jam perlu menggunakan template yang disetujui Meta. Form website juga harus meminta persetujuan pelanggan untuk dihubungi melalui WhatsApp.</p></div>
+          </article>
+
+          <article class="panel wa-security-panel">
+            <div class="wa-panel-heading">
+              <div><span class="panel-kicker">KEAMANAN</span><h2>Kredensial tetap di server</h2><p>Dashboard tidak akan menyimpan token atau secret WhatsApp di browser.</p></div>
+            </div>
+            <div class="wa-security-list">
+              <div><span class="wa-security-icon">✓</span><div><strong>Token API</strong><small>Disimpan di konfigurasi server, bukan localStorage.</small></div></div>
+              <div><span class="wa-security-icon">✓</span><div><strong>Webhook verification</strong><small>Memvalidasi sumber event sebelum pesan diproses.</small></div></div>
+              <div><span class="wa-security-icon">✓</span><div><strong>Persetujuan admin</strong><small>Pesan dikirim setelah admin memilih tindakan kirim.</small></div></div>
+            </div>
+            <button class="secondary-button wa-connect-disabled" type="button" disabled>Hubungkan penyedia setelah persiapan selesai</button>
+            <small class="wa-disabled-hint">Tombol integrasi belum aktif karena nomor dan akun Meta belum disiapkan.</small>
+          </article>
+        </div>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · WhatsApp integration preview</div>
+      </section>
+
       <section class="page-view" data-view="settings" id="viewSettings">
-        <div class="page-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Pengaturan <span class="heading-spark">✳</span></h1><p>Preferensi workspace dan informasi integrasi.</p></div></div>
+        <div class="page-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Pengaturan <span class="heading-spark">✳</span></h1><p>Preferensi workspace, akses admin, dan informasi integrasi.</p></div></div>
         <div class="settings-grid">
           <article class="panel settings-card"><span class="settings-icon">✳</span><h2>Workspace</h2><p>Pengaturan dasar untuk ruang kerja Senada Creatlabs.</p><div class="settings-row"><span>Nama workspace</span><strong>Senada Studio</strong></div><div class="settings-row"><span>Mode</span><strong><span class="status-dot status-demo"></span> Preview / Demo</strong></div><div class="settings-row"><span>Bahasa</span><strong>Indonesia</strong></div></article>
-          <article class="panel settings-card"><span class="settings-icon settings-icon-lime">⌁</span><h2>Integrasi WhatsApp</h2><p>Hubungkan WhatsApp Cloud API setelah nomor bisnis dan akun Meta siap.</p><div class="integration-status"><span class="integration-icon">◌</span><div><strong>Belum terhubung</strong><small>WhatsApp Business Platform</small></div><span class="coming-soon">NEXT STEP</span></div><ul class="settings-list"><li>Nomor WhatsApp khusus Senada</li><li>Meta Business Portfolio & WhatsApp Business Account</li><li>Webhook untuk pesan masuk</li><li>Token API aman di server PHP</li></ul><button class="secondary-button" type="button" disabled>Integrasi belum tersedia</button></article>
-          <article class="panel settings-card settings-wide"><span class="settings-icon settings-icon-coral">⌘</span><h2>Data preview</h2><p>Semua perubahan simulasi disimpan di localStorage browser yang sedang digunakan.</p><div class="settings-row"><span>Penyimpanan</span><strong>Browser lokal</strong></div><div class="settings-row"><span>Database server</span><strong>Belum dikonfigurasi</strong></div><div class="settings-row"><span>Pengiriman pesan</span><strong>Tidak aktif</strong></div><button class="danger-button" id="resetDemo" type="button">Reset data contoh</button></article>
+          <article class="panel settings-card"><span class="settings-icon settings-icon-lime">⌁</span><h2>Integrasi WhatsApp</h2><p>Nomor khusus, Coexistence, penyedia resmi, dan webhook Senada Desk.</p><div class="integration-status"><span class="integration-icon">◉</span><div><strong>Belum terhubung</strong><small>WhatsApp Business Platform</small></div><span class="coming-soon">SETUP</span></div><ul class="settings-list"><li>Nomor SIM baru khusus Senada</li><li>WhatsApp Business App + Senada Desk</li><li>BSP resmi yang mendukung Coexistence</li><li>Token dan webhook di server</li></ul><button class="secondary-button" type="button" data-page="whatsapp">Buka pengaturan WhatsApp ↗</button></article>
+          <article class="panel settings-card"><span class="settings-icon settings-icon-coral">⌑</span><h2>Login & keamanan</h2><p>Halaman masuk admin untuk mengelola workspace Senada.</p><div class="settings-row"><span>Metode autentikasi</span><strong>Email & password</strong></div><div class="settings-row"><span>Mode server</span><strong>Belum diaktifkan</strong></div><div class="settings-row"><span>Login preview</span><strong>Tampilan tersedia</strong></div><a class="secondary-button wa-login-link" href="login.html" target="_blank" rel="noopener">Lihat halaman login ↗</a></article>
+          <article class="panel settings-card settings-wide"><span class="settings-icon">⌘</span><h2>Data preview</h2><p>Semua perubahan simulasi disimpan di localStorage browser yang sedang digunakan.</p><div class="settings-row"><span>Penyimpanan</span><strong>Browser lokal</strong></div><div class="settings-row"><span>Database server</span><strong>Belum dikonfigurasi</strong></div><div class="settings-row"><span>Pengiriman pesan</span><strong>Tidak aktif</strong></div><button class="danger-button" id="resetDemo" type="button">Reset data contoh</button></article>
         </div>
         <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
       </section>
