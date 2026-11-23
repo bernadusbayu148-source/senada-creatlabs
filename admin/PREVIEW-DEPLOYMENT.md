@@ -76,12 +76,12 @@ URL memakai prefix /p/{slug}/. Website sebaiknya menggunakan asset path relatif 
 
 ## Langkah sebelum hosting dihubungkan
 
-1. Verifikasi paket hosting: PHP 8.1+, PDO MySQL, ekstensi cURL, Apache mod_rewrite/.htaccess, HTTPS, FTPS, subdomain, dan kemampuan mengarahkan document root secara terpisah.
+1. Verifikasi paket hosting: PHP 8.1+, PDO MySQL, ekstensi cURL, Apache 2.4 dengan mod_rewrite/.htaccess, HTTPS, FTPS, subdomain, dan kemampuan mengarahkan document root secara terpisah.
 2. Siapkan dua subdomain admin dan preview.
 3. Buat database MySQL baru untuk Senada dan import backend/database/schema.sql.
 4. Salin backend/config.example.php menjadi backend/config.php di luar document root. Isi DB, app_secret, storage path, dan preview_base_url. Jangan commit file config.php.
 5. Tempatkan backend/app di luar document root.
-6. Arahkan document root admin ke backend/admin-public; salin folder admin/ dashboard ke dalam document root tersebut.
+6. Arahkan document root admin ke backend/admin-public; salin folder admin/ dashboard dan favicon.svg ke document root tersebut.
 7. Arahkan document root preview ke backend/preview-public.
 8. Siapkan private storage di luar document root.
 9. Jalankan backend/scripts/create-admin.php melalui CLI untuk membuat owner.
