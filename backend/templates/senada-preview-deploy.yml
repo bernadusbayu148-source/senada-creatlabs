@@ -1,0 +1,69 @@
+name: Senada Private Preview Deploy
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      preview_slug:
+        description: Senada preview project slug
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: senada-preview-__SLUG__
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == vars.SENADA_PREVIEW_BRANCH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node for common static-site builds
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+        continue-on-error: true
+
+      - name: Build static website when package.json exists
+        id: build
+        shell: bash
+        run: |
+          set -e
+          if [ -f package.json ]; then
+            if [ -f package-lock.json ]; then npm ci; else npm install; fi
+            npm run build --if-present
+          fi
+          if [ -d dist ]; then
+            echo "output=dist/" >> "$GITHUB_OUTPUT"
+          elif [ -d build ]; then
+            echo "output=build/" >> "$GITHUB_OUTPUT"
+          elif [ -d public ]; then
+            echo "output=public/" >> "$GITHUB_OUTPUT"
+          else
+            echo "output=./" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Senada private preview storage
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SENADA_FTP_SERVER }}
+          username: ${{ secrets.SENADA_FTP_USERNAME }}
+          password: ${{ secrets.SENADA_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ${{ steps.build.outputs.output }}
+          server-dir: ${{ secrets.SENADA_PREVIEW_REMOTE_DIR }}
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
+            **/.env*
+            **/*.sql
+            **/*.log
