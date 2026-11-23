@@ -237,6 +237,12 @@
               <div class="detail-label">RINGKASAN PROYEK</div>
               <div class="brief-card"><small>Jenis website</small><strong id="leadType">Business Website</strong><small>Estimasi budget</small><strong id="leadBudget">Rp5–8 juta</strong><small>Pesan awal</small><p id="leadBrief">Saya ingin membuat website untuk brand skincare kecil saya.</p></div>
             </div>
+            <div class="lead-detail-group project-conversion-group">
+              <div class="detail-label">PERALIHAN KE PROYEK</div>
+              <p class="conversion-copy">Saat kebutuhan dan ruang lingkup sudah cukup jelas, ubah diskusi ini menjadi proyek agar masuk ke pipeline pengerjaan.</p>
+              <button class="convert-project-button" id="convertToProjectBtn" type="button">Jadikan Proyek <span>↗</span></button>
+              <small class="conversion-project-hint" id="conversionProjectHint">Buat proyek terpisah setelah kebutuhan dan ruang lingkup mulai disepakati.</small>
+            </div>
             <div class="lead-panel-foot"><span>✳</span> Satu frekuensi, banyak kemungkinan.</div>
           </aside>
         </div>
@@ -252,7 +258,7 @@
       <section class="page-view" data-view="projects" id="viewProjects">
         <div class="page-heading"><div><div class="eyebrow">FROM IDEA TO IMPACT</div><h1>Proyek <span class="heading-spark">✳</span></h1><p>Gambaran pipeline proyek yang sedang kamu tangani.</p></div><span class="soft-count">Contoh pipeline</span></div>
         <div class="project-board" id="projectsBoard"></div>
-        <div class="project-note"><span>✦</span><div><strong>Catatan untuk tahap berikutnya</strong><p>Setelah backend aktif, proyek dapat dibuat dari inquiry, diberi PIC, deadline, dan catatan progres.</p></div></div>
+        <div class="project-note"><span>✦</span><div><strong>Mulai proyek dari percakapan</strong><p>Pilih calon klien di Inbox, buka Detail Prospek, lalu tekan “Jadikan Proyek”. Ringkasan, jenis website, budget, dan target penyelesaian akan dibawa ke proyek baru.</p><button class="project-note-link" type="button" data-page="inbox">Buka Inbox <span>↗</span></button></div></div>
         <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
       </section>
 
@@ -636,6 +642,26 @@
       </div>
     </main>
   </div>
+  <dialog class="project-convert-dialog" id="projectConvertDialog" aria-labelledby="projectConvertTitle">
+    <form class="project-convert-form" id="projectConvertForm">
+      <div class="project-convert-head">
+        <div><span class="panel-kicker">INBOX → PROJECT</span><h2 id="projectConvertTitle">Jadikan diskusi sebagai proyek</h2><p>Informasi calon klien akan disalin sebagai dasar pekerjaan baru.</p></div>
+        <button class="project-dialog-close" id="closeProjectConvert" type="button" aria-label="Tutup">×</button>
+      </div>
+      <label class="project-convert-field"><span>Nama proyek</span><input name="title" type="text" maxlength="120" required></label>
+      <div class="project-convert-two">
+        <label class="project-convert-field"><span>Jenis layanan</span><input name="type" type="text" maxlength="80"></label>
+        <label class="project-convert-field"><span>Estimasi budget</span><input name="budget" type="text" maxlength="80" placeholder="Contoh: Rp5–8 juta"></label>
+      </div>
+      <label class="project-convert-field"><span>Target penyelesaian (opsional)</span><input name="deadline" type="date"></label>
+      <label class="project-convert-field"><span>Ringkasan kebutuhan / hasil diskusi</span><textarea name="notes" rows="4" maxlength="1500"></textarea></label>
+      <div class="project-convert-client" id="projectConvertClient">Data klien dari percakapan terpilih akan disertakan.</div>
+      <div class="project-convert-actions">
+        <button class="project-cancel-button" id="cancelProjectConvert" type="button">Batal</button>
+        <button class="project-create-button" type="submit">Buat Proyek <span>↗</span></button>
+      </div>
+    </form>
+  </dialog>
   <div class="mobile-scrim" id="mobileScrim"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="admin.js"></script>
