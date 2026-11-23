@@ -30,6 +30,8 @@ if (!is_file($adminUi)) {
 header('Content-Type: text/html; charset=utf-8');
 header('Cache-Control: no-store, private');
 header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Referrer-Policy: no-referrer');
 $html = file_get_contents($adminUi);
 if ($html === false) {
     http_response_code(500);
