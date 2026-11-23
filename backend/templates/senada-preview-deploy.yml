@@ -67,3 +67,8 @@ jobs:
             **/.env*
             **/*.sql
             **/*.log
+            **/*.php
+            **/*.phtml
+            **/*.phar
+            **/config.php
+            **/secrets/**
