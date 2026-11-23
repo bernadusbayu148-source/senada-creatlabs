@@ -52,6 +52,12 @@
     .login-submit{width:100%;height:48px;margin-top:9px;border:0;border-radius:11px;background:var(--violet);color:#fff;font:700 11px "DM Sans",sans-serif;cursor:pointer;box-shadow:0 9px 20px #5c43ed2a;transition:transform .15s,background .15s}
     .login-submit:hover{background:#4b35d2;transform:translateY(-1px)}
     .login-message{min-height:34px;margin:13px 0 0;padding:9px 10px;border:1px solid #f0e1c5;border-radius:9px;background:#fff9ed;color:#8b7549;font-size:9px;line-height:1.55}
+    .login-message.is-error{border-color:#f1d1d1;background:#fff2f1;color:#a6403b}
+    .demo-credentials{margin-top:11px;padding:12px 13px;border:1px solid #e8e2ff;border-radius:10px;background:#f8f6ff}
+    .demo-credential-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 0}
+    .demo-credential-row span{color:#77718e;font-size:9px;font-weight:600}
+    .demo-credential-row code{color:#4432b6;font:700 10px "DM Sans",sans-serif;overflow-wrap:anywhere}
+    .demo-credentials p{margin:8px 0 0;color:#8b7549;font-size:8px;line-height:1.55}
     .login-divider{display:flex;align-items:center;gap:12px;margin:22px 0 15px;color:#aaa5b2;font-size:8px}
     .login-divider:before,.login-divider:after{content:"";height:1px;flex:1;background:#e9e5ef}
     .demo-link{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;height:43px;border:1px solid #e2deea;border-radius:10px;color:#5c43ed;text-decoration:none;font-size:10px;font-weight:700;background:#fff;transition:.15s}
@@ -87,10 +93,15 @@
         <p class="login-intro">Masuk ke Senada Desk untuk melanjutkan percakapan dan mengelola proyek klien.</p>
 
         <form id="loginPreviewForm" autocomplete="on">
-          <label class="field"><span>Email admin</span><input name="email" type="email" placeholder="nama@senada.id" autocomplete="username" required maxlength="190"></label>
-          <label class="field"><span>Password</span><div class="password-wrap"><input id="loginPassword" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required maxlength="72"><button class="show-password" id="togglePassword" type="button">Lihat</button></div></label>
+          <label class="field"><span>Email admin</span><input name="email" type="email" value="demo@senada.id" placeholder="demo@senada.id" autocomplete="username" required maxlength="190"></label>
+          <label class="field"><span>Password</span><div class="password-wrap"><input id="loginPassword" name="password" type="password" value="SenadaDemo2026!" placeholder="Masukkan password" autocomplete="current-password" required maxlength="72"><button class="show-password" id="togglePassword" type="button">Lihat</button></div></label>
           <button class="login-submit" type="submit">Masuk ke workspace <span aria-hidden="true">↗</span></button>
-          <p class="login-message" id="loginMessage" role="status">Ini preview tampilan login. Autentikasi server belum aktif pada GitHub Pages.</p>
+          <p class="login-message" id="loginMessage" role="status">Akun demo sudah diisikan. Tekan “Masuk ke workspace” untuk membuka dashboard.</p>
+          <div class="demo-credentials" aria-label="Kredensial akun demo">
+            <div class="demo-credential-row"><span>Email demo</span><code>demo@senada.id</code></div>
+            <div class="demo-credential-row"><span>Password demo</span><code>SenadaDemo2026!</code></div>
+            <p>Akun ini hanya untuk preview publik. Kredensial terlihat oleh siapa pun yang membuka halaman ini dan bukan akun admin yang aman.</p>
+          </div>
         </form>
 
         <div class="login-divider">ATAU</div>
@@ -112,7 +123,19 @@
       });
       form.addEventListener("submit",function(event){
         event.preventDefault();
-        message.textContent="Belum ada autentikasi aktif di GitHub Pages. Form ini tidak mengirim atau menyimpan email maupun password. Login server-side akan berjalan setelah backend Senada dipasang.";
+        var email=form.elements.email.value.trim().toLowerCase();
+        var enteredPassword=password.value;
+        var demoEmail="demo@senada.id";
+        var demoPassword="SenadaDemo2026!";
+        if(email!==demoEmail || enteredPassword!==demoPassword){
+          message.textContent="Email atau password demo tidak sesuai. Periksa kembali kredensial yang tertera.";
+          message.classList.add("is-error");
+          return;
+        }
+        message.classList.remove("is-error");
+        message.textContent="Login demo berhasil. Membuka Senada Desk...";
+        try{sessionStorage.setItem("senada_demo_login","1");}catch(storageError){}
+        window.location.assign("./index.html?demo=1");
       });
     })();
   </script>
