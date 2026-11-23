@@ -22,13 +22,14 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 - CSRF token untuk perubahan data.
 - Pembatasan percobaan login admin dan password preview: 10 kegagalan per 15 menit per identitas/IP.
 - Pengelolaan project: repository, branch, slug, kategori, mode deployment, aktif/nonaktif.
-- Password unik per project; password minimal 12 karakter dan tidak pernah dikirim kembali ke dashboard.
+- Password unik per project; password minimal 12 dan maksimal 72 byte dan tidak pernah dikirim kembali ke dashboard.
 - Preview statis dilayani melalui PHP setelah password benar; direktori hasil deploy tidak diekspos langsung.
 - Endpoint manual deployment memicu GitHub Actions workflow_dispatch apabila token server sudah dikonfigurasi.
 - Template workflow menyediakan push deployment otomatis dan workflow dispatch manual.
 
 ## Batasan saat ini
 
+- Repository GitHub ini bersifat publik, sehingga source backend dapat dibaca. Tidak ada credential yang disertakan; jangan pernah commit config.php, password, atau token.
 - Belum dihubungkan ke hosting, domain, database, GitHub token, atau repository klien.
 - Belum ada file konfigurasi config.php berisi credential. config.example.php hanya contoh.
 - Integrasi deploy memerlukan workflow disalin ke repository proyek dan secret FTPS diatur pada repository tersebut.
