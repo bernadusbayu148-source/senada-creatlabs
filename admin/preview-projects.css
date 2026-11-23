@@ -93,3 +93,12 @@ body.dark .preview-empty{background:#252431}
 body.dark .preview-form-warning{background:#3b3022;border-color:#6a5030;color:#f4d7a5}
 @media(max-width:900px){.preview-project-list{grid-template-columns:1fr}.preview-stats{gap:9px}.preview-stat-card{padding:14px}}
 @media(max-width:680px){.preview-page-heading{align-items:flex-start;flex-direction:column}.preview-security-banner{align-items:flex-start;padding:14px}.preview-security-state{display:none}.preview-stats{grid-template-columns:1fr 1fr}.preview-stat-card:last-child{grid-column:1/-1}.preview-toolbar{align-items:stretch;flex-direction:column}.preview-search{min-width:0;width:100%}.preview-form-grid{grid-template-columns:1fr}.preview-field-wide{grid-column:auto}.preview-modal{padding:10px}.preview-modal-card{padding:19px;max-height:94vh}.preview-form-actions{flex-direction:column-reverse}.preview-form-actions button{width:100%}}
+
+.server-only{display:none}
+body.server-mode .server-only{display:flex}
+.preview-project-link{display:inline-block;margin:0 0 12px;color:var(--violet);font:700 10px 'Space Grotesk',sans-serif;text-decoration:none;overflow-wrap:anywhere}
+.preview-project-link:hover{text-decoration:underline}
+.preview-project-state{font:700 9px 'Space Grotesk',sans-serif;padding:5px 8px;border-radius:99px;background:#e9f5d2;color:#536d1c}
+.preview-project-state.is-disabled{background:#ffe7e3;color:#a84f46}
+body.dark .preview-project-state{background:#3d492b;color:#d9f6a2}
+body.dark .preview-project-state.is-disabled{background:#503331;color:#ffc2b9}
