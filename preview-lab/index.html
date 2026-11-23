@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Senada Private Project Preview — public visual prototype.">
+  <title>Senada Preview Lab — Private Project Preview</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="demo-ribbon"><span class="ribbon-dot"></span> PUBLIC PROTOTYPE <span>·</span> NO REAL CLIENT DATA</div>
+
+  <main id="app">
+    <!-- 1. ADMIN LOGIN -->
+    <section class="screen login-screen is-active" data-screen="login" aria-labelledby="login-title">
+      <header class="brandbar">
+        <a class="brand" href="../index.html" aria-label="Senada Creatlabs home">
+          <img src="../favicon.svg" alt="" class="brand-mark">
+          <span class="brand-word">senada<span>.</span><small>CREATLABS</small></span>
+        </a>
+        <div class="brandbar-right">
+          <span class="top-note"><i class="status-dot"></i> Preview environment</span>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Ganti tema" title="Ganti tema">☼</button>
+        </div>
+      </header>
+
+      <div class="login-layout">
+        <div class="login-story">
+          <div class="eyebrow"><span class="eyebrow-star">✳</span> PRIVATE PROJECT PREVIEW</div>
+          <h1 id="login-title">Ruang kerja untuk karya yang <em>belum diluncurkan.</em></h1>
+          <p class="story-copy">Satu tempat untuk mengelola website preview, menjaga akses tetap privat, dan memperlihatkan progres kepada klien dengan lebih rapi.</p>
+          <div class="story-points">
+            <div><span class="point-icon">↗</span><span><strong>One link, one project</strong><small>Setiap proyek punya alamat preview sendiri.</small></span></div>
+            <div><span class="point-icon">⌑</span><span><strong>Private by design</strong><small>Akses pelanggan dilindungi password proyek.</small></span></div>
+            <div><span class="point-icon">✳</span><span><strong>Flexible deployment</strong><small>Siapkan alur manual maupun otomatis.</small></span></div>
+          </div>
+          <div class="orbit-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="art-card art-card-back"><span class="mini-dot"></span><span class="mini-line"></span><span class="mini-line short"></span></div>
+            <div class="art-card art-card-front"><span class="art-spark">✳</span><strong>work in<br>progress<span>.</span></strong><small>GOOD THINGS TAKE SHAPE</small></div>
+            <span class="orbit-tag">S / 01</span>
+          </div>
+        </div>
+
+        <div class="login-panel-wrap">
+          <div class="login-panel">
+            <div class="panel-kicker">SENADA DESK <span>DEMO ACCESS</span></div>
+            <div class="panel-icon">S<span>.</span></div>
+            <h2>Welcome back.</h2>
+            <p class="muted">Masuk ke workspace untuk melihat bagaimana pengelolaan private preview bekerja.</p>
+            <form id="demo-login-form">
+              <label for="demo-email">Email workspace</label>
+              <div class="input-wrap"><span class="input-symbol">✉</span><input id="demo-email" type="email" value="studio@senada.test" readonly></div>
+              <label for="demo-password">Password demo</label>
+              <div class="input-wrap"><span class="input-symbol">⌑</span><input id="demo-password" type="password" value="senada-demo" readonly><span class="input-suffix">DEMO</span></div>
+              <button class="button button-dark button-wide" type="submit">Masuk ke dashboard <span>↗</span></button>
+            </form>
+            <div class="demo-disclaimer"><span>ⓘ</span> Ini hanya simulasi tampilan. Tidak ada akun atau autentikasi sungguhan.</div>
+          </div>
+          <div class="login-footer"><span>© 2026 Senada Creatlabs</span><span>Built for better beginnings <b>✳</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ADMIN DASHBOARD -->
+    <section class="screen dashboard-screen" data-screen="dashboard" aria-label="Admin dashboard demo">
+      <div class="dashboard-shell">
+        <aside class="sidebar">
+          <a class="brand sidebar-brand" href="../index.html">
+            <img src="../favicon.svg" alt="" class="brand-mark">
+            <span class="brand-word">senada<span>.</span><small>CREATLABS</small></span>
+          </a>
+          <div class="workspace-card"><div class="workspace-avatar">S</div><div><strong>Senada Studio</strong><small>Main workspace</small></div><span class="chevron">⌄</span></div>
+          <div class="side-label">WORKSPACE</div>
+          <nav class="side-nav" aria-label="Dashboard navigation">
+            <button class="side-link is-current" type="button" data-dashboard-tab="overview"><span>▦</span> Overview</button>
+            <button class="side-link" type="button" data-dashboard-tab="projects"><span>▤</span> Project Preview <b class="private-tag">PRIVATE</b></button>
+            <button class="side-link" type="button" data-dashboard-tab="deploy"><span>↗</span> Deployment</button>
+          </nav>
+          <div class="side-label side-label-lower">PREFERENCES</div>
+          <button class="side-link" type="button" data-dashboard-tab="settings"><span>⚙</span> Pengaturan</button>
+          <div class="sidebar-bottom">
+            <div class="sidebar-help"><div class="help-spark">✳</div><strong>Small steps,<br>great websites.</strong><p>Keep every project moving forward.</p></div>
+            <div class="account-row"><div class="account-avatar">SC</div><div><strong>Senada Creatlabs</strong><small>Owner workspace</small></div><button class="dots" type="button" aria-label="Menu akun">•••</button></div>
+          </div>
+        </aside>
+
+        <div class="dashboard-main">
+          <header class="dash-topbar">
+            <div class="crumbs"><span>Senada Studio</span><b>/</b><strong id="dash-crumb">Overview</strong></div>
+            <div class="dash-actions"><span class="preview-mode"><i></i> DEMO MODE</span><button class="icon-btn theme-toggle" type="button" aria-label="Ganti tema" title="Ganti tema">☼</button><div class="top-avatar">S</div></div>
+          </header>
+
+          <div class="demo-alert"><span>✳</span><p><strong>You're exploring a prototype.</strong> Semua proyek, password, dan status deployment di halaman ini adalah data fiktif.</p><button type="button" class="alert-close" aria-label="Tutup pemberitahuan">×</button></div>
+
+          <div class="dash-content">
+            <section class="dash-tab is-visible" data-tab="overview">
+              <div class="page-heading">
+                <div><div class="eyebrow">MONDAY MOOD, BETTER PROJECTS</div><h1>Halo, Senada <span class="heading-spark">✳</span></h1><p>Semua yang sedang kamu bangun, dalam satu ruang.</p></div>
+                <button class="button button-dark" type="button" data-go="client">Lihat sebagai klien <span>↗</span></button>
+              </div>
+              <div class="stats-grid">
+                <article class="stat-card stat-purple"><div class="stat-top"><span>ACTIVE PREVIEWS</span><span class="stat-icon">↗</span></div><strong>04</strong><small><i class="trend-up">↗ 2</i> dari bulan lalu</small><div class="stat-decoration deco-circles"></div></article>
+                <article class="stat-card stat-lime"><div class="stat-top"><span>IN PROGRESS</span><span class="stat-icon">✳</span></div><strong>02</strong><small>Website sedang dikerjakan</small><div class="stat-decoration deco-lines"></div></article>
+                <article class="stat-card stat-white"><div class="stat-top"><span>DEPLOYMENTS</span><span class="stat-icon">⌁</span></div><strong>12</strong><small><i class="trend-up">↗ 18%</i> aktivitas bulan ini</small><div class="stat-decoration deco-ring"></div></article>
+              </div>
+
+              <div class="section-heading"><div><span class="eyebrow">YOUR WORKSPACE</span><h2>Project preview</h2></div><button class="text-button" type="button" data-dashboard-tab="projects">Lihat semua <span>→</span></button></div>
+              <article class="project-feature">
+                <div class="project-preview-art"><div class="browser-mini"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-hero"><span>AURE</span><strong>Make room<br>for <em>living.</em></strong><small>OBJECTS FOR EVERYDAY RITUALS</small><div class="browser-shape"></div></div></div><span class="art-caption">LIVE PREVIEW / 001</span></div>
+                <div class="project-details">
+                  <div class="project-overline"><span class="status-chip status-active"><i></i> ACTIVE PREVIEW</span><span class="project-code">PRJ-001</span></div>
+                  <h3 id="project-name">Aure Studio</h3>
+                  <p>Brand lifestyle & home living dengan katalog produk dan editorial yang hangat.</p>
+                  <div class="project-meta"><div><small>PREVIEW URL</small><strong>preview.senada.test/p/aure-studio</strong></div><button class="copy-button" id="copy-url" type="button" title="Salin URL demo">▢</button></div>
+                  <div class="project-meta project-meta-bottom"><div><small>LAST UPDATED</small><strong>Today, 09:42 AM</strong></div><div><small>ACCESS</small><strong><span class="tiny-lock">⌑</span> Password protected</strong></div></div>
+                  <div class="project-actions"><button class="button button-dark" type="button" data-go="client">Buka project <span>↗</span></button><button class="button button-outline" type="button" id="open-settings">Pengaturan proyek</button></div>
+                </div>
+              </article>
+
+              <div class="lower-grid">
+                <section class="activity-card">
+                  <div class="section-heading compact"><div><span class="eyebrow">LATEST UPDATES</span><h2>Aktivitas terbaru</h2></div><button class="dots" type="button" aria-label="Opsi aktivitas">•••</button></div>
+                  <div class="activity-list">
+                    <div class="activity-item"><div class="activity-icon activity-violet">↗</div><div><strong>Preview berhasil diperbarui</strong><p>Aure Studio · versi 1.4.0</p></div><time>09:42</time></div>
+                    <div class="activity-item"><div class="activity-icon activity-lime">⌑</div><div><strong>Password preview diperbarui</strong><p>Project access · Aure Studio</p></div><time>Yesterday</time></div>
+                    <div class="activity-item"><div class="activity-icon activity-coral">✳</div><div><strong>Project baru dibuat</strong><p>Bloom Atelier · draft</p></div><time>Nov 20</time></div>
+                  </div>
+                </section>
+                <section class="quick-card">
+                  <div class="quick-icon">✳</div><span class="eyebrow">QUICK ACCESS</span><h3>Siap dilihat klien?</h3><p>Uji halaman password sebelum membagikan link preview.</p><button class="button button-light" type="button" data-go="client">Uji akses klien <span>→</span></button>
+                  <div class="quick-orbit"></div>
+                </section>
+              </div>
+            </section>
+
+            <section class="dash-tab" data-tab="projects">
+              <div class="page-heading"><div><div class="eyebrow">PRIVATE PROJECT SPACE</div><h1>Project Preview</h1><p>Atur akses dan tautan preview untuk setiap proyek.</p></div><button class="button button-dark" type="button" id="open-settings-2">＋ Proyek baru</button></div>
+              <div class="project-list-card">
+                <div class="project-list-head"><strong>Semua proyek <span>2</span></strong><span class="table-filter">All status⌄</span></div>
+                <div class="project-row"><div class="project-thumb thumb-aure">A.</div><div class="project-row-info"><strong>Aure Studio</strong><small>Brand & lifestyle · /p/aure-studio</small></div><span class="status-chip status-active"><i></i> Active</span><button class="row-action" type="button" data-go="client">Open ↗</button></div>
+                <div class="project-row"><div class="project-thumb thumb-bloom">b.</div><div class="project-row-info"><strong>Bloom Atelier</strong><small>Beauty & wellness · /p/bloom-atelier</small></div><span class="status-chip status-draft">Draft</span><button class="row-action" type="button" id="open-settings-3">Edit →</button></div>
+              </div>
+              <div class="info-strip"><span>✳</span><div><strong>One project, one private link.</strong><p>Di versi produksi, setiap proyek akan memiliki password dan sesi akses masing-masing.</p></div></div>
+            </section>
+
+            <section class="dash-tab" data-tab="deploy">
+              <div class="page-heading"><div><div class="eyebrow">SHIP IT YOUR WAY</div><h1>Deployment</h1><p>Pilih cara memperbarui website preview klien.</p></div></div>
+              <div class="deploy-layout">
+                <div class="deploy-card"><span class="eyebrow">DEPLOYMENT METHOD</span><h2>Flexible by default.</h2><p>Gunakan deployment manual saat ingin memeriksa perubahan, atau otomatis setiap kali branch proyek diperbarui.</p>
+                  <div class="mode-switch" role="group" aria-label="Metode deployment"><button class="mode-choice is-selected" type="button" data-mode="manual" aria-pressed="true"><span>⌁</span><strong>Manual</strong><small>Deploy saat kamu siap</small></button><button class="mode-choice" type="button" data-mode="automatic" aria-pressed="false"><span>↻</span><strong>Automatic</strong><small>Deploy saat ada update</small></button></div>
+                  <div class="deploy-bottom"><span id="deploy-description">Manual deployment dipilih.</span><button class="button button-dark" id="simulate-deploy" type="button">Simulasikan deploy <span>↗</span></button></div>
+                </div>
+                <div class="deploy-side"><div class="deploy-status-icon">✓</div><span class="eyebrow">LAST DEPLOYMENT</span><h3 class="deploy-status">All systems look good.</h3><p id="deploy-time">Aure Studio · Today at 09:42 AM</p><div class="deploy-progress"><i></i></div><small>DEMO STATUS · NOT CONNECTED TO HOSTING</small></div>
+              </div>
+            </section>
+
+            <section class="dash-tab" data-tab="settings">
+              <div class="page-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Pengaturan</h1><p>Preferensi workspace untuk prototype ini.</p></div></div>
+              <div class="settings-card"><div class="settings-row"><div><strong>Workspace name</strong><small>Nama ruang kerja admin</small></div><span>Senada Studio</span></div><div class="settings-row"><div><strong>Theme</strong><small>Ubah tampilan terang atau gelap</small></div><button class="button button-outline theme-toggle" type="button">Ganti tema</button></div><div class="settings-row"><div><strong>Environment</strong><small>Mode yang sedang dibuka</small></div><span class="status-chip status-draft">Public demo</span></div></div>
+            </section>
+          </div>
+          <footer class="dash-footer"><span>© 2026 Senada Creatlabs</span><span>PRIVATE PREVIEW LAB <b>✳</b></span></footer>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CUSTOMER PASSWORD GATE -->
+    <section class="screen client-screen" data-screen="client" aria-labelledby="client-title">
+      <header class="client-topbar">
+        <a class="brand" href="../index.html"><img src="../favicon.svg" alt="" class="brand-mark"><span class="brand-word">senada<span>.</span><small>CREATLABS</small></span></a>
+        <div class="client-top-right"><span class="secure-label"><i></i> PRIVATE PREVIEW</span><button class="back-link" type="button" data-go="dashboard">← Back to admin demo</button></div>
+      </header>
+      <div class="gate-layout">
+        <div class="gate-visual"><div class="gate-visual-inner"><span class="gate-kicker">A PRIVATE SPACE FOR</span><div class="gate-big-type">AURE<br><em>STUDIO.</em></div><div class="gate-orbit gate-orbit-one"></div><div class="gate-orbit gate-orbit-two"></div><div class="gate-star">✳</div><div class="gate-visual-foot"><span>PROJECT PREVIEW / 001</span><span>MADE WITH SENADA</span></div></div></div>
+        <div class="gate-panel-wrap">
+          <div class="gate-panel">
+            <div class="lock-illustration"><span>⌑</span><i></i></div>
+            <span class="eyebrow">YOU'RE INVITED</span>
+            <h1 id="client-title">A little preview,<br><em>just for you.</em></h1>
+            <p class="muted">Website preview untuk <strong>Aure Studio</strong> sudah siap dilihat. Masukkan password yang diberikan oleh tim Senada untuk melanjutkan.</p>
+            <form id="unlock-form">
+              <label for="client-password">Project password</label>
+              <div class="input-wrap client-input"><input id="client-password" type="password" placeholder="Masukkan password" autocomplete="off" required><button type="button" id="toggle-password" aria-label="Tampilkan password">◉</button></div>
+              <p class="form-error" id="password-error" role="alert">Password belum sesuai. Coba lagi.</p>
+              <button class="button button-dark button-wide" type="submit">Buka website preview <span>↗</span></button>
+            </form>
+            <div class="demo-password-note"><span>DEMO PASSWORD</span><code>SENADA-DEMO</code><button id="copy-demo-password" type="button">Copy</button></div>
+            <div class="gate-help">Ada kendala? <a href="mailto:hello@senada.test">Hubungi project owner</a></div>
+          </div>
+          <div class="gate-footer">A private preview experience by <strong>senada.</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CUSTOMER WEBSITE PREVIEW -->
+    <section class="screen website-screen" data-screen="preview" aria-label="Aure Studio website preview">
+      <div class="preview-toolbar"><div class="preview-toolbar-brand"><span class="toolbar-spark">✳</span><strong>senada<span>.</span></strong><small>PRIVATE PREVIEW</small></div><div class="preview-address"><span>⌑</span> preview.senada.test/p/aure-studio</div><div class="preview-toolbar-actions"><span class="secure-label"><i></i> UNLOCKED</span><button class="button button-outline button-small" type="button" data-go="dashboard">Back to admin</button></div></div>
+      <div class="preview-project-banner"><span>PROJECT PREVIEW / AURE STUDIO</span><span>VERSION 1.4.0 <i></i> DEMO ONLY</span></div>
+      <div class="aure-site">
+        <header class="aure-nav"><a class="aure-logo" href="#preview-top">AURE<span>®</span></a><nav><a href="#collection">Collection</a><a href="#story">Our story</a><a href="#journal">Journal</a></nav><button class="aure-menu" type="button" aria-label="Open menu">☰</button><a class="aure-bag" href="#collection">Bag <span>0</span></a></header>
+        <section class="aure-hero" id="preview-top"><div class="aure-hero-copy"><span class="aure-eyebrow">OBJECTS FOR EVERYDAY RITUALS</span><h1>Make room<br>for <em>living.</em></h1><p>Thoughtful pieces for slower mornings, softer evenings, and everything in between.</p><a class="aure-link" href="#collection">EXPLORE THE COLLECTION <span>↗</span></a></div><div class="aure-hero-art"><div class="aure-sun"></div><div class="aure-vase vase-one"></div><div class="aure-vase vase-two"></div><div class="aure-arch"></div><span class="art-number">FIG. 01 — STILL LIFE</span></div><span class="aure-side-note">DESIGNED TO BE LIVED WITH · EST. 2021</span></section>
+        <section class="aure-collection" id="collection"><div class="aure-section-head"><div><span class="aure-eyebrow">THE EVERYDAY EDIT</span><h2>Objects with<br>a little <em>more meaning.</em></h2></div><p>Small details, considered materials, and familiar forms made to find their place in your home.</p></div><div class="aure-products"><article><div class="product-art product-art-one"><div class="product-vase"></div></div><span>01 / CERAMICS</span><h3>Sunday Form Vase</h3><small>Hand-finished stoneware</small></article><article><div class="product-art product-art-two"><div class="product-lamp"></div></div><span>02 / LIGHTING</span><h3>Soft Hour Lamp</h3><small>Warm light, quiet moments</small></article><article><div class="product-art product-art-three"><div class="product-chair"></div></div><span>03 / OBJECTS</span><h3>Everyday Stool</h3><small>Solid oak, honest details</small></article></div></section>
+        <section class="aure-story" id="story"><span class="aure-eyebrow">A NOTE FROM AURE</span><p>“A home is not something to finish. It is something to <em>feel.</em>”</p><span>DESIGNED WITH INTENTION, MADE FOR REAL LIFE.</span></section>
+        <footer class="aure-footer" id="journal"><span class="aure-logo">AURE<span>®</span></span><span>Objects for everyday rituals.</span><span>© AURE STUDIO 2026</span></footer>
+      </div>
+      <div class="preview-bottom-bar"><span><i></i> Kamu sedang melihat website preview privat</span><button type="button" data-go="dashboard">Keluar dari preview <span>↗</span></button></div>
+    </section>
+  </main>
+
+  <dialog id="project-dialog" class="project-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Tutup">×</button></form>
+    <span class="eyebrow">PROJECT SETTINGS / DEMO</span><h2>Atur project preview</h2><p>Perubahan hanya berlaku di browser ini dan tidak disimpan ke server.</p>
+    <label for="edit-project-name">Nama proyek</label><input id="edit-project-name" type="text" value="Aure Studio" maxlength="40">
+    <label for="edit-project-slug">Project slug</label><input id="edit-project-slug" type="text" value="aure-studio" readonly>
+    <div class="dialog-note"><span>⌑</span><div><strong>Password protection aktif</strong><small>Password demo tidak terhubung ke sistem autentikasi sungguhan.</small></div></div>
+    <div class="dialog-actions"><button class="button button-outline" id="cancel-settings" type="button">Batal</button><button class="button button-dark" id="save-settings" type="button">Simpan perubahan</button></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
