@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+
+# Semua halaman dan aset preview melewati pemeriksaan sesi di preview.php.
+RewriteRule ^p/([a-z0-9-]+)/?(.*)$ preview.php?slug=$1&path=$2 [END,QSA]
+
+<FilesMatch "(^config\.php$|\.sql$|\.log$|\.env$)">
+  Require all denied
+</FilesMatch>
