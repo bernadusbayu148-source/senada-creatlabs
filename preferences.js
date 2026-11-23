@@ -30,6 +30,7 @@
     "Paket perjalanan, destinasi wisata, formulir reservasi, dan WhatsApp.": "Travel packages, destinations, a reservation form, and WhatsApp.",
     "Harga awal": "Starting price",
     "Diskusikan layanan ini": "Discuss this service",
+    "Diskusikan layanan ini ↗": "Discuss this service ↗",
     "Geser untuk melihat semua layanan": "Swipe to view all services",
     "Paket layanan website": "Website service pricing",
     "layanan sebelumnya": "previous service",
