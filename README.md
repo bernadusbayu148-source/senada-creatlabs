@@ -149,17 +149,14 @@ Foto dipanggil dari Unsplash; ketersediaan dan crop akhir bergantung pada jaring
 
 Folder backend/ sekarang berisi fondasi PHP/MySQL untuk login admin, password per project, akses preview statis, dan template GitHub Actions manual/otomatis. Implementasi masih berada di tahap persiapan repository; belum ada koneksi hosting, database, domain, atau credential. Lihat backend/README.md dan admin/PREVIEW-DEPLOYMENT.md sebelum deployment.
 
-## Private Project Preview & AI Workbench — Visual Prototype
+## Senada Desk & AI Workspace — Unified Prototype
 
-Prototype visual di folder [`preview-lab/`](preview-lab/) kini mencakup lima tampilan:
+Dashboard admin dan Agent Workbench kini digabungkan dalam satu navigasi pada folder [`admin/`](admin/):
 
-1. Admin Login
-2. Admin Dashboard
-3. **Senada AI Workbench — Agent Mode** (alur tugas, tahapan agent, contoh diff, dan simulasi persetujuan owner)
-4. Customer Password Page
-5. Website Preview
+- Overview, Inbox, Kontak, Proyek, dan Project Preview tetap berada dalam dashboard yang sama.
+- **Customer Reply Assistant** dapat dibuka dari percakapan Inbox. AI membantu pemilik memahami pertanyaan teknis, memisahkan catatan internal dari jawaban pelanggan, memilih bagian draft, mengeditnya, dan memasukkannya ke kolom balasan. Pesan tetap dikirim manual oleh pemilik.
+- **Senada AI Workspace — Agent Mode** berada di navigasi dashboard yang sama untuk tugas pengembangan kode, konteks proyek, tahapan agent, contoh diff, dan simulasi persetujuan owner.
+- `preview-lab/` tetap disediakan sebagai prototype mandiri untuk mengeksplorasi alur login demo dan private project preview.
 
-Buka `preview-lab/index.html` secara lokal atau melalui GitHub Pages pada path `/preview-lab/`. Gunakan password demo `SENADA-DEMO` untuk membuka contoh website Aure Studio. Dari dashboard, pilih **AI Workbench** untuk mencoba alur Agent Mode.
-
-**Catatan:** prototype ini bersifat publik dan hanya untuk simulasi visual. AI Workbench belum terhubung ke OpenAI API atau GitHub App; daftar file dan diff hanya contoh. Tidak ada pembacaan repository, perubahan kode, commit, pull request, merge, atau deployment. Login, password, data proyek, serta deployment private preview juga belum terhubung ke backend. Jangan masukkan informasi rahasia atau data klien sungguhan.
+Buka `admin/index.html` secara lokal atau melalui GitHub Pages pada path `/admin/`. AI Reply Assistant dan Agent Coding masih merupakan simulasi lokal; belum ada OpenAI API, GitHub App, pembacaan repository, perubahan kode, commit, pull request, merge, atau deployment. Login dan data inbox juga belum memakai autentikasi server atau database. Jangan masukkan informasi rahasia atau data klien sungguhan.
 
