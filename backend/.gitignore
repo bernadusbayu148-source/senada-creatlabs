@@ -1,0 +1,4 @@
+# Never commit real server credentials or generated preview output.
+/config.php
+/private-previews/
+/*.log
