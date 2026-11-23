@@ -207,6 +207,10 @@
       return '<section class="project-column"><div class="project-column-head"><strong>'+column.title+'</strong><span>'+column.items.length+'</span></div>'+
         (cards||'<div class="project-column-empty">Belum ada proyek di tahap ini.</div>')+'</section>';
     }).join("");
+    if(selectedProjectId){
+      var highlighted=document.getElementById("projectCard-"+selectedProjectId);
+      if(highlighted)highlighted.classList.add("is-highlighted");
+    }
   }
   function openProjectConvert(){
     var conversation=getSelected();
@@ -225,6 +229,7 @@
     form.elements.budget.value=conversation.budget;
     form.elements.deadline.value="";
     form.elements.notes.value=conversation.brief;
+    document.getElementById("projectConvertClient").textContent="Klien: "+conversation.name+" · "+conversation.company+" · "+conversation.email;
     document.getElementById("projectConvertDialog").showModal();
     form.elements.title.focus();
   }
