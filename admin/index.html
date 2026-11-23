@@ -257,8 +257,8 @@
 
         <div class="preview-security-banner" role="status">
           <div class="preview-security-icon">⌑</div>
-          <div><strong>Akses privat belum diaktifkan</strong><p>Ini masih prototype lokal. GitHub Pages dan dashboard saat ini bersifat publik. Jangan masukkan token, password, atau data proyek rahasia sebelum login dan hosting privat dikonfigurasi.</p></div>
-          <span class="preview-security-state">LOCKED</span>
+          <div><strong id="previewSecurityTitle">Prototype akses privat</strong><p id="previewSecurityMessage">Di GitHub Pages, dashboard ini hanya simulasi. Backend PHP dan database privat belum terhubung. Jangan masukkan data proyek rahasia di halaman publik ini.</p></div>
+          <span class="preview-security-state" id="previewSecurityState">DEMO</span>
         </div>
 
         <div class="preview-stats">
@@ -291,7 +291,8 @@
               <label class="preview-field preview-field-wide"><span>GitHub repository URL</span><input id="previewRepo" type="url" placeholder="https://github.com/owner/repository" required></label>
               <label class="preview-field"><span>Branch</span><input id="previewBranch" type="text" value="main" maxlength="80" required></label>
               <label class="preview-field"><span>Kategori</span><select id="previewCategory"><option>Business Website</option><option>E-commerce</option><option>Landing Page</option><option>Travel & Booking</option><option>Web Application</option><option>Other</option></select></label>
-              <label class="preview-field preview-field-wide"><span>Preview slug</span><input id="previewSlug" type="text" maxlength="50" placeholder="coffee-shop-demo" required><small>Nama jalur preview, bukan link publik yang aktif.</small></label>
+              <label class="preview-field preview-field-wide"><span>Preview slug</span><input id="previewSlug" type="text" maxlength="50" placeholder="coffee-shop-demo" required><small>Nama jalur preview yang dipakai pada link privat.</small></label>
+              <label class="preview-field preview-field-wide server-only"><span>Password preview</span><input id="previewPassword" type="password" autocomplete="new-password" minlength="12" maxlength="1024" placeholder="Minimal 12 karakter"><small>Wajib saat membuat proyek. Saat mengedit, kosongkan jika ingin mempertahankan password lama.</small></label>
             </div>
             <div class="preview-access-setting">
               <span class="preview-lock-icon">⌑</span><div><strong>Akses: Private</strong><p>Default terkunci. Pengunjung harus lolos autentikasi sebelum melihat website.</p></div><span class="preview-private-pill">PRIVATE</span>
@@ -301,7 +302,7 @@
               <label><input id="previewAutoDeploy" type="checkbox" checked> <span><b>Otomatis</b><small>Jalankan setelah perubahan pada branch terpilih.</small></span></label>
               <label><input id="previewManualDeploy" type="checkbox" checked> <span><b>Manual</b><small>Jalankan dari Admin Dashboard.</small></span></label>
             </div>
-            <p class="preview-form-warning">Prototype ini hanya menyimpan pengaturan contoh di browser lokal. Belum menghubungkan GitHub API atau hosting. Jangan masukkan access token atau password.</p>
+            <p class="preview-form-warning" id="previewFormWarning">Mode demo: pengaturan contoh hanya disimpan di browser ini. Jangan masukkan password atau token sungguhan.</p>
             <div class="preview-form-actions"><button type="button" class="secondary-button" data-preview-close>Batal</button><button type="submit" class="primary-button">Simpan konfigurasi</button></div>
           </form>
         </section>
