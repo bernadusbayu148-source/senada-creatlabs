@@ -148,3 +148,17 @@ Foto dipanggil dari Unsplash; ketersediaan dan crop akhir bergantung pada jaring
 ## Private Project Preview backend
 
 Folder backend/ sekarang berisi fondasi PHP/MySQL untuk login admin, password per project, akses preview statis, dan template GitHub Actions manual/otomatis. Implementasi masih berada di tahap persiapan repository; belum ada koneksi hosting, database, domain, atau credential. Lihat backend/README.md dan admin/PREVIEW-DEPLOYMENT.md sebelum deployment.
+
+## Private Project Preview — Visual Prototype
+
+Prototype empat layar untuk menguji pengalaman Senada Private Project Preview tersedia di folder [`preview-lab/`](preview-lab/):
+
+1. Admin Login
+2. Admin Dashboard
+3. Customer Password Page
+4. Website Preview
+
+Buka `preview-lab/index.html` secara lokal atau melalui GitHub Pages pada path `/preview-lab/`. Gunakan password demo `SENADA-DEMO` untuk membuka contoh website Aure Studio.
+
+**Catatan:** prototype ini bersifat publik dan hanya untuk simulasi visual. Login, password, data proyek, serta deployment belum terhubung ke backend. Jangan masukkan informasi rahasia atau data klien sungguhan.
+
