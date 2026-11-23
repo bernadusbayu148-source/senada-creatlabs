@@ -19,7 +19,7 @@ $password = getenv('SENADA_ADMIN_PASSWORD') ?: '';
 if ($password === '' && function_exists('stream_isatty') && stream_isatty(STDIN) && function_exists('shell_exec')) {
     $terminalState = trim((string)shell_exec('stty -g 2>/dev/null'));
     if ($terminalState !== '') {
-        echo "Password admin (minimal 14 karakter): ";
+        echo "Password admin (14–72 byte): ";
         shell_exec('stty -echo');
         $password = rtrim((string)fgets(STDIN), "\r\n");
         shell_exec('stty ' . escapeshellarg($terminalState));
