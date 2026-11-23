@@ -7,7 +7,12 @@ if (PHP_SAPI !== 'cli') {
     http_response_code(404);
     exit('Not found');
 }
-require dirname(__DIR__) . '/app/bootstrap.php';
+$bootstrapPath = getenv('SENADA_APP_BOOTSTRAP') ?: dirname(__DIR__) . '/app/bootstrap.php';
+if (!is_file($bootstrapPath)) {
+    fwrite(STDERR, "Private Senada bootstrap path is not configured.\n");
+    exit(1);
+}
+require $bootstrapPath;
 
 $email = strtolower(trim($argv[1] ?? ''));
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
