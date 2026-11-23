@@ -1,6 +1,7 @@
 (function(){
   "use strict";
   var STORAGE_KEY = "senada_admin_demo_v1";
+  var PROJECTS_STORAGE_KEY = "senada_projects_demo_v1";
   var initial = [
     {id:1,name:"Nadia Putri",company:"Studio skincare",initials:"NP",avatar:"violet",type:"Business Website",budget:"Rp5–8 juta",email:"nadia@example.test",phone:"+62 8xx-xxxx-0142",source:"Form website",status:"Baru",unread:true,time:"10:24",date:"Hari ini",brief:"Saya ingin membuat website untuk brand skincare kecil saya. Butuh halaman produk, cerita brand, dan tombol konsultasi.",messages:[{from:"client",text:"Halo Senada! Aku menemukan website kalian dan tertarik untuk membuat website untuk brand skincare kecilku.",time:"10:18"},{from:"client",text:"Kira-kira bisa bantu membuat website dengan katalog produk, cerita brand, dan form konsultasi?",time:"10:24"}]},
     {id:2,name:"Raka Mahendra",company:"Kopi Sore",initials:"RM",avatar:"coral",type:"Custom Web App",budget:"Rp8–12 juta",email:"raka@example.test",phone:"+62 8xx-xxxx-0285",source:"Form website",status:"Dalam Diskusi",unread:true,time:"09:46",date:"Hari ini",brief:"Butuh website coffee shop dengan menu, lokasi, dan sistem membership sederhana.",messages:[{from:"client",text:"Pagi, saya sedang mencari partner untuk mengembangkan website coffee shop kami.",time:"09:42"},{from:"client",text:"Kalau bisa sekalian ada membership sederhana untuk pelanggan tetap.",time:"09:46"},{from:"admin",text:"Halo Kak Raka! Bisa banget. Kami bisa bantu mulai dari website informasi, menu, sampai sistem membership. Boleh cerita sedikit alur membership yang dibayangkan?",time:"09:51"}]},
@@ -9,7 +10,9 @@
     {id:5,name:"Maya Anindya",company:"Langkah Kita Travel",initials:"MA",avatar:"peach",type:"Business Website",budget:"Rp4–6 juta",email:"maya@example.test",phone:"+62 8xx-xxxx-0527",source:"Form website",status:"Selesai",unread:false,time:"Ming, 11:12",date:"Minggu",brief:"Website profil agen perjalanan dengan halaman paket wisata dan formulir konsultasi.",messages:[{from:"client",text:"Halo, kami butuh website profil travel dan daftar paket wisata.",time:"Minggu 11:12"},{from:"admin",text:"Terima kasih, Kak Maya. Brief sudah kami terima. Untuk kebutuhan ini, kami sarankan business website dengan katalog paket wisata.",time:"Minggu 11:25"}]}
   ];
   var conversations = loadData();
+  var projects = loadProjects();
   var selectedId = conversations.length ? conversations[0].id : null;
+  var selectedProjectId = null;
   var activeFilter = "all";
   var toastTimer = null;
   var WHATSAPP_CHECKLIST_KEY = "senada_whatsapp_setup_v1";
@@ -22,6 +25,14 @@
     return JSON.parse(JSON.stringify(initial));
   }
   function saveData(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(conversations));}catch(e){}}
+  function loadProjects(){
+    try{
+      var saved=localStorage.getItem(PROJECTS_STORAGE_KEY);
+      if(saved){var parsed=JSON.parse(saved);if(Array.isArray(parsed))return parsed;}
+    }catch(e){}
+    return [];
+  }
+  function saveProjects(){try{localStorage.setItem(PROJECTS_STORAGE_KEY,JSON.stringify(projects));}catch(e){}}
   function esc(value){return String(value==null?"":value).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
   function initials(name){return String(name||"").split(/\s+/).slice(0,2).map(function(s){return s.charAt(0);}).join("").toUpperCase();}
   function avatarClass(type){return type==="coral"?"avatar-coral":type==="lime"?"avatar-lime":type==="blue"?"avatar-blue":type==="peach"?"avatar-peach":"";}
@@ -144,6 +155,19 @@
     document.getElementById("leadType").textContent=c.type;
     document.getElementById("leadBudget").textContent=c.budget;
     document.getElementById("leadBrief").textContent=c.brief;
+    var linkedProject=projects.find(function(p){return p.id===c.projectId||p.conversationId===c.id;});
+    var convertButton=document.getElementById("convertToProjectBtn");
+    var convertHint=document.getElementById("conversionProjectHint");
+    if(linkedProject){
+      c.projectId=linkedProject.id;
+      convertButton.textContent="Lihat di Proyek ↗";
+      convertButton.classList.add("is-linked");
+      convertHint.textContent="Diskusi ini sudah terhubung dengan proyek "+linkedProject.title+".";
+    }else{
+      convertButton.textContent="Jadikan Proyek ↗";
+      convertButton.classList.remove("is-linked");
+      convertHint.textContent="Buat proyek terpisah setelah kebutuhan dan ruang lingkup mulai disepakati.";
+    }
     renderMessages(c);
   }
   function renderInbox(){renderStats();renderConversationList();renderSelected();}
@@ -155,11 +179,54 @@
     }).join("")||'<tr><td colspan="6">Kontak tidak ditemukan.</td></tr>';
   }
   function renderProjects(){
-    var columns=[{title:"Inisiasi",status:"Baru",items:[]},{title:"Dalam proses",status:"Dalam Diskusi",items:[]},{title:"Selesai",status:"Selesai",items:[]}];
-    conversations.forEach(function(c){var col=columns.find(function(x){return x.status===c.status;});if(!col&&c.status==="Menunggu Balasan")col=columns[0];if(col)col.items.push(c);});
-    document.getElementById("projectsBoard").innerHTML=columns.map(function(col){
-      return '<section class="project-column"><div class="project-column-head"><strong>'+col.title+'</strong><span>'+col.items.length+'</span></div>'+col.items.map(function(c){return '<article class="project-card"><div class="project-card-top"><span class="project-type">'+esc(c.type.toUpperCase())+'</span><span class="project-menu">•••</span></div><h3>'+esc(c.company)+'</h3><p>'+esc(c.name)+' · '+esc(c.budget)+'</p><div class="project-card-foot"><span>'+esc(c.status)+'</span><span class="project-owner">'+esc(c.initials)+'</span></div></article>';}).join("")+'</section>';
+    var columns=[
+      {title:"Persiapan",status:"Persiapan",items:[]},
+      {title:"Pengerjaan",status:"Pengerjaan",items:[]},
+      {title:"Review",status:"Review",items:[]},
+      {title:"Selesai",status:"Selesai",items:[]}
+    ];
+    projects.forEach(function(project){
+      var column=columns.find(function(item){return item.status===project.status;})||columns[0];
+      column.items.push(project);
+    });
+    var board=document.getElementById("projectsBoard");
+    board.innerHTML=columns.map(function(column){
+      var cards=column.items.map(function(project){
+        var deadline=project.deadline?new Date(project.deadline+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"}):"Belum ditentukan";
+        return '<article class="project-card" id="projectCard-'+project.id+'">'+
+          '<div class="project-card-top"><span class="project-type">'+esc(String(project.type||"Website").toUpperCase())+'</span><span class="project-created">'+esc(project.createdAt||"Baru dibuat")+'</span></div>'+
+          '<h3>'+esc(project.title)+'</h3>'+
+          '<p class="project-client">'+esc(project.clientName)+' · '+esc(project.company)+'</p>'+
+          '<div class="project-card-meta"><span>'+esc(project.budget||"Budget belum ditentukan")+'</span><span>Target: '+esc(deadline)+'</span></div>'+
+          '<div class="project-card-foot"><span>Asal: '+esc(project.sourceLabel||"Inbox")+'</span><span class="project-owner">'+esc(initials(project.clientName))+'</span></div>'+
+          '<label class="project-stage-control"><span>Pindahkan tahap</span><select data-project-stage="'+project.id+'" aria-label="Ubah tahap proyek '+esc(project.title)+'">'+
+            columns.map(function(stage){return '<option value="'+stage.status+'" '+(project.status===stage.status?"selected":"")+'>'+stage.title+'</option>';}).join("")+
+          '</select></label>'+
+          '</article>';
+      }).join("");
+      return '<section class="project-column"><div class="project-column-head"><strong>'+column.title+'</strong><span>'+column.items.length+'</span></div>'+
+        (cards||'<div class="project-column-empty">Belum ada proyek di tahap ini.</div>')+'</section>';
     }).join("");
+  }
+  function openProjectConvert(){
+    var conversation=getSelected();
+    if(!conversation){showToast("Pilih diskusi yang ingin dijadikan proyek.");return;}
+    var linkedProject=projects.find(function(project){return project.id===conversation.projectId||project.conversationId===conversation.id;});
+    if(linkedProject){
+      selectedProjectId=linkedProject.id;
+      switchPage("projects");
+      var linkedCard=document.getElementById("projectCard-"+linkedProject.id);
+      if(linkedCard){linkedCard.classList.add("is-highlighted");linkedCard.scrollIntoView({behavior:"smooth",block:"center"});}
+      return;
+    }
+    var form=document.getElementById("projectConvertForm");
+    form.elements.title.value=conversation.company+" — "+conversation.type;
+    form.elements.type.value=conversation.type;
+    form.elements.budget.value=conversation.budget;
+    form.elements.deadline.value="";
+    form.elements.notes.value=conversation.brief;
+    document.getElementById("projectConvertDialog").showModal();
+    form.elements.title.focus();
   }
   document.addEventListener("click",function(event){
     var pageButton=event.target.closest("[data-page]");
@@ -176,6 +243,60 @@
   document.getElementById("inboxSearch").addEventListener("input",renderConversationList);
   document.getElementById("contactSearch").addEventListener("input",renderContacts);
   document.getElementById("globalSearch").addEventListener("keydown",function(e){if(e.key==="Enter"){document.getElementById("inboxSearch").value=this.value;switchPage("inbox");renderConversationList();}});
+  document.getElementById("convertToProjectBtn").addEventListener("click",openProjectConvert);
+  document.getElementById("closeProjectConvert").addEventListener("click",function(){document.getElementById("projectConvertDialog").close();});
+  document.getElementById("cancelProjectConvert").addEventListener("click",function(){document.getElementById("projectConvertDialog").close();});
+  document.getElementById("projectConvertDialog").addEventListener("click",function(event){
+    if(event.target===this)this.close();
+  });
+  document.getElementById("projectConvertForm").addEventListener("submit",function(event){
+    event.preventDefault();
+    var conversation=getSelected();
+    var form=this;
+    var title=form.elements.title.value.trim();
+    if(!conversation||!title){showToast("Nama proyek wajib diisi.");return;}
+    var duplicate=projects.find(function(project){return project.conversationId===conversation.id;});
+    if(duplicate){conversation.projectId=duplicate.id;saveData();document.getElementById("projectConvertDialog").close();switchPage("projects");return;}
+    var project={
+      id:Date.now(),
+      conversationId:conversation.id,
+      title:title,
+      clientName:conversation.name,
+      company:conversation.company,
+      email:conversation.email,
+      phone:conversation.phone,
+      type:form.elements.type.value.trim()||conversation.type,
+      budget:form.elements.budget.value.trim(),
+      deadline:form.elements.deadline.value,
+      notes:form.elements.notes.value.trim(),
+      sourceLabel:"Inbox",
+      status:"Persiapan",
+      createdAt:new Date().toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"})
+    };
+    projects.unshift(project);
+    conversation.projectId=project.id;
+    conversation.status="Dalam Diskusi";
+    conversation.unread=false;
+    saveData();
+    saveProjects();
+    selectedProjectId=project.id;
+    document.getElementById("projectConvertDialog").close();
+    renderInbox();
+    renderOverview();
+    renderContacts();
+    switchPage("projects");
+    showToast("Diskusi berhasil diubah menjadi proyek baru.");
+  });
+  document.addEventListener("change",function(event){
+    var stageSelect=event.target.closest("[data-project-stage]");
+    if(!stageSelect)return;
+    var project=projects.find(function(item){return String(item.id)===stageSelect.getAttribute("data-project-stage");});
+    if(!project)return;
+    project.status=stageSelect.value;
+    saveProjects();
+    renderProjects();
+    showToast("Tahap proyek diperbarui.");
+  });
   document.getElementById("statusSelect").addEventListener("change",function(){
     var c=getSelected();if(!c)return;c.status=this.value;saveData();renderStats();renderConversationList();renderRecent();renderContacts();renderProjects();showToast("Status prospek diperbarui.");
   });
@@ -188,7 +309,7 @@
   });
   document.getElementById("resetDemo").addEventListener("click",function(){
     if(!window.confirm("Kembalikan semua percakapan ke data contoh awal?"))return;
-    conversations=JSON.parse(JSON.stringify(initial));selectedId=conversations[0].id;saveData();renderOverview();renderInbox();renderContacts();renderProjects();showToast("Data preview berhasil direset.");
+    conversations=JSON.parse(JSON.stringify(initial));projects=[];selectedId=conversations[0].id;saveData();saveProjects();renderOverview();renderInbox();renderContacts();renderProjects();showToast("Data preview berhasil direset.");
   });
   document.getElementById("themeToggle").addEventListener("click",function(){document.body.classList.toggle("dark");try{localStorage.setItem("senada-admin-theme",document.body.classList.contains("dark")?"dark":"light");}catch(e){}});
   try{if(localStorage.getItem("senada-admin-theme")==="dark")document.body.classList.add("dark");}catch(e){}
