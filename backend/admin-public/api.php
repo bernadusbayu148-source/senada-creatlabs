@@ -80,7 +80,8 @@ try {
                 'enabled'=>(bool)$row['is_enabled'], 'has_password'=>(bool)$row['has_password'],
                 'last_deploy_requested_at'=>$row['last_deploy_requested_at'],
                 'preview_url'=>$base !== '' ? $base . '/p/' . rawurlencode($row['slug']) . '/' : null,
-                'updated_at'=>$row['updated_at']
+                'updated_at'=>$row['updated_at'],
+                'ready'=>is_file(rtrim((string)senada_config()['preview_storage_path'], DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $row['slug'] . DIRECTORY_SEPARATOR . 'index.html')
             ];
         }, $rows);
         senada_json(['ok'=>true, 'projects'=>$projects]);
