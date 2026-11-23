@@ -22,7 +22,10 @@ function preview_login_form(string $slug, string $projectName, string $error = '
     $safeName = htmlspecialchars($projectName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $safeError = htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $csrf = htmlspecialchars(senada_csrf_token('_preview_csrf'), ENT_QUOTES, 'UTF-8');
-    $action = '/p/' . rawurlencode($slug) . '/';
+    $action = (string)($_SERVER['REQUEST_URI'] ?? ('/p/' . rawurlencode($slug) . '/'));
+    $expectedPrefix = '/p/' . rawurlencode($slug) . '/';
+    if (!str_starts_with($action, $expectedPrefix) || strpbrk($action, "\r\n") !== false) $action = $expectedPrefix;
+    $action = htmlspecialchars($action, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     echo '<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Private Preview · Senada</title><style>
     *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:#f5f2ec;color:#242232;font:15px Arial,sans-serif}.card{width:min(430px,100%);padding:34px;background:#fff;border:1px solid #e8e2f0;border-radius:22px;box-shadow:0 18px 60px #26203312}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#5c43ed;color:white;font-weight:bold;font-size:22px}.eyebrow{margin:20px 0 8px;color:#7665c8;font-size:10px;font-weight:bold;letter-spacing:.16em}h1{margin:0 0 8px;font-size:26px;letter-spacing:-.04em}p{color:#777382;font-size:13px;line-height:1.6}label{display:block;margin-top:18px;font-size:12px;font-weight:bold}input{display:block;width:100%;height:48px;margin-top:8px;padding:0 13px;border:1px solid #ded9e8;border-radius:10px;font:inherit}button{width:100%;height:48px;margin-top:20px;border:0;border-radius:11px;background:#5c43ed;color:white;font-weight:bold;cursor:pointer}.error{min-height:18px;margin-top:12px;color:#b44d43;font-size:12px}.foot{margin-top:20px;font-size:11px;color:#a19cab;text-align:center}
     </style></head><body><main class="card"><div class="mark">S</div><div class="eyebrow">SENADA CREATLABS · PRIVATE PREVIEW</div><h1>' . $safeName . '</h1><p>Website ini hanya dapat dibuka oleh orang yang memiliki password preview.</p><form method="post" action="' . $action . '"><input type="hidden" name="_csrf" value="' . $csrf . '"><label>Password preview<input type="password" name="password" autocomplete="current-password" required autofocus maxlength="72"></label><button type="submit">Buka project preview</button><div class="error" role="alert">' . $safeError . '</div></form><div class="foot">Akses terbatas · Senada Creatlabs</div></main></body></html>';
@@ -81,7 +84,10 @@ try {
             'password_fingerprint'=>hash('sha256', (string)$project['password_hash'])
         ];
         unset($_SESSION['_preview_csrf']);
-        header('Location: /p/' . rawurlencode($slug) . '/', true, 303);
+        $redirect = (string)($_SERVER['REQUEST_URI'] ?? ('/p/' . rawurlencode($slug) . '/'));
+        $expectedPrefix = '/p/' . rawurlencode($slug) . '/';
+        if (!str_starts_with($redirect, $expectedPrefix) || strpbrk($redirect, "\r\n") !== false) $redirect = $expectedPrefix;
+        header('Location: ' . $redirect, true, 303);
         exit;
     }
 
