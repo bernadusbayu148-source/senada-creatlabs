@@ -1,6 +1,9 @@
 Options -Indexes
 RewriteEngine On
 
+# Jika app/ disimpan di luar web root, isi path absolut lalu aktifkan:
+# SetEnv SENADA_APP_BOOTSTRAP /home/CPANEL_USER/senada-private/app/bootstrap.php
+
 # Dashboard selalu melewati pemeriksaan sesi PHP.
 RewriteRule ^admin/?$ admin-gate.php [END,QSA]
 RewriteRule ^admin/index\.html$ admin-gate.php [END,QSA]
