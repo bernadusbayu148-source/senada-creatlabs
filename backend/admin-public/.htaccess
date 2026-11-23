@@ -1,0 +1,11 @@
+Options -Indexes
+RewriteEngine On
+
+# Dashboard selalu melewati pemeriksaan sesi PHP.
+RewriteRule ^admin/?$ admin-gate.php [END,QSA]
+RewriteRule ^admin/index\.html$ admin-gate.php [END,QSA]
+
+# Jangan menayangkan file konfigurasi atau dump database.
+<FilesMatch "(^config\.php$|\.sql$|\.log$|\.env$)">
+  Require all denied
+</FilesMatch>
