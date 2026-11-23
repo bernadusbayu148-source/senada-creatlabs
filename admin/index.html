@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="preview-projects.css">
 </head>
 <body>
   <div class="app-shell">
@@ -39,6 +40,9 @@
         </button>
         <button class="nav-link" data-page="projects">
           <span class="nav-icon" aria-hidden="true">▤</span><span>Proyek</span>
+        </button>
+        <button class="nav-link" data-page="previews">
+          <span class="nav-icon" aria-hidden="true">↗</span><span>Project Preview</span><span class="nav-count preview-nav-lock">PRIVATE</span>
         </button>
       </nav>
 
@@ -244,6 +248,65 @@
         <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
       </section>
 
+
+      <section class="page-view" data-view="previews" id="viewPreviews">
+        <div class="page-heading preview-page-heading">
+          <div><div class="eyebrow">PRIVATE WEBSITE SANDBOX</div><h1>Project Preview <span class="heading-spark">✳</span></h1><p>Kelola repository, jalur preview, dan metode deployment proyek Senada.</p></div>
+          <button class="primary-button" type="button" id="addPreviewProject"><span>＋</span> Tambah preview</button>
+        </div>
+
+        <div class="preview-security-banner" role="status">
+          <div class="preview-security-icon">⌑</div>
+          <div><strong>Akses privat belum diaktifkan</strong><p>Ini masih prototype lokal. GitHub Pages dan dashboard saat ini bersifat publik. Jangan masukkan token, password, atau data proyek rahasia sebelum login dan hosting privat dikonfigurasi.</p></div>
+          <span class="preview-security-state">LOCKED</span>
+        </div>
+
+        <div class="preview-stats">
+          <article class="preview-stat-card"><span>Total proyek</span><strong id="previewStatTotal">0</strong><small>Disimpan di browser ini</small></article>
+          <article class="preview-stat-card"><span>Siap dipreview</span><strong id="previewStatReady">0</strong><small>Menunggu hosting privat</small></article>
+          <article class="preview-stat-card"><span>Mode deployment</span><strong>Manual + Auto</strong><small>Konfigurasi pilihan</small></article>
+        </div>
+
+        <div class="preview-toolbar">
+          <div><strong>Daftar preview</strong><span>Setiap proyek dapat dihubungkan ke repository berbeda.</span></div>
+          <label class="preview-search"><span aria-hidden="true">⌕</span><input type="search" id="previewSearch" placeholder="Cari nama atau repository..." aria-label="Cari project preview"></label>
+        </div>
+        <div class="preview-project-list" id="previewProjectList"></div>
+
+        <div class="preview-next-step">
+          <span class="preview-next-icon">⌘</span>
+          <div><strong>Langkah integrasi berikutnya</strong><p>Hubungkan hosting privat dan autentikasi terlebih dahulu. Setelah itu, GitHub Actions dapat menjalankan deployment otomatis saat ada push dan deployment manual saat diminta dari dashboard.</p><a href="PREVIEW-DEPLOYMENT.md" target="_blank" rel="noopener">Baca rancangan deployment <span>↗</span></a></div>
+        </div>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Project Preview prototype</div>
+      </section>
+
+      <div class="preview-modal" id="previewModal" hidden>
+        <div class="preview-modal-backdrop" data-preview-close></div>
+        <section class="preview-modal-card" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+          <div class="preview-modal-head"><div><div class="eyebrow">PROJECT CONFIGURATION</div><h2 id="previewModalTitle">Tambah project preview</h2><p>Hubungkan satu repository untuk satu lingkungan preview.</p></div><button type="button" class="preview-modal-close" data-preview-close aria-label="Tutup">×</button></div>
+          <form id="previewProjectForm">
+            <input type="hidden" id="previewProjectId">
+            <div class="preview-form-grid">
+              <label class="preview-field preview-field-wide"><span>Nama proyek</span><input id="previewName" type="text" maxlength="70" placeholder="Contoh: Coffee Shop Demo" required></label>
+              <label class="preview-field preview-field-wide"><span>GitHub repository URL</span><input id="previewRepo" type="url" placeholder="https://github.com/owner/repository" required></label>
+              <label class="preview-field"><span>Branch</span><input id="previewBranch" type="text" value="main" maxlength="80" required></label>
+              <label class="preview-field"><span>Kategori</span><select id="previewCategory"><option>Business Website</option><option>E-commerce</option><option>Landing Page</option><option>Travel & Booking</option><option>Web Application</option><option>Other</option></select></label>
+              <label class="preview-field preview-field-wide"><span>Preview slug</span><input id="previewSlug" type="text" maxlength="50" placeholder="coffee-shop-demo" required><small>Nama jalur preview, bukan link publik yang aktif.</small></label>
+            </div>
+            <div class="preview-access-setting">
+              <span class="preview-lock-icon">⌑</span><div><strong>Akses: Private</strong><p>Default terkunci. Pengunjung harus lolos autentikasi sebelum melihat website.</p></div><span class="preview-private-pill">PRIVATE</span>
+            </div>
+            <div class="preview-deploy-options">
+              <strong>Metode deployment</strong>
+              <label><input id="previewAutoDeploy" type="checkbox" checked> <span><b>Otomatis</b><small>Jalankan setelah perubahan pada branch terpilih.</small></span></label>
+              <label><input id="previewManualDeploy" type="checkbox" checked> <span><b>Manual</b><small>Jalankan dari Admin Dashboard.</small></span></label>
+            </div>
+            <p class="preview-form-warning">Prototype ini hanya menyimpan pengaturan contoh di browser lokal. Belum menghubungkan GitHub API atau hosting. Jangan masukkan access token atau password.</p>
+            <div class="preview-form-actions"><button type="button" class="secondary-button" data-preview-close>Batal</button><button type="submit" class="primary-button">Simpan konfigurasi</button></div>
+          </form>
+        </section>
+      </div>
+
       <section class="page-view" data-view="settings" id="viewSettings">
         <div class="page-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Pengaturan <span class="heading-spark">✳</span></h1><p>Preferensi workspace dan informasi integrasi.</p></div></div>
         <div class="settings-grid">
@@ -258,5 +321,6 @@
   <div class="mobile-scrim" id="mobileScrim"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="admin.js"></script>
+  <script src="preview-projects.js"></script>
 </body>
 </html>
