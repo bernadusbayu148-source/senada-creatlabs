@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f9f6ef">
+  <meta name="description" content="Senada Creatlabs — client inbox dashboard preview.">
+  <title>Senada Desk — Client Inbox</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="../index.html" aria-label="Senada Creatlabs home">
+        <img src="../favicon.svg" alt="" class="brand-mark">
+        <span class="brand-word">senada<span>.</span><small>CREATLABS</small></span>
+      </a>
+
+      <div class="workspace-switch">
+        <div class="workspace-avatar">S</div>
+        <div class="workspace-copy"><strong>Senada Studio</strong><span>Workspace utama</span></div>
+        <span class="switch-chevron">⌄</span>
+      </div>
+
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Navigasi utama">
+        <button class="nav-link is-active" data-page="overview">
+          <span class="nav-icon" aria-hidden="true">▦</span><span>Overview</span>
+        </button>
+        <button class="nav-link" data-page="inbox">
+          <span class="nav-icon" aria-hidden="true">◌</span><span>Inbox</span><span class="nav-count" id="navUnread">3</span>
+        </button>
+        <button class="nav-link" data-page="contacts">
+          <span class="nav-icon" aria-hidden="true">♧</span><span>Kontak</span>
+        </button>
+        <button class="nav-link" data-page="projects">
+          <span class="nav-icon" aria-hidden="true">▤</span><span>Proyek</span>
+        </button>
+      </nav>
+
+      <div class="nav-label nav-label-lower">PREFERENSI</div>
+      <nav class="side-nav">
+        <button class="nav-link" data-page="settings">
+          <span class="nav-icon" aria-hidden="true">⚙</span><span>Pengaturan</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-spark">✳</div>
+          <strong>Butuh ruang untuk ide?</strong>
+          <p>Atur setiap obrolan jadi langkah menuju proyek baru.</p>
+          <button type="button" class="help-link" data-page="inbox">Lihat inbox <span>↗</span></button>
+        </div>
+        <div class="user-mini">
+          <div class="user-avatar">SC</div>
+          <div class="user-copy"><strong>Senada Creatlabs</strong><span>Admin workspace</span></div>
+          <button class="more-button" type="button" aria-label="Menu akun">•••</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenuToggle" aria-label="Buka menu">☰</button>
+        <div class="breadcrumbs"><span>Senada Studio</span><b>/</b><strong id="breadcrumbCurrent">Overview</strong></div>
+        <div class="topbar-actions">
+          <label class="global-search">
+            <span aria-hidden="true">⌕</span>
+            <input id="globalSearch" type="search" placeholder="Cari pesan, kontak..." autocomplete="off">
+            <kbd>⌘ K</kbd>
+          </label>
+          <span class="preview-pill"><i></i> PREVIEW MODE</span>
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Ganti tema">◐</button>
+          <div class="top-avatar" title="Senada Creatlabs">S</div>
+        </div>
+      </header>
+
+      <div class="preview-notice">
+        <span class="notice-icon">✦</span>
+        <span><strong>Mode preview.</strong> Data dan balasan di halaman ini hanya simulasi yang tersimpan di browser ini. Belum terhubung ke database atau WhatsApp.</span>
+        <button type="button" id="dismissNotice" aria-label="Tutup pemberitahuan">×</button>
+      </div>
+
+      <section class="page-view is-visible" data-view="overview" id="viewOverview">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">MONDAY MOOD, BETTER PROJECTS</div>
+            <h1>Halo, Senada <span class="heading-spark">✳</span></h1>
+            <p>Ini ringkasan percakapan dan peluang proyekmu hari ini.</p>
+          </div>
+          <button class="primary-button" type="button" data-page="inbox"><span>＋</span> Buka inbox</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card stat-violet">
+            <div class="stat-top"><span>Total inquiry</span><span class="stat-symbol">↗</span></div>
+            <div class="stat-number" id="statTotal">24</div>
+            <div class="stat-foot"><span class="trend-up">↗ 18%</span> dibanding bulan lalu</div>
+            <div class="stat-decoration stat-orbit"></div>
+          </article>
+          <article class="stat-card stat-white">
+            <div class="stat-top"><span>Pesan baru</span><span class="stat-symbol symbol-lime">✳</span></div>
+            <div class="stat-number" id="statNew">3</div>
+            <div class="stat-foot"><span class="trend-neutral">Perlu ditinjau</span> hari ini</div>
+            <div class="stat-decoration stat-dots"></div>
+          </article>
+          <article class="stat-card stat-lime">
+            <div class="stat-top"><span>Dalam diskusi</span><span class="stat-symbol">↗</span></div>
+            <div class="stat-number" id="statDiscuss">6</div>
+            <div class="stat-foot"><span class="trend-dark">Aktif</span> dengan calon klien</div>
+            <div class="stat-decoration stat-ring"></div>
+          </article>
+          <article class="stat-card stat-white">
+            <div class="stat-top"><span>Proyek selesai</span><span class="stat-symbol symbol-coral">✦</span></div>
+            <div class="stat-number" id="statDone">4</div>
+            <div class="stat-foot"><span class="trend-up">Good work!</span> keep the rhythm</div>
+            <div class="stat-decoration stat-star">✳</div>
+          </article>
+        </div>
+
+        <div class="overview-grid">
+          <article class="panel activity-panel">
+            <div class="panel-heading">
+              <div><span class="panel-kicker">ACTIVITY</span><h2>Alur inquiry</h2><p>Pesan masuk selama 7 hari terakhir</p></div>
+              <button class="select-chip" type="button">7 hari terakhir <span>⌄</span></button>
+            </div>
+            <div class="chart-summary"><strong>32 <small>inquiry</small></strong><span class="chart-positive">↗ 12,5% dari minggu lalu</span></div>
+            <div class="bar-chart" aria-label="Grafik inquiry mingguan">
+              <div class="chart-y"><span>12</span><span>8</span><span>4</span><span>0</span></div>
+              <div class="chart-bars">
+                <div class="bar-column"><div class="bar-track"><i style="height:42%"></i></div><span>Sen</span></div>
+                <div class="bar-column"><div class="bar-track"><i style="height:68%"></i></div><span>Sel</span></div>
+                <div class="bar-column"><div class="bar-track"><i style="height:53%"></i></div><span>Rab</span></div>
+                <div class="bar-column"><div class="bar-track"><i style="height:84%"></i></div><span>Kam</span></div>
+                <div class="bar-column"><div class="bar-track"><i style="height:60%"></i></div><span>Jum</span></div>
+                <div class="bar-column"><div class="bar-track"><i class="bar-highlight" style="height:100%"></i></div><span>Sab</span></div>
+                <div class="bar-column"><div class="bar-track"><i style="height:74%"></i></div><span>Min</span></div>
+              </div>
+            </div>
+            <div class="chart-foot"><span><i class="legend-dot"></i> Inquiry masuk</span><span>Data ilustrasi untuk preview</span></div>
+          </article>
+
+          <article class="panel pipeline-panel">
+            <div class="panel-heading">
+              <div><span class="panel-kicker">PIPELINE</span><h2>Status prospek</h2><p>Perjalanan inquiry sampai jadi proyek</p></div>
+            </div>
+            <div class="pipeline-list">
+              <div class="pipeline-row"><div class="pipeline-icon p-new">✦</div><div class="pipeline-info"><strong>Baru masuk</strong><span>Butuh respons awal</span></div><b id="pipeNew">3</b></div>
+              <div class="pipeline-row"><div class="pipeline-icon p-wait">◷</div><div class="pipeline-info"><strong>Menunggu balasan</strong><span>Follow-up berikutnya</span></div><b id="pipeWait">2</b></div>
+              <div class="pipeline-row"><div class="pipeline-icon p-talk">↗</div><div class="pipeline-info"><strong>Dalam diskusi</strong><span>Scope & kebutuhan</span></div><b id="pipeTalk">6</b></div>
+              <div class="pipeline-row"><div class="pipeline-icon p-done">✓</div><div class="pipeline-info"><strong>Selesai</strong><span>Proyek ditutup</span></div><b id="pipeDone">4</b></div>
+            </div>
+            <button class="text-button" type="button" data-page="inbox">Kelola semua inquiry <span>→</span></button>
+          </article>
+        </div>
+
+        <article class="panel recent-panel">
+          <div class="panel-heading recent-heading">
+            <div><span class="panel-kicker">LATEST CONVERSATIONS</span><h2>Inquiry terbaru</h2><p>Obrolan yang baru saja masuk ke Senada.</p></div>
+            <button class="text-button" type="button" data-page="inbox">Lihat semua <span>→</span></button>
+          </div>
+          <div class="recent-list" id="recentList"></div>
+        </article>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
+      </section>
+
+      <section class="page-view" data-view="inbox" id="viewInbox">
+        <div class="page-heading inbox-heading">
+          <div><div class="eyebrow">CLIENT CONVERSATIONS</div><h1>Inbox <span class="heading-spark">✳</span></h1><p>Semua ide dan calon proyek, dalam satu frekuensi.</p></div>
+          <div class="inbox-heading-actions"><span class="connection-state"><i></i> Demo inbox aktif</span></div>
+        </div>
+        <div class="inbox-workspace">
+          <aside class="conversation-panel">
+            <div class="conversation-panel-head"><div><h2>Pesan masuk</h2><span id="inboxCountLabel">5 percakapan</span></div><button class="square-button" type="button" id="newMessageHint" title="Pesan baru">＋</button></div>
+            <label class="inbox-search"><span>⌕</span><input type="search" id="inboxSearch" placeholder="Cari nama atau pesan..."></label>
+            <div class="filter-tabs">
+              <button class="filter-tab is-active" data-filter="all">Semua</button>
+              <button class="filter-tab" data-filter="unread">Belum dibaca <b id="unreadTabCount">3</b></button>
+            </div>
+            <div class="conversation-list" id="conversationList"></div>
+            <div class="conversation-foot"><span class="online-dot"></span> Sinkronisasi lokal aktif</div>
+          </aside>
+
+          <section class="chat-panel" aria-label="Percakapan terpilih">
+            <div class="chat-empty" id="chatEmpty"><div class="empty-illustration">✳</div><h3>Pilih percakapan</h3><p>Pilih salah satu inquiry di sebelah kiri untuk melihat detail obrolan.</p></div>
+            <div id="chatContent" class="chat-content">
+              <div class="chat-top">
+                <div class="chat-person"><div class="avatar avatar-large" id="chatAvatar">NP</div><div><strong id="chatName">Nadia Putri</strong><span id="chatMeta">Studio skincare · Business Website</span></div></div>
+                <div class="chat-actions"><button class="square-button" type="button" title="Cari dalam chat">⌕</button><button class="square-button" type="button" title="Opsi lainnya">•••</button></div>
+              </div>
+              <div class="chat-project-strip"><span class="project-strip-icon">✦</span><div><strong id="chatProjectType">Business Website</strong><span id="chatProjectBudget">Budget: Rp5–8 juta</span></div><span class="lead-label" id="chatSource">FORM WEBSITE</span></div>
+              <div class="message-thread" id="messageThread"></div>
+              <div class="reply-area">
+                <div class="reply-hint"><span>↳</span> Balas sebagai <strong>Senada Creatlabs</strong> <small>· simulasi lokal</small></div>
+                <form class="reply-form" id="composerForm">
+                  <textarea id="composerInput" rows="1" placeholder="Tulis balasan untuk calon klien..." aria-label="Tulis balasan"></textarea>
+                  <div class="reply-tools"><span>Enter untuk kirim · Shift + Enter untuk baris baru</span><button class="send-button" type="submit">Kirim <span>↑</span></button></div>
+                </form>
+                <div class="chat-disclaimer">Balasan hanya tampil di preview ini. WhatsApp Cloud API belum dihubungkan.</div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="lead-panel" id="leadPanel">
+            <div class="lead-panel-head"><h2>Detail prospek</h2><button class="square-button" type="button" title="Opsi">•••</button></div>
+            <div class="lead-profile"><div class="avatar avatar-profile" id="leadAvatar">NP</div><h3 id="leadName">Nadia Putri</h3><p id="leadCompany">Studio skincare</p><span class="lead-since" id="leadSince">Inquiry · Hari ini</span></div>
+            <div class="lead-detail-group">
+              <div class="detail-label">STATUS PROSPEK</div>
+              <select id="statusSelect" class="status-select" aria-label="Ubah status prospek">
+                <option value="Baru">● Baru</option><option value="Menunggu Balasan">● Menunggu Balasan</option><option value="Dalam Diskusi">● Dalam Diskusi</option><option value="Selesai">● Selesai</option>
+              </select>
+            </div>
+            <div class="lead-detail-group">
+              <div class="detail-label">INFORMASI KONTAK</div>
+              <div class="detail-item"><span class="detail-icon">✉</span><div><small>Email</small><strong id="leadEmail">nadia@example.test</strong></div></div>
+              <div class="detail-item"><span class="detail-icon">⌕</span><div><small>WhatsApp</small><strong id="leadPhone">+62 8xx-xxxx-0142</strong></div></div>
+              <div class="detail-item"><span class="detail-icon">⌖</span><div><small>Sumber</small><strong id="leadSource">Form website</strong></div></div>
+            </div>
+            <div class="lead-detail-group">
+              <div class="detail-label">RINGKASAN PROYEK</div>
+              <div class="brief-card"><small>Jenis website</small><strong id="leadType">Business Website</strong><small>Estimasi budget</small><strong id="leadBudget">Rp5–8 juta</strong><small>Pesan awal</small><p id="leadBrief">Saya ingin membuat website untuk brand skincare kecil saya.</p></div>
+            </div>
+            <div class="lead-panel-foot"><span>✳</span> Satu frekuensi, banyak kemungkinan.</div>
+          </aside>
+        </div>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
+      </section>
+
+      <section class="page-view" data-view="contacts" id="viewContacts">
+        <div class="page-heading"><div><div class="eyebrow">PEOPLE & CONNECTIONS</div><h1>Kontak <span class="heading-spark">✳</span></h1><p>Kenali orang di balik setiap ide dan peluang.</p></div><span class="soft-count" id="contactCount">5 kontak contoh</span></div>
+        <div class="panel contacts-panel"><div class="table-toolbar"><div><strong>Semua kontak</strong><span>Daftar prospek dari inquiry website</span></div><label class="table-search">⌕ <input id="contactSearch" type="search" placeholder="Cari kontak..."></label></div><div class="table-wrap"><table><thead><tr><th>NAMA</th><th>PERUSAHAAN</th><th>KEBUTUHAN</th><th>STATUS</th><th>TERAKHIR AKTIF</th><th></th></tr></thead><tbody id="contactsTable"></tbody></table></div></div>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
+      </section>
+
+      <section class="page-view" data-view="projects" id="viewProjects">
+        <div class="page-heading"><div><div class="eyebrow">FROM IDEA TO IMPACT</div><h1>Proyek <span class="heading-spark">✳</span></h1><p>Gambaran pipeline proyek yang sedang kamu tangani.</p></div><span class="soft-count">Contoh pipeline</span></div>
+        <div class="project-board" id="projectsBoard"></div>
+        <div class="project-note"><span>✦</span><div><strong>Catatan untuk tahap berikutnya</strong><p>Setelah backend aktif, proyek dapat dibuat dari inquiry, diberi PIC, deadline, dan catatan progres.</p></div></div>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
+      </section>
+
+      <section class="page-view" data-view="settings" id="viewSettings">
+        <div class="page-heading"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Pengaturan <span class="heading-spark">✳</span></h1><p>Preferensi workspace dan informasi integrasi.</p></div></div>
+        <div class="settings-grid">
+          <article class="panel settings-card"><span class="settings-icon">✳</span><h2>Workspace</h2><p>Pengaturan dasar untuk ruang kerja Senada Creatlabs.</p><div class="settings-row"><span>Nama workspace</span><strong>Senada Studio</strong></div><div class="settings-row"><span>Mode</span><strong><span class="status-dot status-demo"></span> Preview / Demo</strong></div><div class="settings-row"><span>Bahasa</span><strong>Indonesia</strong></div></article>
+          <article class="panel settings-card"><span class="settings-icon settings-icon-lime">⌁</span><h2>Integrasi WhatsApp</h2><p>Hubungkan WhatsApp Cloud API setelah nomor bisnis dan akun Meta siap.</p><div class="integration-status"><span class="integration-icon">◌</span><div><strong>Belum terhubung</strong><small>WhatsApp Business Platform</small></div><span class="coming-soon">NEXT STEP</span></div><ul class="settings-list"><li>Nomor WhatsApp khusus Senada</li><li>Meta Business Portfolio & WhatsApp Business Account</li><li>Webhook untuk pesan masuk</li><li>Token API aman di server PHP</li></ul><button class="secondary-button" type="button" disabled>Integrasi belum tersedia</button></article>
+          <article class="panel settings-card settings-wide"><span class="settings-icon settings-icon-coral">⌘</span><h2>Data preview</h2><p>Semua perubahan simulasi disimpan di localStorage browser yang sedang digunakan.</p><div class="settings-row"><span>Penyimpanan</span><strong>Browser lokal</strong></div><div class="settings-row"><span>Database server</span><strong>Belum dikonfigurasi</strong></div><div class="settings-row"><span>Pengiriman pesan</span><strong>Tidak aktif</strong></div><button class="danger-button" id="resetDemo" type="button">Reset data contoh</button></article>
+        </div>
+        <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Workspace preview</div>
+      </section>
+    </main>
+  </div>
+  <div class="mobile-scrim" id="mobileScrim"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
