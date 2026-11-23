@@ -29,3 +29,19 @@ Jika GitHub Pages aktif dari branch \`main\` folder \`/(root)\`, dashboard dapat
 3. Login admin dan pembatasan akses.
 4. WhatsApp Cloud API, webhook pesan masuk, dan pengiriman pesan keluar.
 5. Persetujuan/opt-in kontak dan template pesan awal sesuai aturan WhatsApp.
+
+
+## Project Preview (tahap prototype)
+
+Menu **Project Preview** tersedia di dashboard untuk:
+- Menambahkan konfigurasi proyek berdasarkan repository GitHub, branch, kategori, dan slug.
+- Memilih deployment otomatis, manual, atau keduanya.
+- Mengedit, mencari, dan menghapus konfigurasi lokal.
+- Menampilkan status akses **Private** sebagai default.
+
+File pendukung:
+- `preview-projects.css` — tampilan halaman Project Preview.
+- `preview-projects.js` — interaksi prototype berbasis browser.
+- `PREVIEW-DEPLOYMENT.md` — rancangan arsitektur private hosting dan deployment.
+
+**Batasan keamanan:** konfigurasi hanya disimpan di `localStorage` browser dan belum tersinkron ke server. Tombol deployment hanya simulasi. GitHub Pages dan halaman admin saat ini masih publik serta belum memiliki login. Jangan memasukkan token, password, credential hosting, atau informasi proyek rahasia. Preview privat sungguhan membutuhkan hosting dengan access gate, autentikasi admin server-side, backend, dan GitHub Actions Secrets.
