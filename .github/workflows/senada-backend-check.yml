@@ -37,3 +37,4 @@ jobs:
           node --check admin/preview-projects.js
           node --check backend/admin-public/auth.js
           node --check preview-lab/app.js
+          node --check preview-lab/agent-workbench.js

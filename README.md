@@ -149,16 +149,17 @@ Foto dipanggil dari Unsplash; ketersediaan dan crop akhir bergantung pada jaring
 
 Folder backend/ sekarang berisi fondasi PHP/MySQL untuk login admin, password per project, akses preview statis, dan template GitHub Actions manual/otomatis. Implementasi masih berada di tahap persiapan repository; belum ada koneksi hosting, database, domain, atau credential. Lihat backend/README.md dan admin/PREVIEW-DEPLOYMENT.md sebelum deployment.
 
-## Private Project Preview — Visual Prototype
+## Private Project Preview & AI Workbench — Visual Prototype
 
-Prototype empat layar untuk menguji pengalaman Senada Private Project Preview tersedia di folder [`preview-lab/`](preview-lab/):
+Prototype visual di folder [`preview-lab/`](preview-lab/) kini mencakup lima tampilan:
 
 1. Admin Login
 2. Admin Dashboard
-3. Customer Password Page
-4. Website Preview
+3. **Senada AI Workbench — Agent Mode** (alur tugas, tahapan agent, contoh diff, dan simulasi persetujuan owner)
+4. Customer Password Page
+5. Website Preview
 
-Buka `preview-lab/index.html` secara lokal atau melalui GitHub Pages pada path `/preview-lab/`. Gunakan password demo `SENADA-DEMO` untuk membuka contoh website Aure Studio.
+Buka `preview-lab/index.html` secara lokal atau melalui GitHub Pages pada path `/preview-lab/`. Gunakan password demo `SENADA-DEMO` untuk membuka contoh website Aure Studio. Dari dashboard, pilih **AI Workbench** untuk mencoba alur Agent Mode.
 
-**Catatan:** prototype ini bersifat publik dan hanya untuk simulasi visual. Login, password, data proyek, serta deployment belum terhubung ke backend. Jangan masukkan informasi rahasia atau data klien sungguhan.
+**Catatan:** prototype ini bersifat publik dan hanya untuk simulasi visual. AI Workbench belum terhubung ke OpenAI API atau GitHub App; daftar file dan diff hanya contoh. Tidak ada pembacaan repository, perubahan kode, commit, pull request, merge, atau deployment. Login, password, data proyek, serta deployment private preview juga belum terhubung ke backend. Jangan masukkan informasi rahasia atau data klien sungguhan.
 

@@ -10,23 +10,28 @@ Jika GitHub Pages aktif dari branch `main` folder root:
 
 Jika Pages belum aktif, buka `index.html` secara lokal atau aktifkan melalui **Repository Settings → Pages → Deploy from a branch → main → /(root)**.
 
-## Empat tampilan yang tersedia
+## Lima tampilan yang tersedia
 
 1. **Admin Login** — halaman masuk visual untuk workspace Senada.
 2. **Admin Dashboard** — overview, daftar project preview, status akses, dan aktivitas.
-3. **Customer Password Page** — gerbang password untuk klien sebelum membuka website.
-4. **Website Preview** — contoh website fiktif Aure Studio di dalam tampilan preview privat.
+3. **Senada AI Workbench (Agent Mode)** — ruang kerja owner untuk mencoba alur instruksi, tahapan agent, contoh diff, serta simulasi persetujuan perubahan.
+4. **Customer Password Page** — gerbang password untuk klien sebelum membuka website.
+5. **Website Preview** — contoh website fiktif Aure Studio di dalam tampilan preview privat.
 
 ## Cara mencoba
 
 - Klik **Masuk ke dashboard** pada halaman awal.
-- Dari dashboard, pilih **Lihat sebagai klien** atau **Uji akses klien**.
+- Dari dashboard, pilih **AI Workbench** di sidebar untuk mencoba Agent Mode.
+- Masukkan instruksi atau pilih salah satu contoh tugas, lalu klik **Jalankan Agent**.
+- Tinjau contoh diff dan coba tombol persetujuan atau permintaan revisi. Semua tindakan ini hanya simulasi.
+- Pilih **Lihat sebagai klien** atau **Uji akses klien** untuk melanjutkan demo private preview.
 - Gunakan password demo: `SENADA-DEMO`.
 - Coba navigasi dashboard, pilihan deployment Manual / Automatic, simulasi deployment, pengaturan nama proyek, dan mode terang / gelap.
 
 ## Batasan penting
 
 - Ini adalah prototype statis untuk melihat desain dan alur. Login admin dan password pelanggan **bukan autentikasi sungguhan**.
+- Senada AI Workbench hanya memvisualisasikan Agent Mode. Tidak ada koneksi OpenAI API, GitHub App, pembacaan repository, eksekusi perintah, perubahan file, commit, pull request, merge, atau deployment.
 - Password demo ditanam di JavaScript publik dan hanya untuk simulasi. Jangan gunakan password, token, data klien, atau informasi rahasia sungguhan.
 - Data proyek Aure Studio dan Bloom Atelier sepenuhnya fiktif.
 - Tombol deployment hanya mengubah status simulasi. Tidak ada GitHub Actions, hosting, FTP, PHP, MySQL, atau server yang dipanggil dari halaman ini.

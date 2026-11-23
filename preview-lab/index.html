@@ -11,7 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="agent-workbench.css">
   <script src="app.js" defer></script>
+  <script src="agent-workbench.js" defer></script>
 </head>
 <body>
   <div class="demo-ribbon"><span class="ribbon-dot"></span> PUBLIC PROTOTYPE <span>·</span> NO REAL CLIENT DATA</div>
@@ -82,6 +84,7 @@
             <button class="side-link is-current" type="button" data-dashboard-tab="overview"><span>▦</span> Overview</button>
             <button class="side-link" type="button" data-dashboard-tab="projects"><span>▤</span> Project Preview <b class="private-tag">PRIVATE</b></button>
             <button class="side-link" type="button" data-dashboard-tab="deploy"><span>↗</span> Deployment</button>
+            <button class="side-link" type="button" data-go="agent"><span>✳</span> AI Workbench <b class="private-tag">OWNER</b></button>
           </nav>
           <div class="side-label side-label-lower">PREFERENCES</div>
           <button class="side-link" type="button" data-dashboard-tab="settings"><span>⚙</span> Pengaturan</button>
@@ -171,7 +174,147 @@
       </div>
     </section>
 
-    <!-- 3. CUSTOMER PASSWORD GATE -->
+
+    <!-- 3. OWNER AI WORKBENCH — STATIC VISUAL PROTOTYPE -->
+    <section class="screen agent-screen" data-screen="agent" aria-labelledby="agent-title">
+      <header class="agent-topbar">
+        <a class="brand" href="../index.html" aria-label="Senada Creatlabs home">
+          <img src="../favicon.svg" alt="" class="brand-mark">
+          <span class="brand-word">senada<span>.</span><small>CREATLABS</small></span>
+        </a>
+        <div class="agent-topbar-meta">
+          <span class="agent-owner-label"><i></i> OWNER WORKSPACE</span>
+          <span class="agent-prototype-label">STATIC PROTOTYPE</span>
+          <button class="button button-outline agent-back" type="button" data-go="dashboard">← Dashboard</button>
+        </div>
+      </header>
+
+      <main class="agent-main">
+        <div class="agent-heading">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-star">✳</span> OWNER-ONLY DEVELOPMENT SPACE</div>
+            <h1 id="agent-title">Senada <em>AI Workbench.</em></h1>
+            <p>Berikan tugas, biarkan Agent menyusun langkah, lalu tinjau setiap perubahan sebelum disetujui.</p>
+          </div>
+          <div class="agent-heading-status">
+            <span class="agent-mode-chip"><b>✳</b> AGENT MODE ACTIVE</span>
+            <span class="agent-no-api">API NOT CONNECTED</span>
+          </div>
+        </div>
+
+        <div class="agent-layout">
+          <aside class="agent-panel agent-context-panel" aria-label="Project context">
+            <div class="agent-panel-heading"><span>PROJECT CONTEXT</span><small>DEMO DATA</small></div>
+            <label for="agent-project-select">Workspace project</label>
+            <select id="agent-project-select" class="agent-select">
+              <option value="senada">Senada Creatlabs website</option>
+              <option value="aure">Aure Studio — sample project</option>
+            </select>
+
+            <div class="agent-repo-card">
+              <div class="agent-repo-top"><span>GITHUB REPOSITORY</span><i></i></div>
+              <strong id="agent-repo-name">senada-creatlabs</strong>
+              <small id="agent-repo-owner">bernadusbayu148-source / public</small>
+              <div class="agent-repo-footer"><span>Preview context only</span><b>NOT CONNECTED</b></div>
+            </div>
+
+            <div class="agent-files-heading"><span>PROJECT FILES</span><small>SIMULATED TREE</small></div>
+            <div class="agent-file-list" role="list" aria-label="Example project files">
+              <button class="agent-file is-selected" type="button" data-agent-file="index.html"><span class="file-type file-html">H</span><span>index.html</span><small>HTML</small></button>
+              <button class="agent-file" type="button" data-agent-file="styles.css"><span class="file-type file-css">#</span><span>styles.css</span><small>CSS</small></button>
+              <button class="agent-file" type="button" data-agent-file="app.js"><span class="file-type file-js">JS</span><span>app.js</span><small>JS</small></button>
+              <button class="agent-file" type="button" data-agent-file="README.md"><span class="file-type file-md">M</span><span>README.md</span><small>MD</small></button>
+            </div>
+            <div class="agent-file-detail" id="agent-file-detail" aria-live="polite">
+              <span>SELECTED FILE</span>
+              <strong id="agent-selected-file">index.html</strong>
+              <p id="agent-file-description">Halaman utama dan struktur konten proyek. Informasi ini hanya contoh untuk memperlihatkan konteks Agent.</p>
+            </div>
+            <div class="agent-context-warning"><span>ⓘ</span><p>Daftar file di sini adalah data contoh. Agent belum membaca repository atau file sungguhan.</p></div>
+          </aside>
+
+          <section class="agent-panel agent-conversation" aria-label="Agent conversation">
+            <div class="agent-conversation-head">
+              <div class="agent-conversation-title"><span class="agent-avatar">✳</span><div><strong>Senada Agent</strong><small>Owner assistant <i></i> Ready for a task</small></div></div>
+              <button class="agent-reset" id="agent-reset" type="button">↻ New task</button>
+            </div>
+
+            <div class="agent-messages" id="agent-messages" aria-live="polite" aria-relevant="additions">
+              <article class="agent-message agent-message-assistant">
+                <span class="agent-message-avatar">✳</span>
+                <div class="agent-message-body">
+                  <div class="agent-message-meta"><strong>Senada Agent</strong><time>Just now</time></div>
+                  <p>Halo! Saya Agent Senada. Dalam alur kerja yang direncanakan, saya akan memeriksa konteks proyek, menelusuri file yang relevan, menyusun rencana, menampilkan diff, lalu menunggu persetujuan Anda.</p>
+                  <div class="agent-message-note"><span>✳</span> Setiap perubahan harus melewati review dan persetujuan owner.</div>
+                </div>
+              </article>
+            </div>
+
+            <div class="agent-suggestions" id="agent-suggestions">
+              <span>COBA BERIKAN TUGAS</span>
+              <div>
+                <button type="button" data-agent-prompt="Audit tampilan homepage pada perangkat mobile dan susun daftar perbaikannya.">Audit tampilan mobile</button>
+                <button type="button" data-agent-prompt="Rapikan struktur CSS agar komponen website lebih konsisten.">Rapikan struktur CSS</button>
+                <button type="button" data-agent-prompt="Periksa navigasi website dan usulkan perbaikan aksesibilitas.">Periksa navigasi</button>
+              </div>
+            </div>
+
+            <form class="agent-prompt-form" id="agent-prompt-form">
+              <label class="agent-sr-only" for="agent-prompt">Instruksi untuk Agent</label>
+              <textarea id="agent-prompt" rows="2" placeholder="Jelaskan apa yang ingin dikerjakan Agent..." maxlength="1200" required></textarea>
+              <div class="agent-composer-footer">
+                <span><i></i> DEMO MODE · Tidak mengirim instruksi ke API</span>
+                <button class="button button-dark" type="submit" id="agent-run-button">Jalankan Agent <span>↗</span></button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="agent-panel agent-run-panel" aria-label="Agent run and change review">
+            <div class="agent-panel-heading"><span>AGENT RUN</span><small id="agent-run-status">READY</small></div>
+            <div class="agent-run-summary">
+              <div class="agent-run-icon">⌘</div>
+              <div><strong id="agent-run-title">Belum ada tugas aktif</strong><p id="agent-run-description">Kirim instruksi untuk melihat alur kerja Agent dalam simulasi.</p></div>
+            </div>
+
+            <div class="agent-progress-track"><i id="agent-progress-bar"></i></div>
+            <ol class="agent-steps" id="agent-steps">
+              <li class="is-complete"><span>1</span><div><strong>Memahami instruksi</strong><small>Tujuan dan ruang lingkup tugas</small></div></li>
+              <li class="is-pending"><span>2</span><div><strong>Memeriksa file</strong><small>Mengidentifikasi file terkait</small></div></li>
+              <li class="is-pending"><span>3</span><div><strong>Menyusun rencana</strong><small>Urutan tindakan yang aman</small></div></li>
+              <li class="is-pending"><span>4</span><div><strong>Menyiapkan diff</strong><small>Perubahan untuk ditinjau</small></div></li>
+              <li class="is-pending"><span>5</span><div><strong>Menunggu persetujuan</strong><small>Owner memutuskan langkah berikutnya</small></div></li>
+            </ol>
+
+            <div class="agent-review-empty" id="agent-review-empty">
+              <span class="agent-review-empty-icon">⌁</span>
+              <strong>Change review</strong>
+              <p>Usulan perubahan dan perbandingan kode akan muncul di sini setelah simulasi Agent dijalankan.</p>
+            </div>
+
+            <div class="agent-review-card" id="agent-review-card" hidden>
+              <div class="agent-review-top"><span>CHANGE PROPOSAL</span><b>DEMO DIFF</b></div>
+              <strong id="agent-proposal-title">Responsive refinement</strong>
+              <p class="agent-proposal-path">preview-lab/styles.css <span>·</span> contoh perubahan</p>
+              <pre class="agent-diff"><code><span class="diff-context">.hero-copy {</span>
+<span class="diff-remove">-  max-width: 32rem;</span>
+<span class="diff-add">+  max-width: min(100%, 32rem);</span>
+<span class="diff-context">}</span></code></pre>
+              <p class="agent-diff-caption">Contoh diff visual. Bukan patch dari file repository.</p>
+              <div class="agent-approval-status" id="agent-approval-status">Menunggu keputusan owner.</div>
+              <div class="agent-review-actions">
+                <button class="button button-dark" type="button" id="agent-approve">Setujui contoh</button>
+                <button class="button button-outline" type="button" id="agent-revise">Minta revisi</button>
+              </div>
+            </div>
+            <div class="agent-guardrail"><span>⌑</span><p>Persetujuan di halaman ini hanya simulasi. Tidak ada commit, pull request, merge, atau deployment.</p></div>
+          </aside>
+        </div>
+
+        <div class="agent-bottom-note"><span><i></i> OWNER-ONLY CONCEPT</span><span>Senada AI Workbench <b>✳</b> Stage 1 / Visual prototype</span></div>
+      </main>
+    </section>
+
+    <!-- 4. CUSTOMER PASSWORD GATE -->
     <section class="screen client-screen" data-screen="client" aria-labelledby="client-title">
       <header class="client-topbar">
         <a class="brand" href="../index.html"><img src="../favicon.svg" alt="" class="brand-mark"><span class="brand-word">senada<span>.</span><small>CREATLABS</small></span></a>
@@ -199,7 +342,7 @@
       </div>
     </section>
 
-    <!-- 4. CUSTOMER WEBSITE PREVIEW -->
+    <!-- 5. CUSTOMER WEBSITE PREVIEW -->
     <section class="screen website-screen" data-screen="preview" aria-label="Aure Studio website preview">
       <div class="preview-toolbar"><div class="preview-toolbar-brand"><span class="toolbar-spark">✳</span><strong>senada<span>.</span></strong><small>PRIVATE PREVIEW</small></div><div class="preview-address"><span>⌑</span> preview.senada.test/p/aure-studio</div><div class="preview-toolbar-actions"><span class="secure-label"><i></i> UNLOCKED</span><button class="button button-outline button-small" type="button" data-go="dashboard">Back to admin</button></div></div>
       <div class="preview-project-banner"><span>PROJECT PREVIEW / AURE STUDIO</span><span>VERSION 1.4.0 <i></i> DEMO ONLY</span></div>
