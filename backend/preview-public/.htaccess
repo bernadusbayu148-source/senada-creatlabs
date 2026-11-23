@@ -1,6 +1,9 @@
 Options -Indexes
 RewriteEngine On
 
+# Jika app/ disimpan di luar web root, isi path absolut lalu aktifkan:
+# SetEnv SENADA_APP_BOOTSTRAP /home/CPANEL_USER/senada-private/app/bootstrap.php
+
 # Semua halaman dan aset preview melewati pemeriksaan sesi di preview.php.
 RewriteRule ^p/([a-z0-9-]+)/?(.*)$ preview.php?slug=$1&path=$2 [END,QSA,B]
 
