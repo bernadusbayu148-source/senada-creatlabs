@@ -102,7 +102,15 @@ function senada_current_admin(): ?array {
 function senada_require_admin(): array {
     $admin = senada_current_admin();
     if (!$admin) senada_json(['ok'=>false, 'error'=>'Silakan login kembali.'], 401);
-    return $admin;
+    $stmt = senada_db()->prepare('SELECT id,email,role,is_active FROM admins WHERE id=:id LIMIT 1');
+    $stmt->execute([':id'=>(int)$admin['id']]);
+    $fresh = $stmt->fetch();
+    if (!$fresh || (int)$fresh['is_active'] !== 1) {
+        unset($_SESSION['admin']);
+        senada_json(['ok'=>false, 'error'=>'Akun admin tidak aktif. Silakan hubungi owner.'], 401);
+    }
+    $_SESSION['admin'] = ['id'=>(int)$fresh['id'], 'email'=>(string)$fresh['email'], 'role'=>(string)$fresh['role']];
+    return $_SESSION['admin'];
 }
 
 function senada_ip_hash(): string {
