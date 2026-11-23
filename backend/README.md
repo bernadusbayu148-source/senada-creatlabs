@@ -56,7 +56,7 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 4. Arahkan document root subdomain admin ke backend/admin-public/; salin folder admin/ dashboard ke dalam folder tersebut.
 5. Arahkan document root subdomain preview ke backend/preview-public/.
 6. Buat folder hasil deploy di luar kedua document root, lalu isi preview_storage_path.
-7. Salin config.example.php menjadi config.php, isi credential database, app secret, storage path, URL preview, dan path HTML dashboard. Batasi permission file konfigurasi.
+7. Salin config.example.php menjadi config.php, isi credential database, app secret, storage path, dan URL preview. Batasi permission file konfigurasi.
 8. Import schema database dan jalankan php backend/scripts/create-admin.php email-admin@domain.com dari terminal hosting.
 9. Untuk setiap repository proyek, salin template workflow ke .github/workflows/senada-preview-deploy.yml, ganti placeholder slug dan konfigurasi FTPS secrets:
    - SENADA_FTP_SERVER
