@@ -12,6 +12,7 @@
   var selectedId = conversations.length ? conversations[0].id : null;
   var activeFilter = "all";
   var toastTimer = null;
+  var WHATSAPP_CHECKLIST_KEY = "senada_whatsapp_setup_v1";
 
   function loadData(){
     try{
@@ -32,16 +33,50 @@
     el.textContent=message;el.classList.add("is-visible");
     clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.classList.remove("is-visible");},2300);
   }
+  function updateWhatsappProgress(){
+    var boxes=Array.prototype.slice.call(document.querySelectorAll("[data-wa-step]"));
+    if(!boxes.length)return;
+    var done=boxes.filter(function(box){return box.checked;}).length;
+    var count=document.getElementById("waCheckCount");
+    var bar=document.getElementById("waProgressBar");
+    if(count)count.textContent=done+" / "+boxes.length;
+    if(bar)bar.style.width=(done/boxes.length*100)+"%";
+  }
+  function initWhatsappChecklist(){
+    var saved={};
+    try{saved=JSON.parse(localStorage.getItem(WHATSAPP_CHECKLIST_KEY)||"{}")||{};}catch(e){}
+    var boxes=document.querySelectorAll("[data-wa-step]");
+    boxes.forEach(function(box){
+      box.checked=!!saved[box.getAttribute("data-wa-step")];
+      box.addEventListener("change",function(){
+        saved[box.getAttribute("data-wa-step")]=box.checked;
+        try{localStorage.setItem(WHATSAPP_CHECKLIST_KEY,JSON.stringify(saved));}catch(e){}
+        updateWhatsappProgress();
+        showToast("Checklist WhatsApp disimpan di browser ini.");
+      });
+    });
+    var reset=document.getElementById("waResetChecklist");
+    if(reset)reset.addEventListener("click",function(){
+      if(!window.confirm("Reset semua tanda checklist persiapan WhatsApp?"))return;
+      saved={};
+      try{localStorage.removeItem(WHATSAPP_CHECKLIST_KEY);}catch(e){}
+      boxes.forEach(function(box){box.checked=false;});
+      updateWhatsappProgress();
+      showToast("Checklist WhatsApp direset.");
+    });
+    updateWhatsappProgress();
+  }
   function switchPage(page){
     document.querySelectorAll("[data-view]").forEach(function(view){view.classList.toggle("is-visible",view.getAttribute("data-view")===page);});
     document.querySelectorAll(".nav-link").forEach(function(link){link.classList.toggle("is-active",link.getAttribute("data-page")===page);});
-    var labels={overview:"Overview",inbox:"Inbox",contacts:"Kontak",projects:"Proyek",previews:"Project Preview",ai:"AI Workspace",settings:"Pengaturan"};
+    var labels={overview:"Overview",inbox:"Inbox",whatsapp:"WhatsApp",contacts:"Kontak",projects:"Proyek",previews:"Project Preview",ai:"AI Workspace",settings:"Pengaturan"};
     document.getElementById("breadcrumbCurrent").textContent=labels[page]||"Overview";
     document.getElementById("sidebar").classList.remove("is-open");
     document.getElementById("mobileScrim").classList.remove("is-visible");
     if(page==="inbox")renderInbox();
     if(page==="contacts")renderContacts();
     if(page==="projects")renderProjects();
+    if(page==="whatsapp")updateWhatsappProgress();
   }
   function renderStats(){
     var count=function(status){return conversations.filter(function(c){return c.status===status;}).length;};
@@ -162,5 +197,6 @@
   document.getElementById("dismissNotice").addEventListener("click",function(){document.querySelector(".preview-notice").style.display="none";});
   document.getElementById("newMessageHint").addEventListener("click",function(){showToast("Pesan baru akan masuk setelah form website terhubung.");});
   document.addEventListener("keydown",function(e){if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();document.getElementById("globalSearch").focus();}});
+  initWhatsappChecklist();
   renderOverview();renderInbox();renderContacts();renderProjects();
 })();

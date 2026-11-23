@@ -15,7 +15,7 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 
 ## Fitur backend yang disiapkan
 
-- Login admin tanpa registrasi publik; akun pertama dibuat dari CLI.
+- Login admin tanpa registrasi publik; akun pertama dibuat dari CLI. Halaman login server-side memakai desain Senada Desk dan mengirim kredensial ke endpoint login melalui HTTPS same-origin.
 - Password admin dan password preview disimpan dengan password_hash() dan diverifikasi dengan password_verify().
 - Session cookie HttpOnly, SameSite=Lax, dan Secure ketika HTTPS aktif.
 - Batas idle session 30 menit dan batas absolut 8 jam.
