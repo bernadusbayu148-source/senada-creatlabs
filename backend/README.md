@@ -53,11 +53,11 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 1. Siapkan subdomain admin dan preview, keduanya memakai HTTPS.
 2. Buat database MySQL khusus Senada, lalu import database/schema.sql.
 3. Letakkan backend/app/ dan backend/config.php di luar document root.
-4. Arahkan document root subdomain admin ke backend/admin-public/; salin folder admin/ dashboard ke dalam folder tersebut.
+4. Arahkan document root subdomain admin ke backend/admin-public/; salin folder admin/ dashboard ke dalam folder tersebut dan salin favicon.svg ke root document root admin.
 5. Arahkan document root subdomain preview ke backend/preview-public/.
 6. Buat folder hasil deploy di luar kedua document root, lalu isi preview_storage_path.
 7. Salin config.example.php menjadi config.php, isi credential database, app secret, storage path, dan URL preview. Batasi permission file konfigurasi.
-8. Import schema database dan jalankan php backend/scripts/create-admin.php email-admin@domain.com dari terminal hosting.
+8. Setelah schema sudah di-import, jalankan php backend/scripts/create-admin.php email-admin@domain.com dari terminal hosting.
 9. Untuk setiap repository proyek, salin template workflow ke .github/workflows/senada-preview-deploy.yml, ganti placeholder slug dan konfigurasi FTPS secrets:
    - SENADA_FTP_SERVER
    - SENADA_FTP_USERNAME
@@ -67,4 +67,4 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 10. Buat GitHub fine-grained token server-side dengan izin Actions: write dan Contents: read untuk repository proyek. Simpan hanya di config.php.
 11. Uji dengan project dummy dan password sementara sebelum mengirim link ke pelanggan.
 
-Jangan arahkan domain produksi ke backend sebelum kemampuan hosting (PHP, PDO MySQL, cURL, FTPS, subdomain, HTTPS, dan document-root terpisah) diverifikasi dan semua checklist keamanan lulus.
+Jangan arahkan domain produksi ke backend sebelum kemampuan hosting (PHP 8.1+, PDO MySQL, cURL, FTPS, Apache 2.4 dengan mod_rewrite/.htaccess, subdomain, HTTPS, dan document-root terpisah) diverifikasi dan semua checklist keamanan lulus.
