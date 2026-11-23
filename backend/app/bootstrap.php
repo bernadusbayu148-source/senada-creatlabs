@@ -151,11 +151,140 @@ function senada_login_page(string $message = ''): never {
     header('Referrer-Policy: no-referrer');
     header('X-Content-Type-Options: nosniff');
     $safe = htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    echo '<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Login · Senada Desk</title><style>
-    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:#f5f2ec;color:#242232;font:15px Arial,sans-serif}.card{width:min(420px,100%);padding:34px;background:#fff;border:1px solid #e8e2f0;border-radius:22px;box-shadow:0 18px 60px #26203312}.mark{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#5c43ed;color:white;font-weight:bold;font-size:22px}.eyebrow{margin:20px 0 8px;color:#7665c8;font-size:10px;font-weight:bold;letter-spacing:.16em}h1{margin:0 0 8px;font-size:27px;letter-spacing:-.04em}p{color:#777382;font-size:13px;line-height:1.6}label{display:block;margin-top:16px;font-size:12px;font-weight:bold}input{display:block;width:100%;height:46px;margin-top:7px;padding:0 12px;border:1px solid #ded9e8;border-radius:10px;font:inherit}button{width:100%;height:47px;margin-top:22px;border:0;border-radius:11px;background:#5c43ed;color:white;font-weight:bold;cursor:pointer}.error{min-height:18px;margin-top:12px;color:#b44d43;font-size:12px}.foot{margin-top:20px;font-size:11px;color:#a19cab;text-align:center}
-    </style></head><body><main class="card"><div class="mark">S</div><div class="eyebrow">SENADA CREATLABS</div><h1>Admin workspace</h1><p>Masuk untuk mengelola project preview dan akses pelanggan.</p><form id="loginForm"><label>Email admin<input name="email" type="email" autocomplete="username" required maxlength="190"></label><label>Password<input name="password" type="password" autocomplete="current-password" required maxlength="72"></label><button type="submit">Masuk ke dashboard</button><div class="error" id="loginError" role="alert">' . $safe . '</div></form><div class="foot">Akses khusus tim Senada · Jangan bagikan akun admin</div></main>
-    <script>
-    (function(){var form=document.getElementById("loginForm"),error=document.getElementById("loginError");form.addEventListener("submit",async function(e){e.preventDefault();error.textContent="Memeriksa akun...";var data=new FormData(form);try{var c=await fetch("/api.php?action=csrf",{credentials:"same-origin",cache:"no-store"});var cj=await c.json();var r=await fetch("/api.php?action=login",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":cj.csrf_token},body:JSON.stringify({email:data.get("email"),password:data.get("password")})});var j=await r.json();if(!r.ok||!j.ok){error.textContent=j.error||"Login gagal.";return;}location.replace("/admin/");}catch(err){error.textContent="Server belum dapat dihubungi. Periksa koneksi atau konfigurasi backend.";}});})();
-    </script></body></html>';
+
+    $html = <<<'HTML'
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f7f5f0">
+  <title>Masuk · Senada Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--violet:#5c43ed;--ink:#27243a;--muted:#898596;--paper:#f7f5f0}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
+    .login-shell{min-height:100vh;display:grid;grid-template-columns:minmax(340px,.95fr) minmax(420px,1.05fr);padding:18px}
+    .login-art{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100vh - 36px);padding:38px 42px;border-radius:25px;background:radial-gradient(circle at 78% 16%,#8d7bff 0,transparent 29%),linear-gradient(145deg,#5d47e8 0%,#4432b6 52%,#292064 100%);color:#fff}
+    .brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none}
+    .brand-mark{width:39px;height:39px;padding:7px;background:#fff;border-radius:13px}
+    .brand-word{font:700 19px "Space Grotesk",sans-serif;letter-spacing:-.06em}
+    .brand-word small{display:block;margin-top:1px;font:700 7px "DM Sans",sans-serif;letter-spacing:.23em;opacity:.72}
+    .art-copy{position:relative;z-index:2;max-width:480px;margin:45px 0}
+    .art-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid #ffffff3d;border-radius:99px;background:#ffffff12;color:#eeeaff;font:700 8px "Space Grotesk",sans-serif;letter-spacing:.14em}
+    .art-kicker i{width:6px;height:6px;border-radius:50%;background:#d8f48b;box-shadow:0 0 0 4px #d8f48b22}
+    .art-copy h1{margin:20px 0 13px;font:700 clamp(35px,4.2vw,57px)/1.06 "Space Grotesk",sans-serif;letter-spacing:-.065em}
+    .art-copy h1 span{color:#d8f48b}
+    .art-copy p{max-width:390px;margin:0;color:#e4e0ff;font-size:13px;line-height:1.8}
+    .art-orbit{position:absolute;width:330px;height:330px;right:-75px;bottom:13%;border:1px solid #ffffff30;border-radius:50%}
+    .art-orbit:before,.art-orbit:after{content:"";position:absolute;border:1px solid #ffffff26;border-radius:50%}
+    .art-orbit:before{inset:34px}.art-orbit:after{inset:72px}
+    .art-spark{position:absolute;right:17%;bottom:27%;font-size:62px;color:#d8f48b;transform:rotate(12deg);text-shadow:0 12px 30px #21185c70}
+    .art-foot{position:relative;z-index:2;display:flex;justify-content:space-between;gap:12px;color:#d5d0ff;font-size:9px}
+    .login-main{display:grid;place-items:center;padding:30px}
+    .login-card{width:min(420px,100%)}
+    .login-topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+    .login-topline span{font:700 9px "Space Grotesk",sans-serif;letter-spacing:.16em;color:#8d8799}
+    .secure-tag{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border:1px solid #dce9c5;border-radius:99px;background:#f4f9e9;color:#617a30;font:700 7px "Space Grotesk",sans-serif;letter-spacing:.08em}
+    .secure-tag i{width:6px;height:6px;border-radius:50%;background:#8aa64d}
+    .login-mark{width:48px;height:48px;padding:9px;border-radius:15px;background:#5c43ed;box-shadow:0 10px 22px #5c43ed30}
+    .login-mark img{width:100%;height:100%;filter:brightness(0) invert(1)}
+    .login-eyebrow{margin:22px 0 8px;color:var(--violet);font:700 9px "Space Grotesk",sans-serif;letter-spacing:.16em}
+    h1{margin:0;font:700 31px "Space Grotesk",sans-serif;letter-spacing:-.055em}
+    .login-intro{margin:9px 0 26px;color:var(--muted);font-size:11px;line-height:1.7}
+    .field{display:block;margin:17px 0}
+    .field>span{display:block;margin-bottom:8px;font-size:10px;font-weight:700;color:#4d495b}
+    .field input{width:100%;height:48px;padding:0 14px;border:1px solid #e2deea;border-radius:11px;outline:none;background:#fff;color:var(--ink);font:500 12px "DM Sans",sans-serif;transition:border-color .15s,box-shadow .15s}
+    .field input:focus{border-color:#8a79f4;box-shadow:0 0 0 4px #5c43ed13}
+    .password-wrap{position:relative}
+    .password-wrap input{padding-right:76px}
+    .show-password{position:absolute;right:9px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#756e89;font:700 9px "DM Sans",sans-serif;cursor:pointer;padding:7px}
+    .login-submit{width:100%;height:48px;margin-top:9px;border:0;border-radius:11px;background:var(--violet);color:#fff;font:700 11px "DM Sans",sans-serif;cursor:pointer;box-shadow:0 9px 20px #5c43ed2a}
+    .login-submit:disabled{opacity:.65;cursor:wait}
+    .login-error{min-height:22px;margin:13px 0 0;color:#b04f49;font-size:9px;line-height:1.55}
+    .login-foot{margin-top:28px;color:#aaa5b2;text-align:center;font-size:8px;line-height:1.6}
+    @media(max-width:850px){.login-shell{grid-template-columns:1fr;padding:10px}.login-art{min-height:270px;padding:25px 27px;border-radius:20px}.art-copy{margin:35px 0 24px}.art-copy h1{font-size:35px;margin:13px 0 8px}.art-copy p{font-size:10px;max-width:430px}.art-orbit{width:210px;height:210px;right:-55px;bottom:-70px}.art-orbit:before{inset:22px}.art-orbit:after{inset:48px}.art-spark{right:17%;bottom:23%;font-size:42px}.art-foot{font-size:8px}.login-main{padding:38px 18px 28px}}
+    @media(max-width:480px){.login-art{min-height:240px;padding:21px}.brand-mark{width:34px;height:34px}.brand-word{font-size:17px}.art-copy{margin:26px 0 19px}.art-copy h1{font-size:31px}.art-copy p{max-width:300px}.art-spark{right:11%;bottom:22%;font-size:35px}.art-foot span:last-child{display:none}.login-main{padding:34px 12px}.login-card h1{font-size:27px}.login-topline{margin-bottom:22px}}
+  </style>
+</head>
+<body>
+  <div class="login-shell">
+    <aside class="login-art">
+      <a class="brand" href="/" aria-label="Senada Creatlabs">
+        <img class="brand-mark" src="/favicon.svg" alt="">
+        <span class="brand-word">senada<span style="color:#d8f48b">.</span><small>CREATLABS</small></span>
+      </a>
+      <div class="art-copy">
+        <span class="art-kicker"><i></i> YOUR CREATIVE WORKSPACE</span>
+        <h1>Ide bagus.<br><span>Eksekusi lebih terarah.</span></h1>
+        <p>Satu ruang untuk mengelola percakapan, merapikan kebutuhan klien, dan membawa setiap ide menuju proyek yang nyata.</p>
+      </div>
+      <div class="art-orbit" aria-hidden="true"></div>
+      <div class="art-spark" aria-hidden="true">✳</div>
+      <div class="art-foot"><span>Made for ideas that move.</span><span>Senada Desk · Admin Workspace</span></div>
+    </aside>
+    <main class="login-main">
+      <section class="login-card">
+        <div class="login-topline"><span>ADMIN ACCESS</span><span class="secure-tag"><i></i> SECURE SESSION</span></div>
+        <div class="login-mark"><img src="/favicon.svg" alt=""></div>
+        <div class="login-eyebrow">SENADA CREATLABS</div>
+        <h1>Selamat datang kembali.</h1>
+        <p class="login-intro">Masuk ke Senada Desk untuk melanjutkan percakapan dan mengelola proyek klien.</p>
+        <form id="loginForm" autocomplete="on">
+          <label class="field"><span>Email admin</span><input name="email" type="email" placeholder="nama@senada.id" autocomplete="username" required maxlength="190"></label>
+          <label class="field"><span>Password</span><div class="password-wrap"><input id="loginPassword" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required maxlength="72"><button class="show-password" id="togglePassword" type="button">Lihat</button></div></label>
+          <button class="login-submit" id="loginSubmit" type="submit">Masuk ke workspace <span aria-hidden="true">↗</span></button>
+          <div class="login-error" id="loginError" role="alert">__LOGIN_ERROR__</div>
+        </form>
+        <p class="login-foot">Akses khusus tim Senada Creatlabs.<br>Jangan bagikan detail akun kepada siapa pun.</p>
+      </section>
+    </main>
+  </div>
+  <script>
+    (function(){
+      var form=document.getElementById("loginForm");
+      var error=document.getElementById("loginError");
+      var submit=document.getElementById("loginSubmit");
+      var password=document.getElementById("loginPassword");
+      var toggle=document.getElementById("togglePassword");
+      toggle.addEventListener("click",function(){
+        var visible=password.type==="text";
+        password.type=visible?"password":"text";
+        toggle.textContent=visible?"Lihat":"Sembunyikan";
+      });
+      form.addEventListener("submit",async function(event){
+        event.preventDefault();
+        submit.disabled=true;
+        submit.textContent="Sedang masuk...";
+        error.textContent="Memeriksa akun...";
+        var data=new FormData(form);
+        try{
+          var csrfResponse=await fetch("/api.php?action=csrf",{credentials:"same-origin",cache:"no-store"});
+          if(!csrfResponse.ok)throw new Error("Server belum siap. Periksa konfigurasi backend.");
+          var csrfData=await csrfResponse.json();
+          var response=await fetch("/api.php?action=login",{
+            method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json","X-CSRF-Token":csrfData.csrf_token},
+            body:JSON.stringify({email:data.get("email"),password:data.get("password")})
+          });
+          var result=await response.json();
+          if(!response.ok||!result.ok)throw new Error(result.error||"Email atau password salah.");
+          location.replace("/admin/");
+        }catch(err){
+          error.textContent=err.message||"Server tidak dapat dihubungi. Coba lagi.";
+          submit.disabled=false;
+          submit.textContent="Masuk ke workspace ↗";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+HTML;
+
+    echo str_replace('__LOGIN_ERROR__', $safe, $html);
     exit;
 }
