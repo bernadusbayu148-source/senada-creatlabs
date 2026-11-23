@@ -10,9 +10,13 @@ https://bernadusbayu148-source.github.io/senada-creatlabs/admin/
 
 ## Fitur UI
 
+- Satu navigasi terpadu untuk Overview, Inbox, Kontak, Proyek, Project Preview, dan AI Workspace.
+- Customer Reply Assistant di dalam Inbox: menganalisis pesan pelanggan, memisahkan catatan internal dari jawaban pelanggan, memilih bagian draft, mengeditnya, lalu memasukkannya ke kolom balasan. AI tidak mengirim pesan otomatis.
+- Agent Coding Mode di AI Workspace dengan konteks proyek, tahapan agent, contoh diff, dan simulasi review persetujuan owner.
 - Overview dengan ringkasan inquiry dan pipeline.
 - Inbox dengan daftar percakapan, pencarian, filter belum dibaca, dan panel detail prospek.
 - Simulasi balasan dan perubahan status prospek.
+- Bantuan balasan AI dan Agent Coding masih berupa simulasi lokal; OpenAI API dan GitHub App belum terhubung.
 - Daftar kontak dan tampilan pipeline proyek.
 - Tema gelap dan terang.
 - Project Preview dengan konfigurasi repository, branch, slug, metode deployment, dan kolom password pada mode server.
@@ -35,6 +39,8 @@ Lihat backend/README.md untuk arsitektur, skema database, endpoint API, autentik
 - Backend belum terhubung ke hosting, domain, database, atau token GitHub.
 - Inbox, Kontak, Proyek, dan riwayat balasan belum dipindahkan ke database server.
 - WhatsApp Cloud API dan webhook belum dihubungkan.
+- Customer Reply Assistant belum memakai model AI; aturan lokal hanya mendemonstrasikan alur analisis, pemilihan bagian jawaban, dan penyusunan draft.
+- Agent Coding di AI Workspace belum membaca repository, membuat perubahan, commit, atau pull request.
 - Preview mendukung website statis / hasil build frontend. Aplikasi PHP dengan runtime dan database sendiri memerlukan lingkungan deployment terpisah.
 
 Jangan gunakan dashboard publik GitHub Pages untuk mengelola pelanggan sungguhan.

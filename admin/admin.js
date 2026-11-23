@@ -35,7 +35,7 @@
   function switchPage(page){
     document.querySelectorAll("[data-view]").forEach(function(view){view.classList.toggle("is-visible",view.getAttribute("data-view")===page);});
     document.querySelectorAll(".nav-link").forEach(function(link){link.classList.toggle("is-active",link.getAttribute("data-page")===page);});
-    var labels={overview:"Overview",inbox:"Inbox",contacts:"Kontak",projects:"Proyek",previews:"Project Preview",settings:"Pengaturan"};
+    var labels={overview:"Overview",inbox:"Inbox",contacts:"Kontak",projects:"Proyek",previews:"Project Preview",ai:"AI Workspace",settings:"Pengaturan"};
     document.getElementById("breadcrumbCurrent").textContent=labels[page]||"Overview";
     document.getElementById("sidebar").classList.remove("is-open");
     document.getElementById("mobileScrim").classList.remove("is-visible");
