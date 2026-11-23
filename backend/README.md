@@ -67,4 +67,4 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 10. Buat GitHub fine-grained token server-side dengan izin Actions: write dan Contents: read untuk repository proyek. Simpan hanya di config.php.
 11. Uji dengan project dummy dan password sementara sebelum mengirim link ke pelanggan.
 
-Jangan arahkan domain produksi ke backend sebelum kemampuan hosting (PHP 8.1+, PDO MySQL, cURL, FTPS, Apache 2.4 dengan mod_rewrite/.htaccess, subdomain, HTTPS, dan document-root terpisah) diverifikasi dan semua checklist keamanan lulus.
+Jangan arahkan domain produksi ke backend sebelum kemampuan hosting (PHP 8.2+, PDO MySQL, cURL, FTPS, Apache 2.4 dengan mod_rewrite/.htaccess, subdomain, HTTPS, dan document-root terpisah) diverifikasi dan semua checklist keamanan lulus.
