@@ -22,6 +22,6 @@ if ($html === false) {
     echo 'Dashboard tidak dapat dibaca.';
     exit;
 }
-$injected = '<script>window.SENADA_SERVER_MODE=true;window.SENADA_API_BASE="/api.php";</script><script src="/auth.js"></script>';
+$injected = '<script>window.SENADA_SERVER_MODE=true;window.SENADA_API_BASE="/api.php";document.body.classList.add("server-mode");</script><script src="/auth.js"></script>';
 $html = str_replace('<script src="admin.js"></script>', $injected . '<script src="admin.js"></script>', $html);
 echo $html;
