@@ -427,3 +427,35 @@
 @media(max-width:790px){
   #packages .package-example-link{font-size:10px;margin-top:8px}
 }
+
+
+/* Clear package boundaries: each price range has a visible entry scope and upper-tier scope. */
+#packages .service-price-card{min-height:470px}
+#packages .service-price-card .desc{min-height:0}
+#packages .price-scope{display:grid;gap:8px;margin:1px 0 13px}
+#packages .scope-tier{padding:10px 11px;border:1px solid var(--border);border-radius:12px;background:rgba(234,229,255,.42)}
+#packages .scope-tier--plus{background:rgba(217,246,110,.16)}
+#packages .scope-tier-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
+#packages .scope-tier-head strong{font:700 11px/1.35 "Space Grotesk",system-ui,sans-serif}
+#packages .scope-tier-head span{font:700 10px/1.35 "Space Grotesk",system-ui,sans-serif;color:var(--violet);text-align:right;white-space:nowrap}
+#packages .scope-tier p{margin:0;color:var(--muted);font-size:11px;line-height:1.48}
+#packages .service-price-bottom{margin-top:auto}
+#packages .package-note{max-width:930px;text-align:left}
+#packages .package-note p{margin:0 0 9px}
+#packages .package-note p:last-child{margin-bottom:0}
+#work .work-demo-note{max-width:900px;margin:16px auto 0;color:var(--muted);font-size:12px;line-height:1.65;text-align:center}
+:root[data-theme="dark"] #packages .scope-tier{background:rgba(185,170,255,.09);border-color:#5c5671}
+:root[data-theme="dark"] #packages .scope-tier--plus{background:rgba(217,246,110,.08)}
+:root[data-theme="dark"] #packages .scope-tier-head span{color:#c3b5ff}
+@media(max-width:1050px) and (min-width:791px){
+ #packages .service-price-card{min-height:500px}
+ #packages .scope-tier{padding:9px}
+ #packages .scope-tier p{font-size:10.5px}
+}
+@media(max-width:790px){
+ #packages .service-price-card{min-height:440px}
+ #packages .scope-tier{padding:9px 10px}
+ #packages .scope-tier p{font-size:10.5px}
+ #packages .package-note{text-align:left}
+ #work .work-demo-note{text-align:left;padding-inline:4px}
+}
