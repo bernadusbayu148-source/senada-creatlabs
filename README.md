@@ -90,12 +90,13 @@ Thumbnail ini **bergantung pada layanan eksternal** dan tidak disimpan sebagai s
 
 ## Dua demo interaktif baru: clothing & travel agent
 
-### [Senada Supply — Clothing E-commerce](demos/senada-supply.html)
-- Desain editorial clothing dengan palet netral-hijau, berbeda dari identitas visual studio Senada Creatlabs
-- Delapan produk fiktif, kategori, pencarian, urutan harga, pilihan ukuran/warna, tampilan detail produk
+### [Senada Supply — Online Store (Fashion)](demos/senada-supply.html)
+- Contoh online store fashion dengan katalog produk responsif dan palet netral-hijau, berbeda dari identitas visual studio Senada Creatlabs
+- Delapan produk fiktif, kategori, pencarian, filter, urutan harga, pilihan ukuran/warna, dan tampilan detail produk
 - Wishlist dan keranjang yang disimpan di browser `localStorage`
 - Checkout simulasi mencakup nama, email, alamat, opsi pengiriman/ambil di toko, promo contoh `PLAY10`, serta ringkasan biaya
-- Semua transaksi **fiktif**, tidak ada sistem pembayaran, API toko, stok real-time, atau pengiriman sungguhan
+- **Paket Website Toko Online: Rp2.500.000–5.000.000.** Ruang lingkup dapat mencakup katalog, pencarian/filter, detail produk, wishlist, keranjang, checkout, dan integrasi pembayaran sesuai kebutuhan
+- Demo ini tidak memproses pembayaran, pesanan, stok real-time, atau pengiriman sungguhan. Integrasi pembayaran pada proyek klien dibangun dan diuji secara terpisah sesuai kesepakatan
 - File: `demos/senada-supply.html`, `demos/senada-supply.css`, `demos/senada-supply.js`
 
 ### [Senada Journey — Travel Agent](demos/senada-journey.html)
