@@ -115,7 +115,7 @@
     }
   }
   async function refreshDeploymentStatus(id,button){
-    var statusBox=list.querySelector('[data-preview-status="'+String(id).replace(/["\\]/g,"\\  function openModal(project){")+'"]');
+    var statusBox=list.querySelector('[data-preview-status="'+String(id)+'"]');
     if(button)button.disabled=true;
     if(statusBox)statusBox.textContent="Mengambil status terbaru dari GitHub Actions…";
     try{
