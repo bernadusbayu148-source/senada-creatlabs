@@ -1,4 +1,4 @@
-/* Six demo previews. Keep carousel behavior unchanged at mobile widths. */
+/* Seven demo previews. Keep carousel behavior unchanged at mobile widths. */
 @media(min-width:1081px){
  #work .work-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
  #work .work-grid>.work-card{grid-column:span 2}
@@ -27,3 +27,12 @@
 #work .work-art--restaurant .work-overlay{position:absolute;z-index:2;left:22px;top:22px;color:#263b2d;font:700 clamp(28px,3vw,43px) "Playfair Display",Georgia,serif;letter-spacing:-.06em;text-shadow:none;transform:none}
 #work .work-art--restaurant .restaurant-caption{position:absolute;z-index:3;right:20px;bottom:18px;padding:9px 13px;background:#fffdf0;border:1.5px solid #263b2d;color:#263b2d;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em}
 @media(max-width:790px){#work .work-art--restaurant .work-overlay{font-size:clamp(28px,7vw,40px)}}
+
+/* MemberHub — membership & loyalty portfolio card. */
+#work .work-art--memberhub{background:linear-gradient(135deg,#d9e9d9,#a9c7b5);isolation:isolate}
+#work .work-art--memberhub:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:#193d35;left:calc(50% - 115px);top:72px;box-shadow:0 0 0 18px #ffffff42,0 0 0 42px #ffffff20}
+#work .work-art--memberhub .work-overlay{position:absolute;z-index:2;left:22px;top:22px;color:#193d35;font:700 clamp(28px,3vw,43px) "Space Grotesk",sans-serif;letter-spacing:-.07em;text-shadow:none;transform:none}
+#work .work-art--memberhub .memberhub-orbit{position:absolute;z-index:1;width:135px;height:135px;border:18px solid #d9f27c;border-radius:50%;left:calc(50% - 67px);top:118px;box-shadow:0 8px 0 #102a24}
+#work .work-art--memberhub .memberhub-chip{position:absolute;z-index:3;right:20px;bottom:18px;padding:9px 13px;background:#fffefa;border:1.5px solid #193d35;color:#193d35;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em}
+@media(min-width:1081px){#work .work-grid>.work-card:nth-child(7){grid-column:3/span 2}}
+@media(max-width:790px){#work .work-art--memberhub .work-overlay{font-size:clamp(28px,7vw,40px)}}
