@@ -89,3 +89,51 @@ body.dark .ai-card-kicker b{background:#503831;color:#ffc5a7}
 @media(max-width:760px){.ai-workspace-tools{grid-template-columns:1fr}.ai-tool-card{align-items:flex-start;flex-wrap:wrap}.ai-tool-card>div{flex:1 1 calc(100% - 54px)}.ai-tool-card .secondary-button{margin-left:49px}.agent-subheading{align-items:flex-start;flex-direction:column;gap:4px}.ai-workspace-view .agent-layout{display:flex;flex-direction:column}.ai-workspace-view .agent-conversation{min-height:570px}.ai-assist-modal{padding:8px}.ai-assist-dialog{max-height:96vh;border-radius:14px}.ai-assist-head{padding:15px}.ai-assist-head h2{font-size:20px}.ai-assist-body{grid-template-columns:1fr;padding:12px;gap:12px}.ai-assist-empty{min-height:170px}.ai-reply-parts{grid-template-columns:1fr}.ai-draft-actions{justify-content:stretch}.ai-draft-actions>*{flex:1}}
 
 @media(max-width:760px){.ai-reply-trigger{width:31px;padding:0;justify-content:center}.ai-reply-trigger b{display:none}}
+
+
+/* Keep AI workspace panels inside the available content width at every breakpoint. */
+.ai-workspace-view,
+.ai-workspace-view .agent-main,
+.ai-workspace-view .agent-heading,
+.ai-workspace-view .agent-layout,
+.ai-workspace-view .agent-panel,
+.ai-workspace-tools{
+  min-width:0;
+  max-width:100%;
+}
+.ai-workspace-view .agent-layout>*{min-width:0;max-width:100%}
+.ai-workspace-view .agent-panel,
+.ai-workspace-view .agent-panel *{overflow-wrap:anywhere}
+@media(min-width:761px) and (max-width:1180px){
+  .ai-workspace-view .agent-layout{
+    width:100%;
+    grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+  }
+  .ai-workspace-view .agent-run-panel{
+    width:100%;
+  }
+}
+@media(max-width:760px){
+  .ai-workspace-view .agent-main{
+    width:100%;
+    max-width:100%;
+    padding-left:0;
+    padding-right:0;
+  }
+  .ai-workspace-view .agent-layout{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .ai-workspace-view .agent-layout>.agent-panel{
+    width:100%;
+    flex:0 0 auto;
+  }
+  .ai-workspace-view .agent-context-panel,
+  .ai-workspace-view .agent-conversation,
+  .ai-workspace-view .agent-run-panel{
+    min-width:0;
+    max-width:100%;
+  }
+}
