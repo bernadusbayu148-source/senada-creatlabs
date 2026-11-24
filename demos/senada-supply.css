@@ -18,3 +18,23 @@
 @media(max-width:380px){.wrap{width:calc(100% - 26px)}.product-grid{gap:10px}.product-art{height:165px}.product-name strong{font-size:14px}.right-tools{gap:5px}.sort{max-width:125px;font-size:10px;padding:11px 7px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 [hidden]{display:none!important}
+
+
+/* Keep the package label and return link readable on narrow mobile screens. */
+@media(max-width:760px){
+  .demo-bar .wrap{
+    min-height:0;
+    justify-content:flex-start;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:3px 12px;
+    padding-block:7px;
+  }
+  .demo-bar .wrap>span{
+    flex:1 1 100%;
+    line-height:1.45;
+  }
+  .demo-bar .wrap>a{
+    font-size:9px;
+  }
+}
