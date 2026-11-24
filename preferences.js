@@ -48,6 +48,10 @@
     "Tidak otomatis. Demo menunjukkan contoh kemungkinan desain dan fitur. Harga terendah hanya mencakup paket dasar yang tertulis pada bagian Layanan & Harga. Fitur lanjutan, integrasi, dan kebutuhan khusus hanya dikerjakan jika masuk ke ruang lingkup serta proposal yang disepakati.": "Not automatically. Demos show possible designs and features. The lowest price only covers the base package listed under Services & Pricing. Advanced features, integrations, and custom requirements are delivered only when included in the agreed scope and proposal.",
     "Di bawah Rp2.500.000": "Below IDR 2,500,000",
     "Rp2.500.000–4.000.000": "IDR 2,500,000–4,000,000",
+
+    "Rp8.000.000–15.000.000+": "IDR 8,000,000–15,000,000+",
+    "Rp4.500.000–8.000.000": "IDR 4,500,000–8,000,000",
+    "Rp3.500.000–6.000.000": "IDR 3,500,000–6,000,000",
     "Rp4.000.000–8.000.000": "IDR 4,000,000–8,000,000",
     "Rp8.000.000–15.000.000": "IDR 8,000,000–15,000,000",
     "Di atas Rp15.000.000": "Above IDR 15,000,000",
