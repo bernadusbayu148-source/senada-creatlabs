@@ -12,7 +12,24 @@
   let lang=safeGet(KEYS.language)==="en"?"en":"id";
   let theme=safeGet(KEYS.theme)==="dark"?"dark":"light";
   // Original Indonesian text -> natural English copy; brand names stay unchanged.
-  const EN={ 
+  const EN={
+    "Rp2,5 juta": "IDR 2.5M",
+    "Hingga Rp4 juta": "Up to IDR 4M",
+    "Mulai Rp8 juta": "From IDR 8M",
+    "Rp15 juta+": "IDR 15M+",
+    "Mulai Rp4,5 juta": "From IDR 4.5M",
+    "Hingga Rp8 juta": "Up to IDR 8M",
+    "Mulai Rp3,5 juta": "From IDR 3.5M",
+    "Hingga Rp6 juta": "Up to IDR 6M",
+    "1 halaman hingga 5 bagian, desain responsif, tombol WhatsApp, dan SEO dasar.": "One page with up to five sections, responsive design, WhatsApp button, and basic SEO.",
+    "Profil satu halaman, menu digital sederhana, jam buka, lokasi peta, galeri, dan WhatsApp.": "One-page profile, simple digital menu, opening hours, map location, gallery, and WhatsApp.",
+    "Registrasi/login, profil member, saldo & riwayat poin, serta admin untuk kelola member dan input poin manual.": "Registration/login, member profile, points balance and history, plus an admin area for member management and manual point entry.",
+    "Katalog, kategori, detail produk, keranjang sederhana, dan checkout melalui WhatsApp/formulir.": "Catalog, categories, product details, a simple cart, and checkout through WhatsApp or a form.",
+    "Daftar destinasi/paket, detail perjalanan, itinerary, galeri, dan tombol konsultasi WhatsApp.": "Destination/package listings, trip details, itinerary, gallery, and a WhatsApp inquiry button.",
+    "Buka demo Senada Prime — company profile Rp2,5–4 juta": "Open Senada Prime demo — company profile IDR 2.5–4M",
+    "Buka demo Ruang Rasa — coffee shop dan restaurant Rp2,5–4 juta": "Open Ruang Rasa demo — coffee shop and restaurant IDR 2.5–4M",
+    "Buka demo MemberHub — membership dan loyalty Rp8–15 juta ke atas": "Open MemberHub demo — membership and loyalty IDR 8–15M+",
+ 
     "Layanan, harga & ruang lingkup": "Services, pricing & scope",
     "Harga jelas. Batas fitur juga jelas.": "Clear pricing. Clear feature boundaries.",
     "Pilih paket dasar, lalu tambahkan fitur sesuai kebutuhan bisnis dan anggaranmu.": "Start with a base package, then add features to match your needs and budget.",
