@@ -120,11 +120,15 @@ function credit(){
  const section=document.createElement("aside");section.className="demo-photo-credit wrap";
  section.setAttribute("aria-label","Kredit foto demo");
  const text=document.createElement("span");
- text.textContent="Foto stok ilustratif / Illustrative stock photos · ";
+ text.textContent="Foto stok ilustratif. ";
  const link=document.createElement("a");link.href="https://unsplash.com/license";
  link.target="_blank";link.rel="noopener noreferrer";link.textContent="Unsplash License";
- const note=document.createElement("span");note.textContent=" · Produk, lokasi usaha, tim, dan studi kasus yang ditampilkan bersifat fiktif.";
+ const note=document.createElement("span");
+ note.textContent=" Produk, lokasi usaha, tim, dan studi kasus yang ditampilkan bersifat fiktif.";
  section.append(text,link,note);footer.before(section);
+ // This block and the photo alt attributes are injected after shared preferences load.
+ // Refreshing the translator preserves their original Indonesian copy for future ID/EN toggles.
+ window.SenadaPrefs?.refresh?.();
 }
 staticPhotos();products();credit();
 const container=page==="coffee"?$("#product-grid"):page==="supply"?$("#product-grid"):null;
