@@ -102,3 +102,17 @@ body.server-mode .server-only{display:flex}
 .preview-project-state.is-disabled{background:#ffe7e3;color:#a84f46}
 body.dark .preview-project-state{background:#3d492b;color:#d9f6a2}
 body.dark .preview-project-state.is-disabled{background:#503331;color:#ffc2b9}
+
+
+.preview-deploy-status{display:flex;flex-direction:column;gap:4px;margin:0 0 12px;padding:10px 11px;border:1px solid #e8e2ef;border-radius:9px;background:#faf9fc;color:#716b7d;font-size:10px;line-height:1.5}
+.preview-deploy-status small{color:#928c9c;font-size:9px}
+.preview-deploy-status a{color:var(--violet);font-size:9px;font-weight:700;text-decoration:none}
+.preview-deploy-status a:hover{text-decoration:underline}
+.preview-deploy-status.is-success{border-color:#cfe5a4;background:#f4f9e9;color:#4f681d}
+.preview-deploy-status.is-failed{border-color:#f0c7c0;background:#fff3f1;color:#a2473e}
+.preview-deploy-status.is-demo{background:#fff8e9;border-color:#f0dfbd;color:#80612b}
+body.dark .preview-deploy-status{background:#302e3c;border-color:#4a4657;color:#d6d1e0}
+body.dark .preview-deploy-status small{color:#b4adbf}
+body.dark .preview-deploy-status.is-success{background:#303d27;border-color:#596f3b;color:#d8f0ae}
+body.dark .preview-deploy-status.is-failed{background:#432f31;border-color:#70474a;color:#ffc4bc}
+body.dark .preview-deploy-status.is-demo{background:#3e3528;border-color:#665332;color:#f3d8a5}
