@@ -179,3 +179,37 @@ body.dark .project-convert-client{background:#302c45;border-color:#4b426f;color:
 .project-summary{margin:0 0 9px!important;color:#77718e!important;font-size:8px!important;line-height:1.55!important;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .project-discussion-link{display:inline-flex;align-items:center;gap:5px;margin:0 0 10px;padding:0;border:0;background:transparent;color:var(--violet);font:700 8px "DM Sans",sans-serif;cursor:pointer}
 body.dark .project-summary{color:#c2bdce!important}
+
+
+/* Prevent the fixed navigation rail from clipping on short desktop and mobile screens. */
+.sidebar{
+  height:100vh;
+  height:100dvh;
+  max-height:100dvh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(92,67,237,.24) transparent;
+}
+.sidebar>.brand,
+.sidebar>.workspace-switch,
+.sidebar>.nav-label,
+.sidebar>.side-nav,
+.sidebar>.sidebar-bottom{
+  flex-shrink:0;
+}
+.sidebar>.sidebar-bottom{margin-top:auto;flex:0 0 auto}
+.main-area{
+  width:calc(100% - var(--sidebar));
+  min-width:0;
+}
+@media(max-width:680px){
+  .sidebar{
+    width:min(270px,calc(100vw - 32px));
+    max-width:calc(100vw - 32px);
+  }
+  .sidebar>.sidebar-bottom{margin-top:24px}
+  .main-area{width:100%;min-width:0}
+}
