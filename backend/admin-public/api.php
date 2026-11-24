@@ -230,9 +230,11 @@ try {
                 $requestedAt = strtotime((string)$project['last_deploy_requested_at']);
                 $matchingRun = null;
                 foreach ($runs as $run) {
-                    if (!is_array($run) || (string)($run['head_branch'] ?? '') !== (string)$project['branch_name']) continue;
+                    if (!is_array($run)
+                        || (string)($run['event'] ?? '') !== 'workflow_dispatch'
+                        || (string)($run['head_branch'] ?? '') !== (string)$project['branch_name']) continue;
                     $runCreated = strtotime((string)($run['created_at'] ?? ''));
-                    if ($requestedAt !== false && $runCreated !== false && $runCreated >= ($requestedAt - 120)) {
+                    if ($requestedAt !== false && $runCreated !== false && $runCreated >= ($requestedAt - 30)) {
                         $matchingRun = $run;
                         break;
                     }
