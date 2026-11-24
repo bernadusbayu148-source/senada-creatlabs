@@ -25,16 +25,17 @@ Pemisahan host admin dan preview penting: kode JavaScript milik website pelangga
 - Password unik per project; password minimal 12 dan maksimal 72 byte dan tidak pernah dikirim kembali ke dashboard.
 - Preview statis dilayani melalui PHP setelah password benar; direktori hasil deploy tidak diekspos langsung.
 - Endpoint manual deployment memicu GitHub Actions workflow_dispatch apabila token server sudah dikonfigurasi.
+- Dashboard dapat meminta status workflow GitHub Actions terbaru dan menampilkan hasil deployment serta tautan log untuk owner.
 - Template workflow menyediakan push deployment otomatis dan workflow dispatch manual.
 
 ## Batasan saat ini
 
 - Repository GitHub ini bersifat publik, sehingga source backend dapat dibaca. Tidak ada credential yang disertakan; jangan pernah commit config.php, password, atau token.
-- Belum dihubungkan ke hosting, domain, database, GitHub token, atau repository klien.
+- Belum dihubungkan ke hosting, domain, database, GitHub token, atau repository klien. Karena itu link preview belum aktif dan tombol di GitHub Pages hanya simulasi.
 - Belum ada file konfigurasi config.php berisi credential. config.example.php hanya contoh.
 - Integrasi deploy memerlukan workflow disalin ke repository proyek dan secret FTPS diatur pada repository tersebut.
 - Preview saat ini untuk website statis (HTML/CSS/JS atau hasil build frontend). Aplikasi PHP yang membutuhkan runtime/database sendiri perlu lingkungan deployment terpisah.
-- URL preview memakai prefix /p/{slug}/. Website sebaiknya menggunakan asset path relatif atau mengatur base path /p/{slug}/. Asset root-absolut seperti /assets dan link root-absolut perlu disesuaikan saat build.
+- URL pelanggan dibentuk dari preview_base_url pada config.php, misalnya https://preview.domain-senada-anda.com/p/{slug}/. URL ini tidak menampilkan alamat GitHub. Path internal memakai /p/{slug}/; website sebaiknya menggunakan asset path relatif atau mengatur base path tersebut. Asset root-absolut seperti /assets dan link root-absolut perlu disesuaikan saat build.
 - Dashboard Inbox, Kontak, Proyek dan balasannya masih prototype browser-local; backend ini belum mengubahnya menjadi CRM server-side.
 
 ## Endpoint admin
@@ -48,8 +49,8 @@ Semua endpoint berada di subdomain admin dan dilindungi sesi admin:
 - GET api.php?action=projects — daftar project (tanpa mengirim hash password).
 - POST api.php?action=save-project — membuat/mengedit project dan menetapkan password.
 - POST api.php?action=disable-project — mencabut akses project.
-- POST api.php?action=deploy — memicu workflow_dispatch.
-- GET api.php?action=deployments&id=PROJECT_ID — riwayat permintaan deploy.
+- POST api.php?action=deploy — memicu workflow_dispatch pada repository dan branch proyek.
+- GET api.php?action=deployments&id=PROJECT_ID — menyinkronkan status workflow GitHub Actions (memerlukan Actions: read) dan mengembalikan riwayat deployment.
 
 Satu repository GitHub dipasangkan dengan satu slug preview dan satu direktori remote deployment. Jika satu repository perlu beberapa lingkungan, buat workflow dan secrets terpisah untuk masing-masing lingkungan.
 
@@ -83,7 +84,7 @@ Satu repository GitHub dipasangkan dengan satu slug preview dan satu direktori r
    - SENADA_FTP_PASSWORD
    - SENADA_PREVIEW_REMOTE_DIR (folder khusus slug tersebut di storage privat)
    - repository variable SENADA_PREVIEW_BRANCH
-10. Buat GitHub fine-grained token server-side dengan izin Actions: write dan Contents: read untuk repository proyek. Simpan hanya di config.php.
+10. Buat GitHub fine-grained token server-side dengan izin Actions: write, Actions: read, dan Contents: read hanya untuk repository proyek yang diperlukan. Simpan hanya di config.php.
 11. Uji dengan project dummy dan password sementara sebelum mengirim link ke pelanggan.
 
 Jangan arahkan domain produksi ke backend sebelum kemampuan hosting (PHP 8.2+, PDO MySQL, cURL, FTPS, Apache 2.4 dengan mod_rewrite/.htaccess, subdomain, HTTPS, dan document-root terpisah) diverifikasi dan semua checklist keamanan lulus.
