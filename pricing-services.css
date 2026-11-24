@@ -408,3 +408,22 @@
   outline:3px solid #ff776c;
   outline-offset:3px;
 }
+
+
+/* Link the entry-level company profile package to its matching Senada Prime demo. */
+#packages .package-example-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  align-self:flex-start;
+  margin-top:9px;
+  color:var(--violet);
+  font:700 10px "Space Grotesk",system-ui,sans-serif;
+  text-decoration:none;
+}
+#packages .package-example-link:hover{text-decoration:underline;text-underline-offset:3px}
+#packages .service-price-card.is-priority .package-example-link{color:#343047}
+:root[data-theme="dark"] #packages .service-price-card:not(.is-priority) .package-example-link{color:#c3b5ff}
+@media(max-width:790px){
+  #packages .package-example-link{font-size:10px;margin-top:8px}
+}
