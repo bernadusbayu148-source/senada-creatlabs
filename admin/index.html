@@ -271,7 +271,7 @@
 
         <div class="preview-security-banner" role="status">
           <div class="preview-security-icon">⌑</div>
-          <div><strong id="previewSecurityTitle">Prototype akses privat</strong><p id="previewSecurityMessage">Di GitHub Pages, dashboard ini hanya simulasi. Backend PHP dan database privat belum terhubung. Jangan masukkan data proyek rahasia di halaman publik ini.</p></div>
+          <div><strong id="previewSecurityTitle">Prototype akses privat</strong><p id="previewSecurityMessage">Di GitHub Pages, halaman ini hanya simulasi. Setelah backend dan domain preview Senada diaktifkan, kode dari repository GitHub akan dibangun lalu ditayangkan melalui link Senada, bukan URL GitHub. Jangan masukkan data proyek rahasia di halaman publik ini.</p></div>
           <span class="preview-security-state" id="previewSecurityState">DEMO</span>
         </div>
 
@@ -289,7 +289,7 @@
 
         <div class="preview-next-step">
           <span class="preview-next-icon">⌘</span>
-          <div><strong>Langkah integrasi berikutnya</strong><p>Hubungkan hosting privat dan autentikasi terlebih dahulu. Setelah itu, GitHub Actions dapat menjalankan deployment otomatis saat ada push dan deployment manual saat diminta dari dashboard.</p><a href="PREVIEW-DEPLOYMENT.md" target="_blank" rel="noopener">Baca rancangan deployment <span>↗</span></a></div>
+          <div><strong>Langkah integrasi berikutnya</strong><p>Hubungkan domain admin dan preview, database, penyimpanan privat, serta token GitHub server. Setelah aktif, tombol Tarik versi terbaru akan menjalankan GitHub Actions dan menerbitkan hasilnya pada domain preview Senada.</p><a href="PREVIEW-DEPLOYMENT.md" target="_blank" rel="noopener">Baca rancangan deployment <span>↗</span></a></div>
         </div>
         <div class="footer-note">Made for ideas that move <span>✳</span> Senada Creatlabs · Project Preview prototype</div>
       </section>
@@ -442,7 +442,7 @@
               <label class="preview-field preview-field-wide"><span>GitHub repository URL</span><input id="previewRepo" type="url" placeholder="https://github.com/owner/repository" required></label>
               <label class="preview-field"><span>Branch</span><input id="previewBranch" type="text" value="main" maxlength="80" required></label>
               <label class="preview-field"><span>Kategori</span><select id="previewCategory"><option>Business Website</option><option>E-commerce</option><option>Landing Page</option><option>Travel & Booking</option><option>Web Application</option><option>Other</option></select></label>
-              <label class="preview-field preview-field-wide"><span>Preview slug</span><input id="previewSlug" type="text" maxlength="50" placeholder="coffee-shop-demo" required><small>Nama jalur preview yang dipakai pada link privat.</small></label>
+              <label class="preview-field preview-field-wide"><span>Preview slug</span><input id="previewSlug" type="text" maxlength="50" placeholder="coffee-shop-demo" required><small>Nama jalur preview pada domain Senada. Link pelanggan tidak menampilkan alamat repository GitHub.</small></label>
               <label class="preview-field preview-field-wide server-only"><span>Password preview</span><input id="previewPassword" type="password" autocomplete="new-password" minlength="12" maxlength="72" placeholder="12–72 byte"><small>Wajib saat membuat proyek. Saat mengedit, kosongkan jika ingin mempertahankan password lama.</small></label>
             </div>
             <div class="preview-access-setting">
