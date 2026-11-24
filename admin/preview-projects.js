@@ -39,7 +39,8 @@
       options.headers["X-CSRF-Token"]=window.SENADA_CSRF_TOKEN||"";
       options.body=JSON.stringify(body||{});
     }
-    var response=await fetch(API_BASE+"?action="+encodeURIComponent(action),options);
+    var url=API_BASE+"?action="+encodeURIComponent(action)+(arguments.length>3&&arguments[3]?"&"+arguments[3]:"");
+    var response=await fetch(url,options);
     var data={};
     try{data=await response.json();}catch(e){}
     if(!response.ok||!data.ok)throw new Error(data.error||"Permintaan ke server gagal.");
@@ -83,10 +84,13 @@
       var mode=SERVER_MODE?p.deployment_mode:(p.autoDeploy&&p.manualDeploy?"both":p.autoDeploy?"auto":"manual");
       var status=SERVER_MODE?(!isEnabled?"Akses dicabut":ready?"Siap dipreview":"Menunggu deployment"):"Setup required";
       var stateClass=isEnabled?"":" is-disabled";
-      var previewLink=SERVER_MODE&&p.preview_url?'<a class="preview-project-link" href="'+escapeHtml(p.preview_url)+'" target="_blank" rel="noopener noreferrer">Buka link preview ↗</a>':"";
+      var previewLink=SERVER_MODE&&p.preview_url&&ready&&isEnabled?'<a class="preview-project-link" href="'+escapeHtml(p.preview_url)+'" target="_blank" rel="noopener noreferrer">Buka Preview Senada ↗</a>':"";
+      var statusPanel=SERVER_MODE
+        ? '<div class="preview-deploy-status" data-preview-status="'+escapeHtml(p.id)+'" aria-live="polite">'+(ready?"Versi website tersedia di private storage.":"Belum ada versi preview yang siap dibuka.")+'</div>'
+        : '<div class="preview-deploy-status is-demo">Saat ini hanya simulasi. Backend dan domain preview belum dihubungkan.</div>';
       var actionButtons=SERVER_MODE
-        ? '<button class="preview-deploy-button" type="button" data-preview-action="deploy" data-id="'+escapeHtml(p.id)+'" '+(isEnabled&&mode!=="auto"?"":"disabled")+'>Deploy manual</button><button type="button" data-preview-action="edit" data-id="'+escapeHtml(p.id)+'">Edit</button><button type="button" data-preview-action="disable" data-id="'+escapeHtml(p.id)+'" '+(isEnabled?"":"disabled")+'>'+(isEnabled?"Cabut akses":"Nonaktif")+'</button>'
-        : '<button class="preview-deploy-button" type="button" data-preview-action="deploy" data-id="'+escapeHtml(p.id)+'" '+(p.manualDeploy?"":"disabled")+'>Simulasikan deploy</button><button type="button" data-preview-action="edit" data-id="'+escapeHtml(p.id)+'">Edit</button><button type="button" data-preview-action="delete" data-id="'+escapeHtml(p.id)+'">Hapus</button>';
+        ? '<button class="preview-deploy-button" type="button" data-preview-action="deploy" data-id="'+escapeHtml(p.id)+'" '+(isEnabled&&mode!=="auto"?"":"disabled")+'>Tarik versi terbaru dari GitHub</button><button type="button" data-preview-action="status" data-id="'+escapeHtml(p.id)+'">Periksa status</button><button type="button" data-preview-action="edit" data-id="'+escapeHtml(p.id)+'">Edit</button><button type="button" data-preview-action="disable" data-id="'+escapeHtml(p.id)+'" '+(isEnabled?"":"disabled")+'>'+(isEnabled?"Cabut akses":"Nonaktif")+'</button>'
+        : '<button class="preview-deploy-button" type="button" data-preview-action="deploy" data-id="'+escapeHtml(p.id)+'" '+(p.manualDeploy?"":"disabled")+'>Simulasikan tarik versi</button><button type="button" data-preview-action="edit" data-id="'+escapeHtml(p.id)+'">Edit</button><button type="button" data-preview-action="delete" data-id="'+escapeHtml(p.id)+'">Hapus</button>';
       return '<article class="preview-project-card">'+
         '<div class="preview-project-top"><span class="preview-category">'+escapeHtml(p.category)+'</span><span class="preview-project-state'+stateClass+'">'+escapeHtml(status)+'</span></div>'+
         '<h3>'+escapeHtml(p.name)+'</h3>'+
@@ -94,6 +98,7 @@
         '<div class="preview-project-meta"><span>Branch <b>'+escapeHtml(branch)+'</b></span><span>Slug <b>'+escapeHtml(p.slug)+'</b></span></div>'+
         '<div class="preview-project-meta"><span>Deployment <b>'+escapeHtml(modeLabel(mode))+'</b></span><span>Password <b>'+(SERVER_MODE?(p.has_password?"Tersimpan":"Belum diatur"):"Demo only")+'</b></span></div>'+
         '<div class="preview-project-lock"><span class="lock">⌑</span><div>'+(isEnabled?"Private access":"Access revoked")+'<small>'+(ready?"File website sudah tersedia di storage.":SERVER_MODE?"Menunggu hasil deployment di private storage.":"Link dan proteksi belum aktif.")+'</small></div></div>'+
+        statusPanel+
         previewLink+
         '<div class="preview-card-actions">'+actionButtons+'</div>'+
       '</article>';
@@ -109,6 +114,39 @@
       notify(error.message);
     }
   }
+  async function refreshDeploymentStatus(id,button){
+    var statusBox=list.querySelector('[data-preview-status="'+String(id).replace(/["\\]/g,"\\  function openModal(project){")+'"]');
+    if(button)button.disabled=true;
+    if(statusBox)statusBox.textContent="Mengambil status terbaru dari GitHub Actions…";
+    try{
+      var data=await apiRequest("deployments","GET",null,"id="+encodeURIComponent(id));
+      var deployments=Array.isArray(data.deployments)?data.deployments:[];
+      var latest=deployments[0]||null;
+      if(statusBox){
+        if(!latest){
+          statusBox.textContent=data.sync_message||"Belum ada permintaan deployment untuk proyek ini.";
+        }else{
+          var labels={queued:"Menunggu / sedang diproses",success:"Deployment berhasil",failed:"Deployment gagal"};
+          var message=(labels[latest.status]||latest.status)+" · "+(latest.created_at||"waktu tidak tersedia");
+          statusBox.innerHTML=escapeHtml(message)+(data.sync_message?"<small>"+escapeHtml(data.sync_message)+"</small>":"")+(latest.github_run_url?'<a href="'+escapeHtml(latest.github_run_url)+'" target="_blank" rel="noopener noreferrer">Lihat proses di GitHub Actions ↗</a>':"");
+          if(latest.status==="success")statusBox.classList.add("is-success");
+          else if(latest.status==="failed")statusBox.classList.add("is-failed");
+          else statusBox.classList.remove("is-success","is-failed");
+        }
+      }
+      if(latest&&latest.status==="success")notify("Deployment selesai. Perbarui daftar proyek untuk memuat status file preview.");
+      else if(latest&&latest.status==="failed")notify("Deployment gagal. Buka log GitHub Actions untuk melihat penyebabnya.");
+      else if(data.sync_message)notify(data.sync_message);
+      return data;
+    }catch(error){
+      if(statusBox)statusBox.textContent=error.message;
+      notify(error.message);
+      return null;
+    }finally{
+      if(button)button.disabled=false;
+    }
+  }
+
   function openModal(project){
     editingId=project?project.id:null;
     form.reset();
@@ -205,9 +243,14 @@
       action.disabled=true;
       try{
         var result=await apiRequest("deploy","POST",{id:Number(id)});
-        notify(result.message||"GitHub Actions berhasil dipicu.");
+        notify(result.message||"Permintaan tarik versi terbaru berhasil dikirim.");
+        await refreshDeploymentStatus(id,list.querySelector('[data-preview-action="status"][data-id="'+id+'"]'));
       }catch(error){notify(error.message);}
       action.disabled=false;
+      return;
+    }
+    if(type==="status"){
+      await refreshDeploymentStatus(id,action);
       return;
     }
     if(type==="disable"&&SERVER_MODE){

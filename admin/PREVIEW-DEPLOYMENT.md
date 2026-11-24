@@ -6,11 +6,11 @@ Menyediakan satu URL preview per project yang hanya dapat dibuka oleh orang yang
 
 ## Status sekarang
 
-**Backend dan UI sudah disiapkan di repository. Hosting belum disentuh.**
+**Backend dan UI sudah disiapkan di repository. Hosting, database, dan domain belum dihubungkan.**
 
 Yang sudah ada:
 - Admin UI dengan kolom password khusus project (hanya tampil pada mode server).
-- PHP API untuk login admin, session, CSRF, daftar/simpan/nonaktifkan project, dan pemicu deployment manual.
+- PHP API untuk login admin, session, CSRF, daftar/simpan/nonaktifkan project, pemicu deployment manual, dan sinkronisasi status workflow GitHub Actions.
 - Database schema untuk akun admin, project preview, percobaan login, dan deployment.
 - Password admin dan password pelanggan disimpan dengan password_hash(), bukan teks asli.
 - Pintu preview PHP untuk memeriksa password dan menayangkan file statis dari storage privat.
@@ -21,7 +21,7 @@ Yang belum aktif:
 - Tidak ada database yang dibuat atau diisi.
 - Tidak ada config.php, password admin, password pelanggan, token GitHub, atau credential hosting di repository.
 - Tidak ada subdomain yang diarahkan dan tidak ada file yang diunggah ke hosting.
-- GitHub Pages dan URL dashboard demo tetap publik. Jangan memasukkan data rahasia di sana.
+- GitHub Pages dan URL dashboard demo tetap publik. Tombol penarikan versi dan konfigurasi proyek pada halaman publik merupakan simulasi browser, bukan deployment sungguhan. Jangan memasukkan data rahasia di sana.
 
 ## Arsitektur yang diwajibkan
 
@@ -64,15 +64,16 @@ Otomatis:
 - Job hanya berjalan bila nama branch sama dengan SENADA_PREVIEW_BRANCH.
 
 Manual:
-- Admin memilih Deploy manual.
+- Owner memilih **Tarik versi terbaru dari GitHub** pada project.
 - Backend memanggil GitHub Actions workflow_dispatch pada branch project yang tersimpan.
-- Server memerlukan fine-grained GitHub token dengan Actions: write dan Contents: read untuk repository yang diizinkan.
+- Tombol **Periksa status** meminta daftar run workflow GitHub dan menyinkronkan status serta commit ke riwayat deployment.
+- Server memerlukan fine-grained GitHub token dengan Actions: write, Actions: read, dan Contents: read untuk repository yang diizinkan.
 
 ## Batasan jenis project
 
 Saat ini preview dirancang untuk website statis: HTML, CSS, JavaScript, atau hasil build frontend. File PHP tidak dieksekusi dan tidak disajikan sebagai source. Aplikasi yang memerlukan backend PHP, database, worker, atau runtime khusus perlu deployment terisolasi tersendiri.
 
-URL memakai prefix /p/{slug}/. Website sebaiknya menggunakan asset path relatif atau build base path /p/{slug}/. Asset yang ditulis absolut dari root seperti /assets perlu disesuaikan.
+URL pelanggan memakai domain Senada dari nilai preview_base_url di config.php, lalu path /p/{slug}/. Contoh formatnya: https://preview.domain-senada-anda.com/p/kopi-sore/. Domain ini terpisah dari GitHub; repository hanya dipakai di sisi internal. Website sebaiknya menggunakan asset path relatif atau build base path /p/{slug}/. Asset root-absolut seperti /assets perlu disesuaikan.
 
 ## Langkah sebelum hosting dihubungkan
 
