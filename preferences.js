@@ -306,6 +306,32 @@
     "bloom. — Demo Konsep Lifestyle | Senada Creatlabs":"bloom. — Lifestyle Website Demo | Senada Creatlabs",
     "Website konsep fiktif lifestyle yang penuh warna dan interaksi, dirancang oleh Senada Creatlabs.":"A colorful, interactive fictional lifestyle website concept created by Senada Creatlabs.",
     "Filter koleksi":"Filter collection",
+    // Senada Prime — package scope, price, and portfolio summary
+    "CONTOH COMPANY PROFILE • PAKET Rp1–2 JUTA • PERUSAHAAN FIKTIF":"COMPANY PROFILE DEMO • IDR 1–2M PACKAGE • FICTIONAL COMPANY",
+    "CONTOH RUANG LINGKUP":"SAMPLE SCOPE",
+    "Company profile yang efektif, tanpa fitur berlebihan.":"An effective company profile, without unnecessary features.",
+    "Contoh paket untuk bisnis kecil dan UMKM yang ingin tampil lebih profesional, mudah ditemukan, dan mudah dihubungi.":"A sample package for small businesses and SMEs seeking a more professional presence, better discoverability, and easier ways to get in touch.",
+    "Halaman informasi utama":"Core information pages",
+    "Beranda, Tentang Usaha, Layanan, Galeri atau Portofolio, dan Kontak.":"Home, About the Business, Services, Gallery or Portfolio, and Contact.",
+    "Fitur komunikasi":"Communication features",
+    "Tombol WhatsApp, tautan media sosial, peta lokasi, dan formulir kontak sederhana.":"WhatsApp button, social media links, a location map, and a simple contact form.",
+    "Siap dibuka di berbagai perangkat":"Responsive across devices",
+    "Desain responsif untuk desktop dan ponsel, struktur SEO dasar, serta bantuan publikasi.":"Responsive design for desktop and mobile, basic SEO structure, and publishing assistance.",
+    "PAKET COMPANY PROFILE":"COMPANY PROFILE PACKAGE",
+    "Rp1.000.000–2.000.000":"IDR 1,000,000–2,000,000",
+    "Estimasi harga awal untuk website company profile sederhana. Harga final menyesuaikan jumlah halaman, materi, dan kebutuhan bisnis.":"Starting estimate for a simple company profile website. Final pricing depends on the number of pages, supplied content, and business requirements.",
+    "Konsultasikan kebutuhan ↗":"Discuss your requirements ↗",
+    "Domain, hosting, email bisnis, CMS, dan fitur khusus dibicarakan terpisah sesuai kebutuhan.":"Domain, hosting, business email, CMS, and custom features are discussed separately based on project requirements.",
+    "Company profile profesional: Beranda, Tentang, Layanan, Portofolio, Kontak, WhatsApp, peta, formulir sederhana, responsif, dan SEO dasar.":"Professional company profile: Home, About, Services, Portfolio, Contact, WhatsApp, location map, a simple contact form, responsive layout, and basic SEO.",
+    "DEMO · Rp1–2 JT":"DEMO · IDR 1–2M",
+    "Kredit foto demo":"Demo photo credits",
+    "Foto stok ilustratif.":"Illustrative stock photography.",
+    "Produk, lokasi usaha, tim, dan studi kasus yang ditampilkan bersifat fiktif.":"The products, business locations, team, and case studies shown are fictional.",
+    "Gedung perkantoran modern":"Modern office building",
+    "Interior ruang kerja modern":"Modern workspace interior",
+    "Orang-orang berdiskusi dan berkolaborasi":"People discussing and collaborating",
+    "Ruang kerja kantor kontemporer":"Contemporary office workspace",
+
     // Accessible labels
     "Senada Creatlabs, beranda":"Senada Creatlabs, home",
     "Logo Senada":"Senada logo",
@@ -352,15 +378,21 @@
       if(!m)continue;
       node.nodeValue=m[1]+(lang==="en"?translate(m[2]):m[2])+m[3];
     }
-    document.querySelectorAll("[placeholder],[aria-label],[title],option").forEach(el=>{
+    document.querySelectorAll("[placeholder],[aria-label],[title],[alt],option").forEach(el=>{
       if(el.closest(".preference-controls"))return;
       if(!originalAttrs.has(el)){
-        originalAttrs.set(el,{placeholder:el.getAttribute("placeholder"),aria:el.getAttribute("aria-label"),title:el.getAttribute("title")});
+        originalAttrs.set(el,{
+          placeholder:el.getAttribute("placeholder"),
+          aria:el.getAttribute("aria-label"),
+          title:el.getAttribute("title"),
+          alt:el.getAttribute("alt")
+        });
       }
       const orig=originalAttrs.get(el);
       if(orig.placeholder!==null)el.setAttribute("placeholder",lang==="en"?translate(orig.placeholder):orig.placeholder);
       if(orig.aria!==null)el.setAttribute("aria-label",lang==="en"?translate(orig.aria):orig.aria);
       if(orig.title!==null)el.setAttribute("title",lang==="en"?translate(orig.title):orig.title);
+      if(orig.alt!==null)el.setAttribute("alt",lang==="en"?translate(orig.alt):orig.alt);
     });
     document.title=lang==="en"?translate(originalTitle):originalTitle;
     const desc=document.querySelector('meta[name="description"]');
@@ -389,6 +421,6 @@
     document.querySelectorAll("select option:not([value])").forEach(option=>option.setAttribute("value",option.textContent.trim()));
     setLanguage(lang);
   }
-  window.SenadaPrefs={language:()=>lang,theme:()=>theme,setLanguage,setTheme,t:(text)=>lang==="en"?translate(text):text};
+  window.SenadaPrefs={language:()=>lang,theme:()=>theme,setLanguage,setTheme,refresh:translateText,t:(text)=>lang==="en"?translate(text):text};
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
