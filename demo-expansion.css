@@ -21,3 +21,11 @@
  #work .work-grid>.work-card:nth-last-child(2),#work .work-grid>.work-card:last-child{grid-column:auto}
  #work .work-art--supply .work-overlay,#work .work-art--journey .work-overlay{font-size:clamp(27px,7vw,37px)}
 }
+
+/* Senada Table — coffee shop / restaurant profile preview. */
+#work .work-art--restaurant{background:linear-gradient(135deg,#e8d7c3,#b4c4ad);isolation:isolate}
+#work .work-art--restaurant:before{content:"";position:absolute;width:245px;height:245px;border-radius:50%;background:#344c3b;left:calc(50% - 122px);top:75px;box-shadow:0 0 0 18px #ffffff36}
+#work .work-art--restaurant:after{content:"";position:absolute;width:150px;height:150px;border:12px solid #f7f4ed;border-radius:50%;background:#b98259;left:calc(50% - 75px);top:122px;box-shadow:0 8px 0 #6b4734}
+#work .work-art--restaurant .work-overlay{position:absolute;z-index:2;left:22px;top:22px;color:#263b2d;font:700 clamp(28px,3vw,43px) "Playfair Display",Georgia,serif;letter-spacing:-.06em;text-shadow:none;transform:none}
+#work .work-art--restaurant .restaurant-caption{position:absolute;z-index:3;right:20px;bottom:18px;padding:9px 13px;background:#fffdf0;border:1.5px solid #263b2d;color:#263b2d;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em}
+@media(max-width:790px){#work .work-art--restaurant .work-overlay{font-size:clamp(28px,7vw,40px)}}
