@@ -199,9 +199,77 @@ try {
     if ($action === 'deployments') {
         senada_require_method('GET');
         $id = (int)($_GET['id'] ?? 0);
+        $projectStmt = $db->prepare('SELECT id,repository_owner,repository_name,branch_name,last_deploy_requested_at FROM preview_projects WHERE id=:id LIMIT 1');
+        $projectStmt->execute([':id'=>$id]);
+        $project = $projectStmt->fetch();
+        if (!$project) senada_json(['ok'=>false, 'error'=>'Project tidak ditemukan.'], 404);
+
+        $syncMessage = null;
+        $token = (string)(senada_config()['github_token'] ?? '');
+        if ($token !== '' && function_exists('curl_init') && !empty($project['last_deploy_requested_at'])) {
+            $owner = rawurlencode((string)$project['repository_owner']);
+            $repository = rawurlencode((string)$project['repository_name']);
+            $branch = rawurlencode((string)$project['branch_name']);
+            $endpoint = 'https://api.github.com/repos/' . $owner . '/' . $repository . '/actions/workflows/senada-preview-deploy.yml/runs?branch=' . $branch . '&per_page=10';
+            $ch = curl_init($endpoint);
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER=>true, CURLOPT_TIMEOUT=>15,
+                CURLOPT_HTTPHEADER=>[
+                    'Accept: application/vnd.github+json',
+                    'Authorization: Bearer ' . $token,
+                    'X-GitHub-Api-Version: ' . (senada_config()['github_api_version'] ?? '2022-11-28'),
+                    'User-Agent: Senada-Creatlabs-Preview-Manager'
+                ]
+            ]);
+            $response = curl_exec($ch);
+            $httpStatus = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            if ($response !== false && $httpStatus === 200) {
+                $payload = json_decode((string)$response, true);
+                $runs = is_array($payload['workflow_runs'] ?? null) ? $payload['workflow_runs'] : [];
+                $requestedAt = strtotime((string)$project['last_deploy_requested_at']);
+                $matchingRun = null;
+                foreach ($runs as $run) {
+                    if (!is_array($run) || (string)($run['head_branch'] ?? '') !== (string)$project['branch_name']) continue;
+                    $runCreated = strtotime((string)($run['created_at'] ?? ''));
+                    if ($requestedAt !== false && $runCreated !== false && $runCreated >= ($requestedAt - 120)) {
+                        $matchingRun = $run;
+                        break;
+                    }
+                }
+                if ($matchingRun) {
+                    $runStatus = (string)($matchingRun['status'] ?? 'queued');
+                    $conclusion = (string)($matchingRun['conclusion'] ?? '');
+                    $mappedStatus = $runStatus === 'completed'
+                        ? ($conclusion === 'success' ? 'success' : 'failed')
+                        : 'queued';
+                    $finishedAt = $runStatus === 'completed' ? date('Y-m-d H:i:s') : null;
+                    $pending = $db->prepare("SELECT id FROM preview_deployments WHERE project_id=:project AND status='queued' ORDER BY created_at DESC LIMIT 1");
+                    $pending->execute([':project'=>$id]);
+                    $pendingId = $pending->fetchColumn();
+                    if ($pendingId) {
+                        $update = $db->prepare('UPDATE preview_deployments SET status=:status,github_run_url=:url,commit_sha=:sha,finished_at=:finished WHERE id=:id');
+                        $update->execute([
+                            ':status'=>$mappedStatus,
+                            ':url'=>(string)($matchingRun['html_url'] ?? ''),
+                            ':sha'=>(string)($matchingRun['head_sha'] ?? ''),
+                            ':finished'=>$finishedAt,
+                            ':id'=>(int)$pendingId
+                        ]);
+                    }
+                } else {
+                    $syncMessage = 'Workflow belum muncul di GitHub Actions. Periksa kembali beberapa saat lagi.';
+                }
+            } else {
+                $syncMessage = 'Status GitHub Actions belum dapat dibaca. Periksa izin Actions: read pada token server.';
+            }
+        } elseif ($token === '') {
+            $syncMessage = 'Token GitHub server belum dikonfigurasi.';
+        }
+
         $stmt = $db->prepare('SELECT id,deployment_mode,status,github_run_url,commit_sha,created_at,finished_at FROM preview_deployments WHERE project_id=:id ORDER BY created_at DESC LIMIT 20');
         $stmt->execute([':id'=>$id]);
-        senada_json(['ok'=>true, 'deployments'=>$stmt->fetchAll()]);
+        senada_json(['ok'=>true, 'deployments'=>$stmt->fetchAll(), 'sync_message'=>$syncMessage]);
     }
 
     senada_json(['ok'=>false, 'error'=>'Endpoint tidak ditemukan.'], 404);
