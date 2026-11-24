@@ -1,9 +1,12 @@
 /* Photographic portfolio previews; published demos remain separate visual identities.
-   All product, fashion, office and coffee photos are illustrative stock imagery. */
+   All product, fashion, office, restaurant, loyalty and travel photos are illustrative stock imagery.
+   New café / membership photos are used under the Unsplash License. */
 (()=>{
 "use strict";
 const images={
  "Senada Coffee":"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80",
+ "Ruang Rasa":"https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=1000&q=80",
+ "MemberHub":"https://images.unsplash.com/photo-1753351050766-9b9fb7ced85f?auto=format&fit=crop&w=1000&q=80",
  "Senada Bloom":"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1000&q=80",
  "Senada Prime":"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
  "Senada Supply":"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=80",

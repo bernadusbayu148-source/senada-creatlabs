@@ -9,6 +9,8 @@ The demo sites are fictional brands and contain **illustrative stock photos**, n
 - **Senada Prime:** real office building and workspace/team photos in the hero and sample case studies.
 - **Senada Supply:** real clothing/fashion photos in the hero, product cards, selected product detail, cart previews, and lookbook.
 - **Senada Journey:** real destination photos from Wikimedia Commons in the hero, travel cards, itinerary detail, with separate author and license crediting. See [TRAVEL-PHOTO-CREDITS.md](TRAVEL-PHOTO-CREDITS.md).
+- **Ruang Rasa (homepage portfolio card):** restaurant guests and dining atmosphere photo by [Rod Long on Unsplash](https://unsplash.com/photos/group-of-people-eating-on-restaurant-I79Pgmhmy5M).
+- **MemberHub (homepage portfolio card):** customer paying with a smartphone at a café photo by [Vitaly Gariev on Unsplash](https://unsplash.com/photos/a-barista-serves-a-customer-coffee-at-a-cafe-5MAuWQ7sPvI).
 
 The first four use image files hosted by [Unsplash](https://unsplash.com/) and are subject to the [Unsplash License](https://unsplash.com/license). Images from Unsplash may be used in personal or commercial projects under their terms. Photographer attribution is appreciated but not mandatory under the free Unsplash License. Note that special permissions may be necessary where identifiable people, brand marks or other protected elements are depicted.
 
