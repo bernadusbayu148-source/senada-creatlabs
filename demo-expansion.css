@@ -1,9 +1,8 @@
-/* Five demo previews. Keep carousel behavior unchanged at mobile widths. */
+/* Six demo previews. Keep carousel behavior unchanged at mobile widths. */
 @media(min-width:1081px){
  #work .work-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
  #work .work-grid>.work-card{grid-column:span 2}
- #work .work-grid>.work-card:nth-last-child(2){grid-column:2 / span 2}
- #work .work-grid>.work-card:last-child{grid-column:4 / span 2}
+ #work .work-grid>.work-card:nth-last-child(2),#work .work-grid>.work-card:last-child{grid-column:span 2}
 }
 #work .work-art--supply{background:linear-gradient(145deg,#d7ddcb,#a6b8a0)}
 #work .work-art--supply::before{content:"";position:absolute;border:1px solid #fbfff5a3;border-radius:50%;width:250px;height:250px;left:calc(50% - 125px);top:23px;box-shadow:0 0 0 27px #ffffff31}
@@ -18,7 +17,6 @@
 :root[data-theme="dark"] #work .work-art--journey .work-overlay{color:#fff}
 @media(max-width:790px){
  #work .work-grid{grid-template-columns:none!important}
- #work .work-grid>.work-card:nth-last-child(2),#work .work-grid>.work-card:last-child{grid-column:auto}
  #work .work-art--supply .work-overlay,#work .work-art--journey .work-overlay{font-size:clamp(27px,7vw,37px)}
 }
 
