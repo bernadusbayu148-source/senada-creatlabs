@@ -44,7 +44,10 @@
     "Di atas Rp8 juta": "Above Rp8 million",
 
     "Jelajahi lima website demo interaktif—mulai dari kedai kopi dan clothing store hingga travel agent dan company profile.": "Explore five interactive demos, from a coffee shop and clothing store to a travel agency and a company profile.",
-    "Demo toko clothing dengan katalog, pilihan ukuran dan warna, wishlist, keranjang, serta checkout simulasi.": "A clothing storefront with product browsing, sizes, colors, wishlist, cart, and simulated checkout.",
+    "Contoh online store fashion dengan katalog, pencarian dan filter, detail produk, pilihan varian, wishlist, keranjang, serta checkout simulasi.": "A fashion online store demo with catalog, search and filters, product details, variant options, wishlist, shopping bag, and simulated checkout.",
+    "DEMO · Rp2,5–5 JT": "DEMO · IDR 2.5–5M",
+    "Katalog produk, pencarian dan filter, detail produk, wishlist, keranjang, checkout, serta integrasi pembayaran sesuai kebutuhan.": "Product catalog, search and filters, product details, wishlist, cart, checkout, and payment integration tailored to the project.",
+    "Lihat contoh Senada Supply ↗": "View Senada Supply example ↗",
     "Demo travel agent dengan pencarian destinasi, itinerary perjalanan, estimasi biaya, dan booking simulasi.": "A travel agency demo with destination search, itineraries, cost estimates, and simulated bookings.",
     "Geser untuk melihat lima konsep website": "Swipe to explore five website demos",
     "Senada Supply": "Senada Supply",
